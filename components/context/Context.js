@@ -5,7 +5,6 @@ import React, { useState, createContext, useEffect } from "react";
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
-
   const apiEndpoint = "/api";
 
   // const handleData = async () => {
@@ -44,7 +43,7 @@ const Context = ({ children }) => {
   // }, []);
 
   const values = { data, setData };
-
+kkk
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
 };
 
