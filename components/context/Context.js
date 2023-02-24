@@ -45,7 +45,7 @@ const Context = ({ children }) => {
 
   const values = { data, setData };
 
-  return <MyContext.Provider value={values}>ㄹ호ㅇㄹ{children}</MyContext.Provider>;
+  return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
 };
 
 export const MyContext = createContext({});
