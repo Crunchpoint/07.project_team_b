@@ -5,7 +5,7 @@ import React, { useState, createContext, useEffect } from "react";
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
-
+  // asd;
   const apiEndpoint = "/api";
 
   // const handleData = async () => {
