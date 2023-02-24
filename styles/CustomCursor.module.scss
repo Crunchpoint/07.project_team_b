@@ -1,0 +1,15 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cls_1 {
+  fill: #231815;
+}
+.cls_2 {
+  fill: #fff;
+}
