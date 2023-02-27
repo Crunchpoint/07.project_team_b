@@ -43,7 +43,6 @@ const Context = ({ children }) => {
   // }, []);
 
   const values = { data, setData };
-
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
 };
 
