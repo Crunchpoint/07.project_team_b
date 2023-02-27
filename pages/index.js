@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Meta title='title' name='name' description='description' />
       <Loading />
-      <Hello/>
+      <Hello />
     </>
   );
 }
