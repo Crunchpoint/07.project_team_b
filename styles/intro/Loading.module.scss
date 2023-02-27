@@ -17,7 +17,6 @@
     align-items: center;
     flex-direction: column;
     &[data-isloading="100"] {
-      animation: loading 0.5s ease-in-out forwards;
       figure {
         img {
           opacity: 0;
@@ -33,7 +32,7 @@
         opacity: 0;
       }
     }
-    &[data-isloading="0"] {
+    &[data-isloading="done"] {
       display: none;
     }
     figure {
