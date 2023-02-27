@@ -5,6 +5,9 @@
   .inner {
     nav {
       ul {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: repeat(5, 1fr);
         li {
           a {
           }

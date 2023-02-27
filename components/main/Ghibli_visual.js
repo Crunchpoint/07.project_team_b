@@ -8,7 +8,7 @@ const Ghibli_visual = () => {
         <nav>
           <ul>
             <li>
-              <Link href=''>
+              <Link href='/'>
                 <figure>
                   <img src='' alt='#' />
                 </figure>
