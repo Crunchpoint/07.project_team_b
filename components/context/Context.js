@@ -4,6 +4,7 @@ import React, { useState, createContext, useEffect } from "react";
 
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const router = useRouter();
   const apiEndpoint = "/api";
 
@@ -42,7 +43,7 @@ const Context = ({ children }) => {
   //   handleData();
   // }, []);
 
-  const values = { data, setData };
+  const values = { data, setData, loadingProgress, setLoadingProgress };
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
 };
 

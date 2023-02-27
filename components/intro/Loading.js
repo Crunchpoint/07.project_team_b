@@ -1,19 +1,20 @@
 import styles from "@/styles/intro/Loading.module.scss";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { MyContext } from "@/components/context/Context";
 
 const Loading = () => {
-  const [loadingProgress, setLoadingProgress] = useState(0);
-
+  const { loadingProgress, setLoadingProgress } = useContext(MyContext);
   useEffect(() => {
     // 데이터 들어오는 시간에 맞춰서 로딩시간 설정.. 수정중
     // const fetchData = async () => {
     //   await new Promise((resolve) => setTimeout(resolve, 3000));
     // };
-    // fetchData();
-    const intervalId = setInterval(() => {
+
+    const progressInter = setInterval(() => {
       setLoadingProgress((prevProgress) => {
         if (prevProgress >= 100) {
-          clearInterval(intervalId);
+          clearInterval(progressInter);
           return 100;
         }
         const randomIncrease = Math.floor(Math.random() * 1) + 1;
@@ -21,21 +22,25 @@ const Loading = () => {
       });
     }, 15);
 
+    // fetchData();
+
     return () => {
-      clearInterval(intervalId);
+      clearInterval(progressInter);
     };
   }, []);
 
   // 로딩 완료시 액션
 
-  // if (loadingProgress >= 100) {
-  //   return null;
-  // }
+  if (loadingProgress >= 100) {
+    setTimeout(() => {
+      setLoadingProgress(0);
+    }, 500);
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.bg} />
-      <div className={styles.loading_wrapper}>
+      <div className={styles.loading_wrapper} data-isloading={loadingProgress}>
         <figure>
           <img src='/src/img/intro/mei.gif' alt='mei' style={{ transform: `scaleX(-1) translate3d(calc(-20vw + -${loadingProgress}vw / 1.8), 0, 0)` }} />
         </figure>
