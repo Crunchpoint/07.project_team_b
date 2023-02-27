@@ -30,10 +30,9 @@ const Loading = () => {
   }, []);
 
   // 로딩 완료시 액션
-
   if (loadingProgress >= 100) {
     setTimeout(() => {
-      setLoadingProgress(0);
+      setLoadingProgress("done");
     }, 500);
   }
 
