@@ -9,4 +9,5 @@ const ghibli = () => {
     </>
   );
 };
+
 export default ghibli;

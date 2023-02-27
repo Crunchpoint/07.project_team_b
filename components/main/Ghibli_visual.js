@@ -1,4 +1,4 @@
 const Ghibli_visual = () => {
-  return <div>Ghibli_visual</div>;
+  return <section>Ghibli_visual</section>;
 };
 export default Ghibli_visual;
