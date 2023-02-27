@@ -16,6 +16,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    &[data-isloading="100"] {
+      animation: loading 0.5s ease-in-out forwards;
+      figure {
+        img {
+          opacity: 0;
+        }
+      }
+      .loading_bar {
+        transition: all 0.5s ease-in-out;
+        width: 0;
+        border: none;
+      }
+      p {
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+      }
+    }
+    &[data-isloading="101"] {
+      display: none;
+    }
     figure {
       width: 100%;
       img {
