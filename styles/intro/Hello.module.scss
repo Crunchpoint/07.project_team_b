@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.hello{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation-name: textup;
+    animation-duration: 1.5s;
+}
+.text{
+    font-family: 'Press Start 2P';
+    font-size: 4rem;
+    color: #fff;
+    -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+}
+
+@keyframes textup{
+    0%{
+        transform: translate(-50%,70%);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(-50%,-50%);
+        opacity: 100%;
+    }
+}
