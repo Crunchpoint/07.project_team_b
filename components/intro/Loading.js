@@ -33,7 +33,7 @@ const Loading = () => {
 
   if (loadingProgress >= 100) {
     setTimeout(() => {
-      setLoadingProgress(101);
+      setLoadingProgress(0);
     }, 500);
   }
 
