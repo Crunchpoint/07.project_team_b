@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap");
+
 @mixin mainCateBtn($url) {
   width: 40px;
   height: 40px;
@@ -12,15 +14,22 @@
   height: 100vh;
   background: url(../../public/src/img/main/main_bg.jpg) no-repeat center center/cover;
   .inner {
-    h1 {
+    div {
       position: absolute;
+      top: 7%;
       width: 100%;
-      top: 10%;
       text-align: center;
       font-size: 10vw;
-      color: rgba(255, 255, 255, 1);
-      text-shadow: 0 0 0.8rem #000;
-      transition: all 5s ease-in-out;
+      filter: url(#threshold) drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.8));
+      padding: 0 40px;
+      h1 {
+        font-family: "Bowlby One SC", cursive;
+        font-weight: 100;
+        color: rgba(255, 255, 255, 1);
+        &[data-title] {
+          //   filter: blur(10px);
+        }
+      }
     }
     nav {
       ul {
@@ -41,7 +50,7 @@
                 height: 100%;
                 object-fit: cover;
                 &:hover {
-                  filter: drop-shadow(0 0 0.5rem #00f);
+                  filter: drop-shadow(0 0 0.5rem #fff);
                 }
               }
             }
@@ -61,7 +70,7 @@
                 height: 100%;
                 object-fit: cover;
                 &:hover {
-                  filter: drop-shadow(0 0 0.5rem #00f);
+                  filter: drop-shadow(0 0 0.5rem #fff);
                 }
               }
             }
@@ -80,7 +89,7 @@
                 height: 100%;
                 object-fit: cover;
                 &:hover {
-                  filter: drop-shadow(0 0 0.5rem #00f);
+                  filter: drop-shadow(0 0 0.5rem #fff);
                 }
               }
             }
@@ -100,7 +109,7 @@
                 height: 100%;
                 object-fit: cover;
                 &:hover {
-                  filter: drop-shadow(0 0 0.5rem #00f);
+                  filter: drop-shadow(0 0 0.5rem #fff);
                 }
               }
             }
@@ -108,7 +117,7 @@
         }
         // 토토로
         li:nth-child(5) {
-          grid-area: 1/7/13/13;
+          grid-area: 1/7/13/12;
           justify-self: end;
           align-self: end;
           z-index: 3;
@@ -119,7 +128,7 @@
                 height: 100%;
                 object-fit: cover;
                 &:hover {
-                  filter: drop-shadow(0 0 0.5rem rgb(140, 140, 255));
+                  filter: drop-shadow(0 0 0.5rem #fff);
                 }
               }
             }
@@ -130,7 +139,7 @@
           grid-area: 1/11/13/13;
           justify-self: end;
           align-self: end;
-          margin-bottom: 45%;
+
           a {
             figure {
               img {
@@ -138,8 +147,26 @@
                 height: 100%;
                 object-fit: cover;
                 &:hover {
-                  filter: drop-shadow(0 0 0.5rem #00f);
+                  filter: drop-shadow(0 0 0.5rem #fff);
                 }
+              }
+            }
+          }
+        }
+        // 포뇨
+        li:nth-child(7) {
+          width: 100%;
+          grid-area: 1/9/13/12;
+          justify-self: center;
+          align-self: end;
+          margin-bottom: 100%;
+          z-index: 4;
+          a {
+            figure {
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
               }
             }
           }
