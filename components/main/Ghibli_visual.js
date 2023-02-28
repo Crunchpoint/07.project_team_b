@@ -66,13 +66,6 @@ const Ghibli_visual = () => {
                   </li>
                 );
               })}
-              <li>
-                <Link href=''>
-                  <figure>
-                    <img src='../src/img/main/구름png.png' alt='#' />
-                  </figure>
-                </Link>
-              </li>
             </ul>
           </nav>
         </div>
