@@ -13,7 +13,9 @@ const CharInfo = () => {
     <div className={styles.app}>
       <div className={styles.wrap_app}>
         <div className={styles.wrap_logo}>
-          <button>Ghibli</button>
+          <button onClick={()=> {
+            window.location.href = '/'
+          }}>Ghibli</button>
         </div>
         <div className={styles.wrap_info}>
           <h1 className={styles.h1}>What is your favorite Character?</h1>
