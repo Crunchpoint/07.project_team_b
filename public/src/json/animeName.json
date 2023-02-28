@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "name": "Sprited Away",
+      "src": "../src/img/main/하쿠png.png"
+    },
+    {
+      "name": "Howl's Moving Castle",
+      "src": "../src/img/main/하울png.png"
+    },
+    {
+      "name": "Ponyo on the Cliff by the Sea",
+      "src": "../src/img/main/포뇨png.png"
+    },
+    {
+      "name": "Castle in the Sky",
+      "src": "../src/img/main/라퓨타png.png"
+    },
+    {
+      "name": "My Neighbor Totoro",
+      "src": "../src/img/main/토토로png.png"
+    },
+    {
+      "name": "The Cat Returns",
+      "src": "../src/img/main/보은png.png"
+    }
+  ]
+}
