@@ -1,5 +1,6 @@
 import styles from "@/styles/main/Ghibli_visual.module.scss";
 import Link from "next/link";
+import Castle from "./Castle";
 import { useContext, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 
@@ -11,6 +12,27 @@ const Ghibli_visual = () => {
   const textEffect = () => {};
 
   return (
+    <>
+    <section className={styles.container}>
+      <div className={styles.inner}>
+        <nav>
+          <ul>
+            <li>
+              <Link href='/'>
+                <figure>
+                  <img src='' alt='#' />
+                </figure>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <section>
+      <Castle/>
+    </section>
+    </>
     data.length > 0 && (
       <section className={styles.container}>
         <div className={styles.inner}>
