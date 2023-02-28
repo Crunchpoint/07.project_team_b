@@ -23,6 +23,10 @@
     {
       "name": "The Cat Returns",
       "src": "../src/img/main/보은png.png"
+    },
+    {
+      "name": "cloud",
+      "src": "../src/img/main/구름png.png"
     }
   ]
 }
