@@ -2,11 +2,29 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useState, createContext, useEffect } from "react";
 
+const dataUrl = "../src/json/animeName.json";
+
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const router = useRouter();
   const apiEndpoint = "/api";
+
+  useEffect(() => {
+    async function axiosData() {
+      await axios
+        .all([axios.get(dataUrl)])
+        .then(
+          axios.spread((res1) => {
+            setData(res1.data.data);
+          })
+        )
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    axiosData();
+  }, []);
 
   // const handleData = async () => {
   //   try {
