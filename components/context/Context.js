@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useState, createContext, useEffect } from "react";
 
 const dataUrl = "../src/json/animeName.json";
+const dataUrl1 = "../src/json/charDetail.json";
 
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
@@ -13,10 +14,11 @@ const Context = ({ children }) => {
   useEffect(() => {
     async function axiosData() {
       await axios
-        .all([axios.get(dataUrl)])
+        .all([axios.get(dataUrl), axios.get(dataUrl1)])
         .then(
-          axios.spread((res1) => {
+          axios.spread((res1, res2) => {
             setData(res1.data.data);
+            console.log(res2);
           })
         )
         .catch((error) => {
