@@ -1,0 +1,12 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px 0;
+  .inner {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1.8fr 1.2fr;
+    gap: 50px;
+  }
+}

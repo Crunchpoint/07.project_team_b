@@ -2,7 +2,7 @@
   "data": [
     {
       "name": "Sprited Away",
-      "src": "../src/img/main/하쿠png.png"
+      "src": "../src/img/main/hacu_png.png"
     },
     {
       "name": "Howl's Moving Castle",
@@ -10,7 +10,7 @@
     },
     {
       "name": "Ponyo on the Cliff by the Sea",
-      "src": "../src/img/main/포뇨png.png"
+      "src": "../src/img/main/ponyo_png2.png"
     },
     {
       "name": "Castle in the Sky",
@@ -23,6 +23,10 @@
     {
       "name": "The Cat Returns",
       "src": "../src/img/main/보은png.png"
+    },
+    {
+      "name": "cloud",
+      "src": "../src/img/main/구름png.png"
     }
   ]
 }

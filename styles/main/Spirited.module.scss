@@ -1,0 +1,116 @@
+.main_bg{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../../public/src/img/main/spirited_bg.jpg);
+    background-blend-mode: luminosity;
+    z-index: -10;
+    display: flex;
+    &::after{
+        content: "";
+        background-blend-mode: luminosity;
+        background-color: #000;
+        width: 100%;
+        height: 100vh;
+        display: block;
+        position: absolute;
+        z-index: -9;
+        opacity: 0.6;
+    }
+    .button{
+        width: 10rem;
+        height: 3rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+        background-color: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+        position: relative;
+        left: 2%;
+        top: 2%;
+    }
+    .main_img{
+        position: absolute;
+        left: 7%;
+        top: 18%;
+        z-index: 0;
+        opacity: 0;
+        
+        img{
+            scale: 1.6;
+            filter: drop-shadow(10px 10px 10px #000);
+        }
+    }
+   
+    .main_text{
+        position: relative;
+        z-index: 1;
+        left: 65%;
+        top: 20%;
+        color: rgb(255, 225, 30);
+        font-size: 15rem;
+        font-weight: bold;
+        -webkit-text-stroke: 5px #000;
+        text-shadow: 13px -10px 0px #000000;
+    }
+
+    
+    .main_text2{
+        position: absolute;
+        left: 43%;
+        top: 48%;
+        color: #fff;
+        font-size: 15rem;
+        font-weight: bold;
+        -webkit-text-stroke: 5px #000;
+        text-shadow: 13px -10px 0px #000000;
+        letter-spacing: -10px;
+        
+    }
+
+    &.active{
+
+        .main_img{
+            animation: img_ani 1s 0s ease-in-out both
+        }
+        @keyframes img_ani {
+            0%{
+                left: 0%;
+                top: 18%;
+                opacity: 0;
+            }
+            100%{
+                left: 7%;
+                top: 18%;
+                opacity: 1;
+            }
+        }
+        
+  
+        .main_text{
+            animation: text_ani 1s 0s ease-in-out both
+        }
+        @keyframes text_ani {
+            0%{
+                color: #fff;
+            }
+            100%{
+                color: rgb(255, 225, 30);
+            }
+        }
+        
+        .main_text2{
+            animation: text2_ani 1s 0s ease-in-out both
+        }
+        @keyframes text2_ani {
+            0%{
+                color: #fff;
+            }
+            100%{
+                color: rgb(255, 225, 30);
+            }
+        }
+
+    }
+}
+
