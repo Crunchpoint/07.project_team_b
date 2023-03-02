@@ -4,13 +4,20 @@ import Logo from "./Logo";
 import styles from "@/styles/info/CharInfo.module.scss";
 
 const CharInfo_detail = () => {
+ 
   return (
     <>
     <div className={styles.app}>
+    <div className={styles.wrap_logo}>
+        <button onClick={()=> {
+          window.location.href = '/info/charinfo'
+        }}></button>
+    </div>
     <Logo className={styles.logo_float}></Logo>
       <div className={`${styles.wrap_app} ${styles.wrap_app_detail}`}>
         <div className={styles.detail_left}>
           <img src="/src/img/info/ponyo/sosuke3.jpg"/>
+          <p>캐릭터 이름</p>
         </div>
         <div className={styles.detail_right}>
           <p>

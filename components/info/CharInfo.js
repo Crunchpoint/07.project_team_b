@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -6,10 +6,9 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { EffectCoverflow, Pagination, Scrollbar } from "swiper";
 import Logo from "./Logo";
-import { MyContext } from "../context/Context";
+import { MyContext } from "@/components/context/Context";
 
 import styles from "@/styles/info/CharInfo.module.scss";
-import { useRouter } from "next/router";
 
 const CharInfo = () => {
   const router = useRouter;
@@ -17,6 +16,12 @@ const CharInfo = () => {
   const ani_name = 'laputa';// 임시 이름
   const _data = data2.laputa
   console.log(_data);
+
+  useEffect(()=> {
+    setTimeout(()=> {
+
+    }, 1000)
+  })
 
   return (
     <div className={styles.app_info}>
@@ -45,8 +50,7 @@ const CharInfo = () => {
           modules={[EffectCoverflow, Pagination, Scrollbar]}
           className={`${styles.body}, ${styles.info_slider}`}>
             {
-              _data&&_data.map((obj, key) => {
-                // console.log(obj);
+              data2&&data2.map((obj, key) => {
                 return <SwiperSlide className={`${styles.swiper_slide}`}>
                   <div className={`${styles.swiper_slide_detail}`}
                     onClick={(obj, key)=> {
@@ -54,6 +58,7 @@ const CharInfo = () => {
                       // 임시 페이지 이동
                       window.location.href=`/info/charinfo_detail`
                     }}>
+                      {/* 이미지 src 빈칸이라 임시로 해둔것 */}
                     {/* <img src={`${obj[key].src}`}></img> */}
                     <img src="/src/img/info/ponyo/sosuke3.jpg"></img>
                     <p>{`${obj.name_eng}`} / {`${obj.name_jap}`}</p>
