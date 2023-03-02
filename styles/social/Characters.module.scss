@@ -1,6 +1,7 @@
 .characters {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  padding: 10px 0;
   figure {
     align-self: center;
     justify-self: center;
