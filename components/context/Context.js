@@ -7,6 +7,7 @@ const dataUrl1 = "../src/json/charDetail.json";
 
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const router = useRouter();
   const apiEndpoint = "/api";
@@ -18,7 +19,7 @@ const Context = ({ children }) => {
         .then(
           axios.spread((res1, res2) => {
             setData(res1.data.data);
-            console.log(res2);
+            setData2(res2.data);
           })
         )
         .catch((error) => {
@@ -63,7 +64,7 @@ const Context = ({ children }) => {
   //   handleData();
   // }, []);
 
-  const values = { data, setData, loadingProgress, setLoadingProgress };
+  const values = { data, setData, data2, setData2, loadingProgress, setLoadingProgress };
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
 };
 
