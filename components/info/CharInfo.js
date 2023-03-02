@@ -5,6 +5,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { EffectCoverflow, Pagination, Scrollbar } from "swiper";
+import Logo from "./Logo";
 
 import styles from "@/styles/info/CharInfo.module.scss";
 
@@ -12,11 +13,8 @@ const CharInfo = () => {
   return (
     <div className={styles.app_info}>
       <div className={styles.wrap_app}>
-        <div className={styles.wrap_logo}>
-          <button onClick={()=> {
-            window.location.href = '/'
-          }}>Ghibli</button>
-        </div>
+        <Logo>
+        </Logo>
         <div className={styles.wrap_info}>
           <h1 className={styles.h1}>What is your favorite Character?</h1>
           <div className={styles.swiper}>
