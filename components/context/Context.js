@@ -28,40 +28,49 @@ const Context = ({ children }) => {
     axiosData();
   }, []);
 
-  // const handleData = async () => {
-  //   try {
-  //     event.preventDefault();
-  //     let data = {};
-  //     let response;
-  //     //  need to add api endpoint and data
-  //     switch (method) {
-  //       case "POST":
-  //         await axios.post();
-  //         break;
+  const handleData = async (queryNo, method, title, name, postData, time) => {
+    try {
+      event.preventDefault();
+      let data = { no: queryNo, title: title, name: name, contents: postData, time: time };
+      let response;
+      //  need to add api endpoint and data
+      switch (method) {
+        case "POST":
+          await axios.post(apiEndpoint);
+          break;
 
-  //       case "PUT":
-  //         await axios.put();
-  //         break;
+        case "PUT":
+          await axios.put(apiEndpoint);
+          break;
 
-  //       case "DELETE":
-  //         await axios.delete();
-  //         break;
+        case "DELETE":
+          await axios.delete(apiEndpoint);
+          break;
 
-  //       default:
-  //         break;
-  //     }
+        default:
+          break;
+      }
 
-  //     response = await axios.get(apiEndpoint);
-  //     setData(response.data);
-  //     router.push("/");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
+      response = await axios.get(apiEndpoint);
+      setData(response.data);
+      // router.push("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    handleData();
+  }, []);
+
+  // const handleSubmit = (e, method, queryNo) => {
+  //   e.preventDefault();
+  //   const title = e.target.subject.value;
+  //   const name = e.target.author.value;
+  //   const postData = e.target.textArea.value;
+  //   const time = Date.now().toString();
+  //   handleData(queryNo, method, title, name, postData, time);
   // };
-
-  // useEffect(() => {
-  //   handleData();
-  // }, []);
 
   const values = { data, setData, loadingProgress, setLoadingProgress };
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;

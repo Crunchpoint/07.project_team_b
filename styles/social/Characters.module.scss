@@ -1,0 +1,15 @@
+.characters {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  figure {
+    align-self: center;
+    justify-self: center;
+    img {
+      border: 1px solid #000;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+}
