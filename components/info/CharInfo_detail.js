@@ -1,10 +1,13 @@
 import React, { useRef, useState } from "react";
+import Logo from "./Logo";
 
 import styles from "@/styles/info/CharInfo.module.scss";
 
 const CharInfo_detail = () => {
   return (
+    <>
     <div className={styles.app}>
+    <Logo className={styles.logo_float}></Logo>
       <div className={`${styles.wrap_app} ${styles.wrap_app_detail}`}>
         <div className={styles.detail_left}>
           <img src="/src/img/info/ponyo/sosuke3.jpg"/>
@@ -22,6 +25,7 @@ const CharInfo_detail = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

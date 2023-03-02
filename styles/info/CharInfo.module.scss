@@ -86,6 +86,9 @@
   height: 5rem;
   display: flex;
   align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 99;
   button {
     background-color: transparent;
     // background-image: url("../../public/src/favicon.ico");
@@ -110,6 +113,7 @@
 .wrap_info {
   width: 100%;
   padding: 0 10rem;
+  margin-top: 5rem;
 }
 .h1 {
   width: 100%;
