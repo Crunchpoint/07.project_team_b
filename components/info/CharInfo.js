@@ -10,7 +10,7 @@ import styles from "@/styles/info/CharInfo.module.scss";
 
 const CharInfo = () => {
   return (
-    <div className={styles.app}>
+    <div className={styles.app_info}>
       <div className={styles.wrap_app}>
         <div className={styles.wrap_logo}>
           <button>Ghibli</button>
@@ -37,7 +37,12 @@ const CharInfo = () => {
           modules={[EffectCoverflow, Pagination, Scrollbar]}
           className={`${styles.body}, ${styles.info_slider}`}>
             <SwiperSlide className={`${styles.swiper_slide}`}>
-              <div className={`${styles.swiper_slide_detail}`}>
+              <div className={`${styles.swiper_slide_detail}`}
+                onClick={(obj, key)=> {
+                  // window.location.href=`/info/charinfo_detail/${key}`
+                  // 임시 페이지 이동
+                  window.location.href=`/info/charinfo_detail`
+                }}>
                 <img src="/src/img/info/ponyo/sosuke3.jpg"></img>
                 <p>소스케</p>
               </div>
