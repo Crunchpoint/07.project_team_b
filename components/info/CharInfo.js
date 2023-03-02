@@ -9,6 +9,7 @@ import Logo from "./Logo";
 import { MyContext } from "@/components/context/Context";
 
 import styles from "@/styles/info/CharInfo.module.scss";
+import { useRouter } from "next/router";
 
 const CharInfo = () => {
   const router = useRouter;
@@ -49,8 +50,24 @@ const CharInfo = () => {
           // pagination={true}
           modules={[EffectCoverflow, Pagination, Scrollbar]}
           className={`${styles.body}, ${styles.info_slider}`}>
+            <SwiperSlide className={`${styles.swiper_slide}`}>
+              <div className={`${styles.swiper_slide_detail}`}
+                onClick={(obj, key)=> {
+                  // window.location.href=`/info/charinfo_detail/${key}`
+                  // 임시 페이지 이동
+                  window.location.href=`/info/charinfo_detail`
+                }}>
+                <img src="/src/img/info/ponyo/sosuke3.jpg"></img>
+                <p>소스케</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className={`${styles.swiper_slide}`}>Slide 2</SwiperSlide>
+            <SwiperSlide className={`${styles.swiper_slide}`}>Slide 3</SwiperSlide>
+            <SwiperSlide className={`${styles.swiper_slide}`}>Slide 4</SwiperSlide>
+            <SwiperSlide className={`${styles.swiper_slide}`}>Slide 5</SwiperSlide>
             {
-              data2&&data2.map((obj, key) => {
+              _data&&_data.map((obj, key) => {
+                // console.log(obj);
                 return <SwiperSlide className={`${styles.swiper_slide}`}>
                   <div className={`${styles.swiper_slide_detail}`}
                     onClick={(obj, key)=> {
