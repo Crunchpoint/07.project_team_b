@@ -11,8 +11,17 @@ import { MyContext } from "@/components/context/Context";
 import styles from "@/styles/info/CharInfo.module.scss";
 
 const CharInfo = () => {
-  const {data2} = useContext(MyContext);
-  console.log('data', data2);
+  const router = useRouter;
+  const {data2, setData2} = useContext(MyContext);
+  const ani_name = 'laputa';// 임시 이름
+  const _data = data2.laputa
+  console.log(_data);
+
+  useEffect(()=> {
+    setTimeout(()=> {
+
+    }, 1000)
+  })
 
   return (
     <div className={styles.app_info}>
@@ -49,9 +58,10 @@ const CharInfo = () => {
                       // 임시 페이지 이동
                       window.location.href=`/info/charinfo_detail`
                     }}>
-                    <img src={`${data[key].src}`}></img>
-                    {/* <img src="/src/img/info/ponyo/sosuke3.jpg"></img> */}
-                    <p>{`${data[key].name_eng}`} / {`${data[key].name_jap}`}</p>
+                      {/* 이미지 src 빈칸이라 임시로 해둔것 */}
+                    {/* <img src={`${obj[key].src}`}></img> */}
+                    <img src="/src/img/info/ponyo/sosuke3.jpg"></img>
+                    <p>{`${obj.name_eng}`} / {`${obj.name_jap}`}</p>
                   </div>
                 </SwiperSlide>
               })
