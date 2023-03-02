@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { EffectCoverflow, Pagination, Scrollbar } from "swiper";
 import Logo from "./Logo";
+import { MyContext } from "../context/Context";
 
 import styles from "@/styles/info/CharInfo.module.scss";
 import { useRouter } from "next/router";
