@@ -1,4 +1,23 @@
 .app {
+    width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  align-items: center;
+    display: flex;
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../public/src/img/main/main_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    filter: blur(5px) brightness(30%);
+    z-index: -1;
+  }
+}
+.app_info {
   height: 100vh;
   overflow: auto;
   &::before {
@@ -18,6 +37,38 @@
   z-index: 99;
   position: initial;
 }
+
+.wrap_app_detail {
+    width: 100%;
+    display: flex;
+    padding: 5rem;
+    color: #fff;
+    justify-content: center;
+}
+
+.detail_left {
+    img {
+        width: 400px;
+        height: 400px;
+        align-items: center;
+    }
+}
+
+.detail_right {
+    width: 40%;
+    margin-left: 5rem;
+    p {
+        &:first-child {
+            font-size: 2rem;
+        }
+    }
+}
+.detail_right_path {
+    height: 80%;
+    // overflow-y: scroll;
+    overflow-y: auto;
+}
+
 .body {
   z-index: 99;
   position: relative;

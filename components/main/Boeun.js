@@ -27,7 +27,7 @@ const Boeun = () => {
 
   return (
     <div className={`${styles.main_bg} ${active?styles.active:null}`} ref={observerRef}>
-        <button className={styles.button}>SEE MORE</button>
+        <button className={styles.button}>SEE MOREe</button>
         <div className={styles.main_img}>
             <img className={styles.main_img_01} src="../src/img/main/Boeun_png2.png" alt='사람'/>
             <img className={styles.main_img_02} src="../src/img/main/Boeun_png.png" alt='고양이'/>
