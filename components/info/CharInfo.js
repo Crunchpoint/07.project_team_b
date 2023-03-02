@@ -9,13 +9,14 @@ import Logo from "./Logo";
 import { MyContext } from "@/components/context/Context";
 
 import styles from "@/styles/info/CharInfo.module.scss";
+import { useRouter } from "next/router";
 
 const CharInfo = () => {
-  const router = useRouter;
+  const router = useRouter();
   const {data2, setData2} = useContext(MyContext);
   const ani_name = 'laputa';// 임시 이름
+  console.log(data2);
   const _data = data2.laputa
-  console.log(_data);
 
   useEffect(()=> {
     setTimeout(()=> {
@@ -50,7 +51,7 @@ const CharInfo = () => {
           modules={[EffectCoverflow, Pagination, Scrollbar]}
           className={`${styles.body}, ${styles.info_slider}`}>
             {
-              data2&&data2.map((obj, key) => {
+              _data&&_data.map((obj, key) => {
                 return <SwiperSlide className={`${styles.swiper_slide}`}>
                   <div className={`${styles.swiper_slide_detail}`}
                     onClick={(obj, key)=> {
