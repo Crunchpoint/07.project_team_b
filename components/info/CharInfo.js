@@ -14,8 +14,8 @@ import { useRouter } from "next/router";
 const CharInfo = () => {
   const router = useRouter();
   const {data2} = useContext(MyContext);
-  // const ani_name = 'laputa';// 임시 이름
-  const ani_name = 'cat';// 임시 이름
+  const ani_name = 'laputa';// 임시 이름
+  // const ani_name = 'cat';// 임시 이름
   // const ani_name = router.query.ani_name;
   console.log('data2', data2);
   const _data = data2[`${ani_name}`];
@@ -74,9 +74,9 @@ const CharInfo = () => {
                       // window.location.href=`/info/charinfo_detail`
                       sendData(obj)
                     }>
-                      {/* 이미지 src 빈칸이라 임시로 해둔것 */}
-                    {/* <img src={`${obj[key].src}`}></img> */}
-                    <img src="/src/img/info/ponyo/sosuke3.jpg"></img>
+                    <img src={`${obj.src}`}></img>
+                    {/* 이미지 src 빈칸이라 임시로 해둔것 */}
+                    {/* <img src="/src/img/info/ponyo/sosuke3.jpg"></img> */}
                     <p>{`${obj.name_eng}`} / {`${obj.name_jap}`}</p>
                   </div>
                 </SwiperSlide>
