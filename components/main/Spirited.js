@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from "@/styles/main/Spirited.module.scss"
+import Link from 'next/link';
 
 const Spirited = () => {
 
@@ -10,7 +11,6 @@ const Spirited = () => {
 
         let observer = new IntersectionObserver(
         ([e]) => {
-            console.log("e.target", e.target)
             if (e.isIntersecting) {
             setActive(true)
             }
@@ -25,7 +25,11 @@ const Spirited = () => {
 
   return (
     <div className={`${styles.main_bg} ${active?styles.active:null}`} ref={observerRef}>
-        <button className={styles.button}>SEE MORE</button>
+        <Link href="/info/charinfo">
+          <button className={styles.button}>
+            SEE MORE
+          </button>
+        </Link>
         <div className={styles.main_img}>
             <img src="../src/img/main/hacu_png.png" alt='센과치히로 행방불명'/>
         </div>
