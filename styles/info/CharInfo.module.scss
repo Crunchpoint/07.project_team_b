@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
 .app {
     width: 100vw;
   height: 100vh;
@@ -135,6 +137,7 @@
 }
 
 .wrap_logo {
+  padding-top: 2rem;
   width: 100%;
   height: 5rem;
   display: flex;
@@ -143,6 +146,10 @@
   top: 0;
   z-index: 99;
   button {
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 3px 0px 1px #000000;
+    font-weight: bold;
+    color: #fff;
     background-color: transparent;
     // background-image: url("../../public/src/favicon.ico");
     background-image: url("../../public/src/totoro_color.png");
@@ -166,7 +173,7 @@
 .wrap_info {
   width: 100%;
   padding: 0 10rem;
-  margin-top: 5rem;
+  margin-top: 9rem;
 }
 .h1 {
   width: 100%;
@@ -175,6 +182,7 @@
   margin-bottom: 1rem;
   color: #fff;
   font-size: 64px;
+  font-family: 'Kalam', cursive;
   // family setting
 }
 
@@ -190,8 +198,8 @@
 // swiper
 .swiper {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   height: 70vh;
 //   background-color: #eee;
