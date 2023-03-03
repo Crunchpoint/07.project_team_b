@@ -4,7 +4,7 @@ import CharInfo from "@/components/info/CharInfo";
 const charinfo = () => {
   return (
     <>
-      <Meta title='CharInfo' name='name' description='description' />
+      <Meta title='캐릭터목록' name='name' description='description' />
       <CharInfo />
     </>
   )
