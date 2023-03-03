@@ -14,12 +14,10 @@ import { useRouter } from "next/router";
 const CharInfo = () => {
   const router = useRouter();
   const {data2} = useContext(MyContext);
-  const ani_name = 'laputa';// 임시 이름
+  // const ani_name = 'laputa';// 임시 이름
   // const ani_name = 'cat';// 임시 이름
-  // const ani_name = router.query.ani_name;
-  console.log('data2', data2);
+  const ani_name = router.query.ani_name;
   const _data = data2[`${ani_name}`];
-  console.log(_data);
   // 로딩 지연
   useEffect(()=> {
     setTimeout(()=> {
@@ -65,13 +63,10 @@ const CharInfo = () => {
           modules={[EffectCoverflow, Pagination, Scrollbar]}
           className={`${styles.body}, ${styles.info_slider}`}>
             {
-              _data&&_data.map((obj, key) => {
+              _data&&_data.map((obj) => {
                 return <SwiperSlide className={`${styles.swiper_slide}`}>
                   <div className={`${styles.swiper_slide_detail}`}
                     onClick={()=> 
-                      // window.location.href=`/info/charinfo_detail/${key}`
-                      // 임시 페이지 이동
-                      // window.location.href=`/info/charinfo_detail`
                       sendData(obj)
                     }>
                     <img src={`${obj.src}`}></img>

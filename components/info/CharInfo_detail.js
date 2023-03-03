@@ -25,7 +25,7 @@ const CharInfo_detail = () => {
         <div className={styles.wrap_back}>
           <button
             onClick={() => {
-              window.location.href = "/info/charinfo";
+              window.history.back();
             }}
           ></button>
         </div>
