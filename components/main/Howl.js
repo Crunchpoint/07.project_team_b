@@ -25,7 +25,12 @@ const Howl = () => {
 
   return (
     <div className={`${styles.main_bg} ${active?styles.active:null}`} ref={observerRef}>
-        <Link href="/info/charinfo">
+        <Link href={{
+          pathname: "/info/charinfo",
+          query: {
+            ani_name: "howl"
+          }
+       }}  >
           <button className={styles.button}>
             SEE MORE
           </button>
