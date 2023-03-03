@@ -13,16 +13,30 @@ import { useRouter } from "next/router";
 
 const CharInfo = () => {
   const router = useRouter();
-  const {data2, setData2} = useContext(MyContext);
-  const ani_name = 'laputa';// 임시 이름
-  console.log(data2);
-  const _data = data2.laputa
-
+  const {data2} = useContext(MyContext);
+  // const ani_name = 'laputa';// 임시 이름
+  const ani_name = 'cat';// 임시 이름
+  // const ani_name = router.query.ani_name;
+  console.log('data2', data2);
+  const _data = data2[`${ani_name}`];
+  console.log(_data);
+  // 로딩 지연
   useEffect(()=> {
     setTimeout(()=> {
-
+      
     }, 1000)
   })
+
+  function sendData(obj) {
+    router.push({
+      pathname: '/info/charinfo_detail',
+      query: {
+        name: obj.name_eng, 
+        data: JSON.stringify(obj)
+      },
+      asPath: '/info/charinfo_detail'
+    })
+  }
 
   return (
     <div className={styles.app_info}>
@@ -54,11 +68,12 @@ const CharInfo = () => {
               _data&&_data.map((obj, key) => {
                 return <SwiperSlide className={`${styles.swiper_slide}`}>
                   <div className={`${styles.swiper_slide_detail}`}
-                    onClick={(obj, key)=> {
+                    onClick={()=> 
                       // window.location.href=`/info/charinfo_detail/${key}`
                       // 임시 페이지 이동
-                      window.location.href=`/info/charinfo_detail`
-                    }}>
+                      // window.location.href=`/info/charinfo_detail`
+                      sendData(obj)
+                    }>
                       {/* 이미지 src 빈칸이라 임시로 해둔것 */}
                     {/* <img src={`${obj[key].src}`}></img> */}
                     <img src="/src/img/info/ponyo/sosuke3.jpg"></img>
