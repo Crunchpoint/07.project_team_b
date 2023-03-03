@@ -4,7 +4,7 @@
     height: 100vh;
     background: url(../../public/src/img/main/howl_bg.jpg);
     background-blend-mode: luminosity;
-    z-index: -10;
+    z-index: 0;
     display: flex;
     &::after{
         content: "";
@@ -18,6 +18,7 @@
         opacity: 0.4;
     }
     .button{
+        z-index: 2;
         width: 10rem;
         height: 3rem;
         font-weight: 700;
@@ -26,7 +27,7 @@
         border: 2px solid #fff;
         color: #fff;
         position: relative;
-        left: 2%;
+        left: 20%;
         top: 2%;
     }
     //성
@@ -110,7 +111,7 @@
         }
 
         .main_img_02{
-            animation: img_ani2 1s 0s ease-in-out both;
+            animation: img_ani2 2s 0s ease-in-out both;
             animation-iteration-count: infinite;
         }
         @keyframes img_ani2 {

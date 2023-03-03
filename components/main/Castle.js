@@ -1,4 +1,6 @@
 import styles from "@/styles/main/Castle.module.scss"
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from 'react'
 import Image from '../../public/src/img/main/lafuta_png.png'
 
@@ -6,12 +8,13 @@ const Castle = () => {
 
   const observerRef = useRef([]);
   const [active,setActive] = useState(false);
+  const router = useRouter();
+
 
   useEffect(()=>{
 
     let observer = new IntersectionObserver(
       ([e]) => {
-        console.log("e.target", e.target)
         if (e.isIntersecting) {
           setActive(true)
         }
@@ -27,7 +30,11 @@ const Castle = () => {
 
   return (
     <div className={`${styles.main_bg} ${active?styles.active:null}`} ref={observerRef}>
-        <button className={styles.button}>SEE MORE</button>
+       <Link href="/info/charinfo">
+          <button className={styles.button}>
+            SEE MORE
+          </button>
+        </Link>
         <div className={styles.main_img}>
             <img src="../src/img/main/lafuta_png.png" alt='라퓨타'/>
         </div>

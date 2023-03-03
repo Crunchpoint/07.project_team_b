@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from "@/styles/main/Boeun.module.scss"
+import Link from 'next/link';
 
 const Boeun = () => {
 
@@ -10,7 +11,6 @@ const Boeun = () => {
 
         let observer = new IntersectionObserver(
         ([e]) => {
-            console.log("e.target", e.target)
             if (e.isIntersecting) {
             setActive(true)
             }else{
@@ -27,7 +27,11 @@ const Boeun = () => {
 
   return (
     <div className={`${styles.main_bg} ${active?styles.active:null}`} ref={observerRef}>
-        <button className={styles.button}>SEE MOREe</button>
+        <Link href="/info/charinfo">
+          <button className={styles.button}>
+            SEE MORE
+          </button>
+        </Link>
         <div className={styles.main_img}>
             <img className={styles.main_img_01} src="../src/img/main/Boeun_png2.png" alt='사람'/>
             <img className={styles.main_img_02} src="../src/img/main/Boeun_png.png" alt='고양이'/>
