@@ -15,6 +15,7 @@ const CharInfo_detail = () => {
   } else {
     data = JSON.parse(str_data);
   }
+  // 로딩 지연
   useEffect(() => {
     setTimeout(() => {}, 1000);
   });
