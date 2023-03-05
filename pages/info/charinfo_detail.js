@@ -1,11 +1,23 @@
 import Meta from "@/components/Meta";
 import CharInfoDetail from "@/components/info/CharInfo_detail";
+import { useRouter } from "next/router";
 
 const charinfo_detail = () => {
-  
+  const router = useRouter();
+  const str_data = router.query.data;
+  let data = '';
+  if (!str_data || !router.query.data) {
+    return;
+  } else {
+    data = JSON.parse(str_data);
+  }
+  console.log('meta router', router)
+
+  const ani_name = router.query.ani_name;
+  const name = router.query.name;
   return (
     <>
-      <Meta title='작품명-캐릭터이름' name='name' description='description' />
+      <Meta title={`${ani_name} - ${name}`} name='name' description='description' />
       <CharInfoDetail />
     </>
   )

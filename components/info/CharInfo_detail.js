@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 import styles from "@/styles/info/CharInfo.module.scss";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import Link from "next/link";                             
 
 const CharInfo_detail = () => {
   const router = useRouter();
@@ -14,7 +14,6 @@ const CharInfo_detail = () => {
     return;
   } else {
     data = JSON.parse(str_data);
-    console.log(data);
   }
   useEffect(() => {
     setTimeout(() => {}, 1000);

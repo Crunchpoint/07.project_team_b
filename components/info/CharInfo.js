@@ -29,6 +29,7 @@ const CharInfo = () => {
     router.push({
       pathname: '/info/charinfo_detail',
       query: {
+        ani_name: router.query.ani_name,
         name: obj.name_eng, 
         data: JSON.stringify(obj)
       },
