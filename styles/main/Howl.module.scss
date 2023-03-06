@@ -46,7 +46,7 @@
     .main_img_02{
         position: absolute;
         left: -10%;
-        top: -25%;
+        top: -20%;
         z-index: -4;
         opacity: 1;
         scale: 0.5;
@@ -774,17 +774,17 @@
             @keyframes img_ani {
                 0%{
                     right: -5%;
-                    top: 20%;
+                    top: 10%;
                     opacity: 1;
                 }
                 50%{
                     right: 35%;
-                    top: 20%;
+                    top: 10%;
                     opacity: 0;
                 }
                 100%{
                     right: -5%;
-                    top: 20%;
+                    top: 10%;
                     opacity: 1;
                 }
             }
@@ -909,17 +909,17 @@
             @keyframes img_ani {
                 0%{
                     right: -5%;
-                    top: 20%;
+                    top: 10%;
                     opacity: 1;
                 }
                 50%{
                     right: 35%;
-                    top: 20%;
+                    top: 10%;
                     opacity: 0;
                 }
                 100%{
                     right: -5%;
-                    top: 20%;
+                    top: 10%;
                     opacity: 1;
                 }
             }
@@ -937,6 +937,142 @@
                 }
                 100%{
                     top: -25%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:750px){
+    .main_bg{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(../../public/src/img/main/howl_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        z-index: 0;
+        display: flex;
+        &::after{
+            content: "";
+            background-blend-mode: luminosity;
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            z-index: -9;
+            opacity: 0.4;
+        }
+        .button{
+            z-index: 2;
+            width: 10rem;
+            height: 3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            position: relative;
+            left: 10%;
+            top: 2%;
+        }
+        //성
+        .main_img_01{
+            position: absolute;
+            right: -40%;
+            top: -10%;
+            z-index: -2;
+            opacity: 1;
+            scale: 0.15;
+            filter: drop-shadow(10px 10px 10px #000);
+        }
+        //사람
+        .main_img_02{
+            // display: none;
+            transform: scaleX(-1);
+            position: absolute;
+            left: -70%;
+            top: -45%;
+            z-index: -4;
+            opacity: 1;
+            scale: 0.25;
+            filter: drop-shadow(10px 10px 10px #000);
+        }
+        .main_img_03{
+            position: absolute;
+            z-index: -3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+        }
+       
+        .main_text{
+            position: relative;
+            z-index: -3;
+            left: -50%;
+            top: 35%;
+            color: rgb(255, 225, 30);
+            font-size: 4rem;
+            font-weight: bold;
+            -webkit-text-stroke: 0px #000;
+            text-shadow: 5px -5px 0px #000000;
+        }
+    
+        
+        .main_text2{
+            position: absolute;
+            left: 13%;
+            top: 46%;
+            z-index: -1;
+            color: #fff;
+            font-size: 4rem;
+            font-weight: bold;
+            -webkit-text-stroke: 0px #000;
+            text-shadow: 5px -2px 0px #000000;
+            letter-spacing: 0px;
+            
+        }
+    
+        &.active{
+    
+            .main_img_01{
+                animation: img_ani 5s 0s ease-in-out both;
+                animation-iteration-count: infinite;
+            }
+            @keyframes img_ani {
+                0%{
+                    right: -40%;
+                    top: -10%;
+                    opacity: 1;
+                }
+                50%{
+                    right: -40%;
+                    top: -10%;
+                    opacity: 1;
+                }
+                100%{
+                    right: -40%;
+                    top: -10%;
+                    opacity: 1;
+                }
+            }
+    
+            .main_img_02{
+                animation: img_ani2 2s 0s ease-in-out both;
+                animation-iteration-count: infinite;
+            }
+            @keyframes img_ani2 {
+                0%{
+                    top: -45%;
+                }
+                50%{
+                    top: -45%;
+                }
+                100%{
+                    top: -45%;
                 }
             }
         }
