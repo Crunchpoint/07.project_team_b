@@ -5,6 +5,8 @@
     width: 100%;
     height: 100vh;
     background: url(../../public/src/img/main/Boeun_bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
     background-blend-mode: luminosity;
     z-index: 0;
     display: flex;
@@ -176,3 +178,1006 @@
     }
 }
 
+
+
+
+
+
+
+@media screen and (max-width:1700px){
+    .main_bg{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(../../public/src/img/main/Boeun_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        z-index: 0;
+        display: flex;
+        &::after{
+            content: "";
+            background-blend-mode: luminosity;
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            z-index: -9;
+            opacity: 0.6;
+        }
+        .button{
+            z-index: 2;
+            width: 10rem;
+            height: 3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+        }
+        .main_img{
+            display: flex;
+        }
+        .main_img_01{
+            position: absolute;
+            height: 100vh;
+            right: 0%;
+            top: 0%;
+            z-index: 0;
+            opacity: 1;
+            transform: scaleX(-1);
+            filter: drop-shadow(10px 10px 10px #000) brightness(0.7);
+        }
+        .main_img_02{
+            position: relative;
+            left: 20%;
+            top: 5%;
+            scale: 0.9;
+            z-index: 0;
+            opacity: 1;
+            height: 100vh;
+            filter : brightness(0.7)
+            // filter: drop-shadow(10px 10px 10px #000);
+        }
+       
+        .main_text{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 15%;
+            top: 25%;
+            color: rgb(255, 255, 255);
+            font-size: 14rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+        }
+    
+        
+        .main_text2{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 20%;
+            top: 46%;
+            color: #fff;
+            font-size: 14rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+            letter-spacing: -10px;
+            
+        }
+    
+        &.active{
+    
+            .main_img_01{
+                animation: img_ani 1s 0s ease-in-out both
+            }
+            @keyframes img_ani {
+                0%{
+                    right: 0%;
+                    top: -5%;
+                    opacity: 0;
+                }
+                100%{
+                    right: 0%;
+                    top: 0%;
+                    opacity: 1;
+                }
+            }
+            .main_img_02{
+                animation: img_ani2 1s 0s ease-in-out both
+            }
+            @keyframes img_ani2 {
+                0%{
+                    left: 0%;
+                    top: 5%;
+                    opacity: 0;
+                }
+                92%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 1;
+                }
+                94%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 0;
+                }
+                96%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 1;
+                }
+                98%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 1;
+                }
+            }
+            
+      
+            .main_text{
+                animation: text_ani 1s 0s ease-in-out both
+            }
+            @keyframes text_ani {
+                0%{
+                    left: 0%;
+                    top: 45%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 15%;
+                    top: 45%;
+                    opacity: 1;
+                }
+            }
+            
+            .main_text2{
+                animation: text2_ani 1s 0s ease-in-out both;
+                animation-delay: 0.5s;
+            }
+            @keyframes text2_ani {
+                0%{
+                    left: 40%;
+                    top: 65%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 35%;
+                    top: 65%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1350px){
+    .main_bg{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(../../public/src/img/main/Boeun_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        z-index: 0;
+        display: flex;
+        &::after{
+            content: "";
+            background-blend-mode: luminosity;
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            z-index: -9;
+            opacity: 0.6;
+        }
+        .button{
+            z-index: 2;
+            width: 10rem;
+            height: 3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+        }
+        .main_img{
+            display: flex;
+        }
+        .main_img_01{
+            position: absolute;
+            height: 100vh;
+            right: 0%;
+            top: 0%;
+            z-index: 0;
+            opacity: 1;
+            transform: scaleX(-1);
+            filter: drop-shadow(10px 10px 10px #000) brightness(0.7);
+        }
+        .main_img_02{
+            position: relative;
+            left: 20%;
+            top: 5%;
+            scale: 0.9;
+            z-index: 0;
+            opacity: 1;
+            height: 100vh;
+            filter : brightness(0.7)
+            // filter: drop-shadow(10px 10px 10px #000);
+        }
+       
+        .main_text{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 15%;
+            top: 25%;
+            color: rgb(255, 255, 255);
+            font-size: 13rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+        }
+    
+        
+        .main_text2{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 20%;
+            top: 46%;
+            color: #fff;
+            font-size: 13rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+            letter-spacing: -10px;
+            
+        }
+    
+        &.active{
+    
+            .main_img_01{
+                animation: img_ani 1s 0s ease-in-out both
+            }
+            @keyframes img_ani {
+                0%{
+                    right: 0%;
+                    top: -5%;
+                    opacity: 0;
+                }
+                100%{
+                    right: 0%;
+                    top: 0%;
+                    opacity: 1;
+                }
+            }
+            .main_img_02{
+                animation: img_ani2 1s 0s ease-in-out both
+            }
+            @keyframes img_ani2 {
+                0%{
+                    left: 0%;
+                    top: 5%;
+                    opacity: 0;
+                }
+                92%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 1;
+                }
+                94%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 0;
+                }
+                96%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 1;
+                }
+                98%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 5%;
+                    opacity: 1;
+                }
+            }
+            
+      
+            .main_text{
+                animation: text_ani 1s 0s ease-in-out both
+            }
+            @keyframes text_ani {
+                0%{
+                    left: 0%;
+                    top: 45%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 10%;
+                    top: 45%;
+                    opacity: 1;
+                }
+            }
+            
+            .main_text2{
+                animation: text2_ani 1s 0s ease-in-out both;
+                animation-delay: 0.5s;
+            }
+            @keyframes text2_ani {
+                0%{
+                    left: 40%;
+                    top: 65%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 30%;
+                    top: 65%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1300px){
+    .main_bg{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(../../public/src/img/main/Boeun_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        z-index: 0;
+        display: flex;
+        &::after{
+            content: "";
+            background-blend-mode: luminosity;
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            z-index: -9;
+            opacity: 0.6;
+        }
+        .button{
+            z-index: 2;
+            width: 10rem;
+            height: 3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+        }
+        .main_img{
+            display: flex;
+        }
+        .main_img_01{
+            scale: 0.6;
+            position: absolute;
+            height: 100vh;
+            right: 0%;
+            top: 0%;
+            z-index: 0;
+            opacity: 1;
+            transform: scaleX(-1);
+            filter: drop-shadow(10px 10px 10px #000);
+        }
+        .main_img_02{
+            position: relative;
+            left: 20%;
+            top: 5%;
+            scale: 0.6;
+            z-index: 0;
+            opacity: 1;
+            height: 100vh;
+            filter: brightness(1);
+            // filter: drop-shadow(10px 10px 10px #000);
+        }
+       
+        .main_text{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 15%;
+            top: 25%;
+            color: rgb(255, 255, 255);
+            font-size: 13rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+        }
+    
+        
+        .main_text2{
+            position: absolute;
+            rotate: 0deg;
+            z-index: -1;
+            left: 20%;
+            top: 46%;
+            color: #fff;
+            font-size: 13rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+            letter-spacing: -10px;
+            
+        }
+    
+        &.active{
+    
+            .main_img_01{
+                animation: img_ani 1s 0s ease-in-out both
+            }
+            @keyframes img_ani {
+                0%{
+                    right: -20%;
+                    top: 30%;
+                    opacity: 0;
+                }
+                100%{
+                    right: -17.3%;
+                    top: 20%;
+                    opacity: 1;
+                }
+            }
+            .main_img_02{
+                animation: img_ani2 1s 0s ease-in-out both
+            }
+            @keyframes img_ani2 {
+                0%{
+                    left: 0%;
+                    top: 20%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 20%;
+                    opacity: 1;
+                }
+            }
+            
+      
+            .main_text{
+                animation: text_ani 1s 0s ease-in-out both
+            }
+            @keyframes text_ani {
+                0%{
+                    left: 0%;
+                    top: 45%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 10%;
+                    top: 8%;
+                    opacity: 1;
+                }
+            }
+            
+            .main_text2{
+                animation: text2_ani 1s 0s ease-in-out both;
+                animation-delay: 0.5s;
+            }
+            @keyframes text2_ani {
+                0%{
+                    left: 40%;
+                    top: 0%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 25%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1030px){
+    .main_bg{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(../../public/src/img/main/Boeun_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        z-index: 0;
+        display: flex;
+        &::after{
+            content: "";
+            background-blend-mode: luminosity;
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            z-index: -9;
+            opacity: 0.6;
+        }
+        .button{
+            z-index: 2;
+            width: 10rem;
+            height: 3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+        }
+        .main_img{
+            display: flex;
+        }
+        .main_img_01{
+            scale: 0.6;
+            position: absolute;
+            height: 100vh;
+            right: 0%;
+            top: 0%;
+            z-index: 0;
+            opacity: 1;
+            transform: scaleX(-1);
+            filter: drop-shadow(10px 10px 10px #000);
+        }
+        .main_img_02{
+            position: relative;
+            left: 20%;
+            top: 5%;
+            scale: 0.6;
+            z-index: 0;
+            opacity: 1;
+            height: 100vh;
+            filter: brightness(1);
+            // filter: drop-shadow(10px 10px 10px #000);
+        }
+       
+        .main_text{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 15%;
+            top: 25%;
+            color: rgb(255, 255, 255);
+            font-size: 11rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+        }
+    
+        
+        .main_text2{
+            position: absolute;
+            rotate: 0deg;
+            z-index: -1;
+            left: 20%;
+            top: 46%;
+            color: #fff;
+            font-size: 11rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+            letter-spacing: -10px;
+            
+        }
+    
+        &.active{
+    
+            .main_img_01{
+                animation: img_ani 1s 0s ease-in-out both
+            }
+            @keyframes img_ani {
+                0%{
+                    right: -20%;
+                    top: 30%;
+                    opacity: 0;
+                }
+                100%{
+                    right: -17.3%;
+                    top: 20%;
+                    opacity: 1;
+                }
+            }
+            .main_img_02{
+                animation: img_ani2 1s 0s ease-in-out both
+            }
+            @keyframes img_ani2 {
+                0%{
+                    left: 0%;
+                    top: 20%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 20%;
+                    opacity: 1;
+                }
+            }
+            
+      
+            .main_text{
+                animation: text_ani 1s 0s ease-in-out both
+            }
+            @keyframes text_ani {
+                0%{
+                    left: 0%;
+                    top: 45%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 10%;
+                    top: 8%;
+                    opacity: 1;
+                }
+            }
+            
+            .main_text2{
+                animation: text2_ani 1s 0s ease-in-out both;
+                animation-delay: 0.5s;
+            }
+            @keyframes text2_ani {
+                0%{
+                    left: 40%;
+                    top: 0%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 25%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:960px){
+    .main_bg{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(../../public/src/img/main/Boeun_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        z-index: 0;
+        display: flex;
+        &::after{
+            content: "";
+            background-blend-mode: luminosity;
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            z-index: -9;
+            opacity: 0.6;
+        }
+        .button{
+            z-index: 2;
+            width: 10rem;
+            height: 3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+        }
+        .main_img{
+            display: flex;
+        }
+        .main_img_01{
+            scale: 0.5;
+            position: absolute;
+            height: 100vh;
+            right: 0%;
+            top: 0%;
+            z-index: 0;
+            opacity: 1;
+            transform: scaleX(-1);
+            filter: drop-shadow(10px 10px 10px #000);
+        }
+        .main_img_02{
+            position: relative;
+            left: 20%;
+            top: 5%;
+            scale: 0.5;
+            z-index: 0;
+            opacity: 1;
+            height: 100vh;
+            filter: brightness(1);
+            // filter: drop-shadow(10px 10px 10px #000);
+        }
+       
+        .main_text{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 15%;
+            top: 25%;
+            color: rgb(255, 255, 255);
+            font-size: 10rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+        }
+    
+        
+        .main_text2{
+            position: absolute;
+            rotate: 0deg;
+            z-index: -1;
+            left: 20%;
+            top: 46%;
+            color: #fff;
+            font-size: 10rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+            letter-spacing: -5px;
+            
+        }
+    
+        &.active{
+    
+            .main_img_01{
+                animation: img_ani 1s 0s ease-in-out both
+            }
+            @keyframes img_ani {
+                0%{
+                    right: -20%;
+                    top: 30%;
+                    opacity: 0;
+                }
+                100%{
+                    right: -29%;
+                    top: 25%;
+                    opacity: 1;
+                }
+            }
+            .main_img_02{
+                animation: img_ani2 1s 0s ease-in-out both
+            }
+            @keyframes img_ani2 {
+                0%{
+                    left: 0%;
+                    top: 20%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 10%;
+                    top: 25%;
+                    opacity: 1;
+                }
+            }
+            
+      
+            .main_text{
+                animation: text_ani 1s 0s ease-in-out both
+            }
+            @keyframes text_ani {
+                0%{
+                    left: 0%;
+                    top: 45%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 10%;
+                    top: 13%;
+                    opacity: 1;
+                }
+            }
+            
+            .main_text2{
+                animation: text2_ani 1s 0s ease-in-out both;
+                animation-delay: 0.5s;
+            }
+            @keyframes text2_ani {
+                0%{
+                    left: 40%;
+                    top: 0%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 28%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:800px){
+    .main_bg{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(../../public/src/img/main/Boeun_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        z-index: 0;
+        display: flex;
+        &::after{
+            content: "";
+            background-blend-mode: luminosity;
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            z-index: -9;
+            opacity: 0.6;
+        }
+        .button{
+            z-index: 2;
+            width: 10rem;
+            height: 3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+        }
+        .main_img{
+            display: flex;
+        }
+        .main_img_01{
+            scale: 0.5;
+            position: absolute;
+            height: 100vh;
+            right: 0%;
+            top: 0%;
+            z-index: 0;
+            opacity: 1;
+            transform: scaleX(-1);
+            filter: drop-shadow(10px 10px 10px #000);
+        }
+        .main_img_02{
+            position: relative;
+            left: 20%;
+            top: 5%;
+            scale: 0.5;
+            z-index: 0;
+            opacity: 1;
+            height: 100vh;
+            filter: brightness(1);
+            // filter: drop-shadow(10px 10px 10px #000);
+        }
+       
+        .main_text{
+            position: absolute;
+            rotate: 0deg;
+            z-index: 1;
+            left: 15%;
+            top: 25%;
+            color: rgb(255, 255, 255);
+            font-size: 9rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+        }
+    
+        
+        .main_text2{
+            position: absolute;
+            rotate: 0deg;
+            z-index: -1;
+            left: 20%;
+            top: 46%;
+            color: #fff;
+            font-size: 9rem;
+            font-weight: bold;
+            -webkit-text-stroke: 5px #000;
+            text-shadow: 13px -10px 0px #000000;
+            letter-spacing: -5px;
+            
+        }
+    
+        &.active{
+    
+            .main_img_01{
+                animation: img_ani 1s 0s ease-in-out both
+            }
+            @keyframes img_ani {
+                0%{
+                    right: -20%;
+                    top: 30%;
+                    opacity: 0;
+                }
+                100%{
+                    right: -29%;
+                    top: 25%;
+                    opacity: 1;
+                }
+            }
+            .main_img_02{
+                animation: img_ani2 1s 0s ease-in-out both
+            }
+            @keyframes img_ani2 {
+                0%{
+                    left: 0%;
+                    top: 20%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 10%;
+                    top: 25%;
+                    opacity: 1;
+                }
+            }
+            
+      
+            .main_text{
+                animation: text_ani 1s 0s ease-in-out both
+            }
+            @keyframes text_ani {
+                0%{
+                    left: 0%;
+                    top: 45%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 10%;
+                    top: 13%;
+                    opacity: 1;
+                }
+            }
+            
+            .main_text2{
+                animation: text2_ani 1s 0s ease-in-out both;
+                animation-delay: 0.5s;
+            }
+            @keyframes text2_ani {
+                0%{
+                    left: 40%;
+                    top: 0%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 20%;
+                    top: 28%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

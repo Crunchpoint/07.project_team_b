@@ -31,12 +31,12 @@ const Castle = () => {
   return (
     <div className={`${styles.main_bg} ${active?styles.active:null}`} ref={observerRef}>
        {/* <Link href="/info/charinfo"  > */}
-       <Link href={{
-          pathname: "/info/charinfo",
-          query: {
-            ani_name: "laputa"
-          }
-       }}  >
+        <Link href={{
+            pathname: "/info/charinfo",
+            query: {
+              ani_name: "laputa"
+            }
+        }}>
           <button className={styles.button}>
             SEE MORE
           </button>
