@@ -12,6 +12,7 @@ import styles from "@/styles/info/CharInfo.module.scss";
 import { useRouter } from "next/router";
 
 const CharInfo = () => {
+
   const router = useRouter();
   const {data2} = useContext(MyContext);
   // const ani_name = 'laputa';// 임시 이름
@@ -21,9 +22,9 @@ const CharInfo = () => {
   // 로딩 지연
   useEffect(()=> {
     setTimeout(()=> {
-      
-    }, 1000)
-  })
+      // location.reload();
+    }, 10)
+  }, [])
 
   function sendData(obj) {
     router.push({
