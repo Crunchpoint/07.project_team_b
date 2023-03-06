@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from "@/styles/login/Login.module.scss"
+import GoogleLogin from 'react-google-login';
+import Google from './Google';
 
 const Login = () => {
   return (
@@ -16,10 +18,7 @@ const Login = () => {
                     <img className={styles.kakao_img} src="../src/img/login/kakao_logo.png" alt='카카오로고'/>
                     <div className={styles.kakao_text}>카카오로 쉬운시작</div>
                 </button>
-                <button className={styles.google}>
-                    <img className={styles.google_img} src="../src/img/login/google_logo.png" alt='구글로고'/>
-                    <div className={styles.google_text}>구글로 쉬운시작</div>
-                </button>
+                <Google/>
             </div>
         </div>
     </div>
