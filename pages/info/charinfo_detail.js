@@ -11,8 +11,6 @@ const charinfo_detail = () => {
   } else {
     data = JSON.parse(str_data);
   }
-  console.log('meta router', router)
-
   const ani_name = router.query.ani_name;
   const name = router.query.name;
   return (
