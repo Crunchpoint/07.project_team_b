@@ -1,7 +1,17 @@
 .characters {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 10px 0;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -25px;
+    background: #ddd;
+  }
   figure {
     align-self: center;
     justify-self: center;

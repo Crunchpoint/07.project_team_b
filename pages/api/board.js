@@ -7,7 +7,8 @@ const handler = async (req, res) => {
 
   const selectData = async () => {
     try {
-      let data = await executeQuery("select * from test_table order by no DESC", []);
+      let data = await executeQuery("select * from Board order by idx DESC", []);
+      // let data = await executeQuery("select * from Board where Board.id =  userinfo.id order by idx DESC", []);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -16,8 +17,9 @@ const handler = async (req, res) => {
 
   const insertData = async () => {
     try {
-      const { title, name, contents, time } = body;
-      let data = await executeQuery(`insert into test_table (title, name, contents, time) values (?,?,?,?)`, [title, name, contents, time]);
+      const { user_id, board_img, content } = body;
+      console.log(body);
+      let data = await executeQuery(`insert into Board (user_id, board_img, content) values (?,?,?)`, [user_id, board_img, content]);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -27,7 +29,7 @@ const handler = async (req, res) => {
   const updateData = async () => {
     try {
       const { title, name, contents, time, no } = body;
-      let data = await executeQuery(`update test_table set title = ?, name = ?, contents = ?, time = ? where no = ?`, [title, name, contents, time, no]);
+      let data = await executeQuery(`update Board set title = ?, name = ?, contents = ?, time = ? where no = ?`, [title, name, contents, time, no]);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -36,7 +38,7 @@ const handler = async (req, res) => {
 
   const deleteData = async () => {
     try {
-      let data = await executeQuery(`delete from test_table where no = ?`, [body]);
+      let data = await executeQuery(`delete from Board where no = ?`, [body]);
       res.json(data);
     } catch (err) {
       res.send(err);

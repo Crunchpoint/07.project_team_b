@@ -8,9 +8,12 @@ const dataUrl1 = "../src/json/charDetail.json";
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
+  const [board, setBoard] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [selectedContent, setSelectedContent] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const router = useRouter();
-  const apiEndpoint = "/api";
+  const apiEndpoint = "/api/board";
 
   useEffect(() => {
     async function axiosData() {
@@ -29,42 +32,66 @@ const Context = ({ children }) => {
     axiosData();
   }, []);
 
-  // const handleData = async () => {
-  //   try {
-  //     event.preventDefault();
-  //     let data = {};
-  //     let response;
-  //     //  need to add api endpoint and data
-  //     switch (method) {
-  //       case "POST":
-  //         await axios.post();
-  //         break;
+  const handleData = async (method, user, img, content) => {
+    try {
+      event.preventDefault();
+      let data = { user_id: user, board_img: img, content: content };
+      let response;
 
-  //       case "PUT":
-  //         await axios.put();
-  //         break;
+      switch (method) {
+        case "POST":
+          await axios.post(apiEndpoint, data);
+          break;
 
-  //       case "DELETE":
-  //         await axios.delete();
-  //         break;
+        case "PUT":
+          await axios.put();
+          break;
 
-  //       default:
-  //         break;
-  //     }
+        case "DELETE":
+          await axios.delete();
+          break;
 
-  //     response = await axios.get(apiEndpoint);
-  //     setData(response.data);
-  //     router.push("/");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+        default:
+          break;
+      }
 
-  // useEffect(() => {
-  //   handleData();
-  // }, []);
+      response = await axios.get(apiEndpoint);
+      setBoard(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  const values = { data, setData, data2, setData2, loadingProgress, setLoadingProgress };
+  useEffect(() => {
+    handleData();
+  }, []);
+
+  const handleSubmit = (e, method) => {
+    e.preventDefault();
+
+    const user = "1";
+    const img = "dd";
+    const content = e.target.board.value;
+    handleData(method, user, img, content);
+  };
+
+  const values = {
+    data,
+    setData,
+    data2,
+    setData2,
+    board,
+    loadingProgress,
+    setLoadingProgress,
+    handleSubmit,
+    showModal,
+    setShowModal,
+    selectedImg,
+    setSelectedImg,
+    selectedContent,
+    setSelectedContent,
+  };
+
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
 };
 
