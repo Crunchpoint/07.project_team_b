@@ -17,6 +17,8 @@ const Castle = () => {
       ([e]) => {
         if (e.isIntersecting) {
           setActive(true)
+        }else{
+          setActive(false)
         }
       },
       { threshold: 0.5 }

@@ -1,9 +1,15 @@
 import React from 'react'
 import styles from "@/styles/login/Login.module.scss"
-import GoogleLogin from 'react-google-login';
 import Google from './Google';
+import { signIn } from "next-auth/react";
+import Kakao from './Kakao';
 
 const Login = () => {
+
+    // const handleKakaoLogin = () => {
+    //     signIn("kakao");
+    //   };
+
   return (
     <div className={styles.login}>
         <div className={styles.main}>
@@ -14,10 +20,11 @@ const Login = () => {
                 <div className={styles.text_circle}></div>
             </div>
             <div className={styles.button}>
-                <button className={styles.kakao}>
+                {/* <button className={styles.kakao}>
                     <img className={styles.kakao_img} src="../src/img/login/kakao_logo.png" alt='카카오로고'/>
                     <div className={styles.kakao_text}>카카오로 쉬운시작</div>
-                </button>
+                </button> */}
+                <Kakao/>
                 <Google/>
             </div>
         </div>

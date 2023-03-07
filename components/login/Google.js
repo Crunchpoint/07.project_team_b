@@ -15,12 +15,12 @@ const Google = () => {
     )
   }
 
-  if(session){
-    return <div>You are already signed in!</div>
-  }
+  // if(session){
+  //   return <div>You are already signed in!</div>
+  // }
 
   return (
-    <button className={styles.google} onClick={() => signIn()}>
+    <button className={styles.google} onClick={() => signIn("google")}>
         <img className={styles.google_img} src="../src/img/login/google_logo.png" alt='구글로고'/>
         <div className={styles.google_text}>구글로 쉬운시작</div>
     </button>
