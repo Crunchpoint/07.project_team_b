@@ -48,7 +48,7 @@
    
     .main_text{
         position: absolute;
-        // rotate: -10deg;
+        opacity: 0;
         z-index: 1;
         left: 50%;
         top: 15%;
@@ -62,7 +62,7 @@
     
     .main_text2{
         position: absolute;
-        // rotate: -10deg;
+        opacity: 0;
         left: 50%;
         top: 40%;
         color: #fff;
@@ -75,7 +75,7 @@
     }
     .main_text3{
         position: absolute;
-        // rotate: -10deg;
+        opacity: 0;
         left: 50%;
         top: 60%;
         color: #fff;
@@ -88,26 +88,6 @@
     }
 
     &.active{
-
-        // .main_img{
-        //     animation: img_ani 1.5s 0s ease-in-out both
-        // }
-        // @keyframes img_ani {
-        //     0%{
-        //         left: 50%;
-        //         top: 5%;
-        //         opacity: 0;
-        //         scale: 0.8;
-        //     }
-        //     100%{
-        //         left: 7%;
-        //         top: 10%;
-        //         opacity: 1;
-        //         scale: 1;
-        //     }
-        // }
-        
-  
         .main_text{
             animation: text_ani 1s 0s ease-in-out both
         }
@@ -214,7 +194,7 @@
        
         .main_text{
             position: absolute;
-            // rotate: -10deg;
+            opacity: 0;
             z-index: 1;
             left: 50%;
             top: 15%;
@@ -228,7 +208,7 @@
         
         .main_text2{
             position: absolute;
-            // rotate: -10deg;
+            opacity: 0;
             left: 50%;
             top: 40%;
             color: #fff;
@@ -241,7 +221,7 @@
         }
         .main_text3{
             position: absolute;
-            // rotate: -10deg;
+            opacity: 0;
             left: 50%;
             top: 60%;
             color: #fff;
@@ -358,7 +338,7 @@
        
         .main_text{
             position: absolute;
-            // rotate: -10deg;
+            opacity: 0;
             z-index: 1;
             left: 50%;
             top: 15%;
@@ -372,7 +352,7 @@
         
         .main_text2{
             position: absolute;
-            // rotate: -10deg;
+            opacity: 0;
             left: 50%;
             top: 40%;
             color: #fff;
@@ -385,7 +365,7 @@
         }
         .main_text3{
             position: absolute;
-            // rotate: -10deg;
+            opacity: 0;
             left: 50%;
             top: 60%;
             color: #fff;
@@ -501,6 +481,7 @@
         }
        
         .main_text{
+            opacity: 0;
             position: absolute;
             z-index: 1;
             left: 25%;
@@ -514,6 +495,7 @@
     
         
         .main_text2{
+            opacity: 0;
             position: absolute;
             left: 25%;
             top: 57%;
@@ -526,6 +508,7 @@
             
         }
         .main_text3{
+            opacity: 0;
             position: absolute;
             left: 25%;
             top: 70%;
