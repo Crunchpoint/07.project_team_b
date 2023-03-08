@@ -44,6 +44,7 @@ const Kakao = () => {
   //   )
 
   const { data: session } = useSession();
+  console.log("kakao" , session);
 
   if (session) {
     return (

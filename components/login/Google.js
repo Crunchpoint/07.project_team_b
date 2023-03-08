@@ -5,6 +5,7 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 const Google = () => {
 
   const {data: session} = useSession();
+  console.log("google" , session);
 
   if(session){
     return (
