@@ -6,7 +6,7 @@
     width: 100%;
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 1.8fr 1.2fr;
+    grid-template-rows: minmax(auto, 170px) minmax(auto, 130px) 1fr;
     gap: 50px;
   }
 }
