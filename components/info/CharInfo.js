@@ -15,10 +15,9 @@ const CharInfo = () => {
 
   const router = useRouter();
   const {data2} = useContext(MyContext);
-  // const ani_name = 'laputa';// 임시 이름
-  // const ani_name = 'cat';// 임시 이름
   const ani_name = router.query.ani_name;
   const _data = data2[`${ani_name}`];
+  const ani_list = Object.keys(data2);
   // 로딩 지연
   useEffect(()=> {
     setTimeout(()=> {
@@ -45,6 +44,14 @@ const CharInfo = () => {
         </Logo>
         <div className={styles.wrap_info}>
           <h1 className={styles.h1}>What is your favorite Character?</h1>
+          {/* onchanged 설정 */}
+          <select className={styles.aniSelect} >
+              {
+                ani_list.map((e) => {
+                  return <option value={e} key={e}>{e}</option>
+                })
+              }
+          </select>
           <div className={styles.swiper}>
           <Swiper
           effect={"coverflow"}
