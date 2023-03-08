@@ -10,6 +10,7 @@ import { MyContext } from "@/components/context/Context";
 
 import styles from "@/styles/info/CharInfo.module.scss";
 import { useRouter } from "next/router";
+import { MotionConfig } from "framer-motion";
 
 const CharInfo = () => {
 
@@ -91,6 +92,7 @@ const CharInfo = () => {
         </div>
       </div>
     </div>
+    
   )
 }
 
