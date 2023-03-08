@@ -195,8 +195,11 @@
     text-transform: uppercase;
     text-align: center;
     border-bottom: 2px solid #fff;
+    option {
+      background: black;
+    }
     &::after {
-        content: "🔽";
+        content: "▼";
         display: block;
         color: #fff;
     }
