@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useRef } from "react";
 
 const dataUrl = "../src/json/animeName.json";
 const dataUrl1 = "../src/json/charDetail.json";
@@ -8,10 +8,20 @@ const dataUrl1 = "../src/json/charDetail.json";
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
+  const [board, setBoard] = useState([]);
+  const [comment, setComment] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [crudModal, setCrudModal] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [selectedContent, setSelectedContent] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const router = useRouter();
-  const apiEndpoint = "/api";
-
+  const [filteredComment, setFilteredComment] = useState([]);
+  const [selectedComment, setSelectedComment] = useState(null);
+  const [edit, setEdit] = useState(false);
+  const inputRef = useRef();
+  const apiEndpoint = "/api/board";
+  const apiEndpoint2 = "/api/comment";
+  // axios 데이터
   useEffect(() => {
     async function axiosData() {
       await axios
@@ -29,42 +39,149 @@ const Context = ({ children }) => {
     axiosData();
   }, []);
 
-  // const handleData = async () => {
-  //   try {
-  //     event.preventDefault();
-  //     let data = {};
-  //     let response;
-  //     //  need to add api endpoint and data
-  //     switch (method) {
-  //       case "POST":
-  //         await axios.post();
-  //         break;
+  // board 데이터 통신
+  const boardFn = async (method, user, img, content) => {
+    try {
+      event.preventDefault();
+      let data = { user_id: user, board_img: img, content: content };
+      let response;
 
-  //       case "PUT":
-  //         await axios.put();
-  //         break;
+      switch (method) {
+        case "POST":
+          await axios.post();
+          break;
 
-  //       case "DELETE":
-  //         await axios.delete();
-  //         break;
+        case "PUT":
+          await axios.put();
+          break;
 
-  //       default:
-  //         break;
-  //     }
+        case "DELETE":
+          await axios.delete();
+          break;
 
-  //     response = await axios.get(apiEndpoint);
-  //     setData(response.data);
-  //     router.push("/");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+        default:
+          break;
+      }
 
-  // useEffect(() => {
-  //   handleData();
-  // }, []);
+      response = await axios.get(apiEndpoint);
+      setBoard(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  const values = { data, setData, data2, setData2, loadingProgress, setLoadingProgress };
+  useEffect(() => {
+    boardFn();
+  }, []);
+
+  // board 서밋 함수
+  const handleSubmit = (e, method) => {
+    const user = 1;
+    const img = "dd";
+    const content = e.target.board.value;
+    boardFn(method, user, img, content);
+  };
+
+  // comment 데이터 통신
+  const commentFn = async (method, user, board, comment, comment_idx) => {
+    try {
+      event.preventDefault();
+      let data = { board_idx: board, user_id: user, _comment: comment, comment_idx: comment_idx };
+      let response;
+
+      switch (method) {
+        case "POST":
+          console.log("Ddd");
+          await axios.post(apiEndpoint2, data);
+          break;
+
+        case "PUT":
+          await axios.put(apiEndpoint2, { _comment: comment, comment_idx: comment_idx });
+          break;
+
+        case "DELETE":
+          await axios.delete(apiEndpoint2, { data: user });
+          setCrudModal(false);
+          break;
+
+        default:
+          break;
+      }
+
+      response = await axios.get(apiEndpoint2);
+      setComment(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    commentFn();
+  }, []);
+
+  // comment 서밋 함수
+  const handleComment = (e, method, idx, comment_idx) => {
+    const user = 1;
+    const board = idx;
+    const comment = e;
+    commentFn(method, user, board, comment, comment_idx);
+  };
+
+  // 시간 계산 함수
+  function timeForToday(value) {
+    const today = new Date();
+    const timeValue = new Date(value);
+
+    const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+    if (betweenTime < 1) return "Now";
+    if (betweenTime < 60) {
+      return `${betweenTime}m`;
+    }
+
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+      return `${betweenTimeHour}h`;
+    }
+
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+      return `${betweenTimeDay}d`;
+    }
+
+    return `${Math.floor(betweenTimeDay / 365)}y`;
+  }
+
+  const values = {
+    data,
+    setData,
+    data2,
+    setData2,
+    board,
+    comment,
+    loadingProgress,
+    setLoadingProgress,
+    handleSubmit,
+    handleComment,
+    showModal,
+    setShowModal,
+    crudModal,
+    setCrudModal,
+    selectedImg,
+    setSelectedImg,
+    selectedContent,
+    setSelectedContent,
+    timeForToday,
+    inputRef,
+    commentFn,
+    boardFn,
+    filteredComment,
+    setFilteredComment,
+    selectedComment,
+    setSelectedComment,
+    edit,
+    setEdit,
+  };
+
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
 };
 

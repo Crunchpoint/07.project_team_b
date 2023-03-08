@@ -1,0 +1,23 @@
+@mixin line {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  background: #ddd;
+  @content;
+}
+
+.social {
+  position: relative;
+  &::before {
+    @include line {
+      top: 0;
+    }
+  }
+  &::after {
+    @include line {
+      bottom: 0;
+    }
+  }
+}
