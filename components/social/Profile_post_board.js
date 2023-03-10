@@ -1,6 +1,6 @@
 import styles from "@/styles/social/Profile_post_board.module.scss";
 import Gallery_textArea from "./Gallery_textArea";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
@@ -35,7 +35,7 @@ const Profile_post_board = () => {
           <textarea
             name='text'
             id='text'
-            placeholder='write a post'
+            placeholder='Write a post'
             value={textareaValue}
             autoFocus
             required

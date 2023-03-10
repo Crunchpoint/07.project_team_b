@@ -18,23 +18,22 @@ const Gallery_textArea_modal = () => {
     };
   }, [crudModal]);
 
+  const editOnClickFn = () => {
+    setEdit(true);
+    setCrudModal(false);
+    setTimeout(() => {
+      // inputRef.current.defaultValue = selectedValue;
+      setInputValue(selectedValue);
+      inputRef.current.focus();
+      inputRef.current.setSelectionRange(selectedValue.length, selectedValue.length);
+    }, 50);
+  };
+
   return (
     <div className={styles.modal}>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <p
-            onClick={(e) => {
-              setEdit(true);
-              setCrudModal(false);
-              setTimeout(() => {
-                // inputRef.current.defaultValue = selectedValue;
-                setInputValue(selectedValue);
-                inputRef.current.focus();
-                inputRef.current.setSelectionRange(selectedValue.length, selectedValue.length);
-              }, 50);
-            }}>
-            Edit
-          </p>
+          <p onClick={(e) => editOnClickFn()}>Edit</p>
           <p
             onClick={(e) => {
               commentFn("DELETE", selectedComment);

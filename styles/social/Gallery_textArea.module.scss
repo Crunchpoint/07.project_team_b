@@ -14,7 +14,6 @@
     }
   }
 }
-
 .contents {
   width: calc(100% - 30px);
   align-self: center;
@@ -25,9 +24,12 @@
     > p {
       padding: 0 5px 0 10px;
     }
+    > p:last-child {
+      display: none;
+    }
   }
   > div:last-child {
-    padding: 5px 10px 0;
+    padding: 0px 10px 0;
     display: flex;
     > p {
       display: flex;

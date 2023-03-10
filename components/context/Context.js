@@ -14,10 +14,13 @@ const Context = ({ children }) => {
   const [comment, setComment] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [crudModal, setCrudModal] = useState(false);
+  const [boardCrud, setBoardCrud] = useState(false);
   const [selectedImg, setSelectedImg] = useState(null);
   const [selectedContent, setSelectedContent] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [filteredBoard, setFilteredBoard] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [writeTime, setWriteTime] = useState(null);
   const [filteredComment, setFilteredComment] = useState([]);
   const [selectedComment, setSelectedComment] = useState(null);
   const [postModal, setPostModal] = useState(false);
@@ -64,7 +67,9 @@ const Context = ({ children }) => {
           break;
 
         case "DELETE":
-          await axios.delete();
+          await axios.delete(apiEndpoint, { data: user });
+          setShowModal(false);
+          setBoardCrud(false);
           break;
 
         default:
@@ -222,6 +227,12 @@ const Context = ({ children }) => {
     setPostModal,
     textareaValue,
     setTextareaValue,
+    boardCrud,
+    setBoardCrud,
+    selectedBoard,
+    setSelectedBoard,
+    writeTime,
+    setWriteTime,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;

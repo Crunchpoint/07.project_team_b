@@ -19,11 +19,12 @@
         }
       }
     }
-    > div:nth-child(2) {
+    > div:nth-of-type(2) {
       width: calc(100% - 40px);
       align-self: center;
-      > div {
+      > div:first-child {
         display: flex;
+        margin-bottom: 10px;
         > p {
           align-self: center;
           padding: 0 10px;
@@ -32,16 +33,22 @@
           display: none;
         }
       }
-      > div:nth-child(2) {
-        display: none;
+      > div:last-child {
+        font-size: 0.9rem;
+        > p:nth-child(2) {
+          display: none;
+        }
+        > p:last-child {
+          display: none;
+        }
       }
     }
-    svg {
+    > svg {
       display: none;
     }
   }
   > ul {
-    li {
+    > li {
       display: flex;
       margin-top: 28px;
       font-size: 0.825rem;
