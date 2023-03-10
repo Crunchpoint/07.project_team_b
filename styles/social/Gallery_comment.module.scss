@@ -9,27 +9,22 @@
       &__active {
         @extend .button;
       }
-      &__active ~ aside {
-        display: block;
+      &__active ~ div {
+        display: flex;
       }
     }
-    > aside {
+    > div {
       display: none;
       position: absolute;
-      width: 30% !important;
-      height: 40% !important;
-      left: 45%;
       bottom: 0;
-      transform: translateX(-50%);
-      // > div:last-child {
-      //   display: none;
-      // }
+      transform: translateX(-100%);
     }
     > input,
     > button {
       outline: none;
     }
     > input {
+      padding: 0;
       width: 100%;
       height: 100%;
       border: none;

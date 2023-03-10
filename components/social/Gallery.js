@@ -1,6 +1,4 @@
 import styles from "@/styles/social/Gallery.module.scss";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
 import Gallery_textArea_modal from "./Gallery_textArea_modal";
@@ -12,17 +10,7 @@ import Gallery_social from "./Gallery_social";
 import Gallery_comment_edit from "./Gallery_comment_edit";
 
 const Gallery = () => {
-  const { board, showModal, selectedImg, crudModal, edit } = useContext(MyContext);
-  const [filteredBoard, setFilteredBoard] = useState([]);
-  const router = useRouter();
-
-  useEffect(() => {
-    setFilteredBoard(
-      board.filter((item) => {
-        return item.user_name.toLowerCase().trim().replace("-", "") === router.query.user.toLowerCase().trim().replace("-", "");
-      })
-    );
-  }, [board, crudModal]);
+  const { showModal, selectedImg, crudModal, edit, filteredBoard } = useContext(MyContext);
 
   return (
     <>

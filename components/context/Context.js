@@ -4,6 +4,8 @@ import React, { useState, createContext, useEffect, useRef } from "react";
 
 const dataUrl = "../src/json/animeName.json";
 const dataUrl1 = "../src/json/charDetail.json";
+const apiEndpoint = "/api/board";
+const apiEndpoint2 = "/api/comment";
 
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
@@ -15,12 +17,18 @@ const Context = ({ children }) => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [selectedContent, setSelectedContent] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [filteredBoard, setFilteredBoard] = useState([]);
   const [filteredComment, setFilteredComment] = useState([]);
   const [selectedComment, setSelectedComment] = useState(null);
+  const [postModal, setPostModal] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [textareaValue, setTextareaValue] = useState("");
+  const [selectedValue, setSelectedvalue] = useState("");
+  const [pageName, setPageName] = useState("");
+  const [like, setLike] = useState(false);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef();
-  const apiEndpoint = "/api/board";
-  const apiEndpoint2 = "/api/comment";
+
   // axios 데이터
   useEffect(() => {
     async function axiosData() {
@@ -40,15 +48,15 @@ const Context = ({ children }) => {
   }, []);
 
   // board 데이터 통신
-  const boardFn = async (method, user, img, content) => {
+  const boardFn = async (method, user, content, img, name) => {
     try {
       event.preventDefault();
-      let data = { user_id: user, board_img: img, content: content };
+      let data = { user_id: user, content: content, board_img: img, user_name: name };
       let response;
 
       switch (method) {
         case "POST":
-          await axios.post();
+          await axios.post(apiEndpoint, data);
           break;
 
         case "PUT":
@@ -75,11 +83,12 @@ const Context = ({ children }) => {
   }, []);
 
   // board 서밋 함수
-  const handleSubmit = (e, method) => {
+  const handleSubmit = (e, method, user_name) => {
     const user = 1;
     const img = "dd";
-    const content = e.target.board.value;
-    boardFn(method, user, img, content);
+    const name = user_name;
+    const content = e;
+    boardFn(method, user, content, img, name);
   };
 
   // comment 데이터 통신
@@ -91,7 +100,6 @@ const Context = ({ children }) => {
 
       switch (method) {
         case "POST":
-          console.log("Ddd");
           await axios.post(apiEndpoint2, data);
           break;
 
@@ -151,6 +159,25 @@ const Context = ({ children }) => {
     return `${Math.floor(betweenTimeDay / 365)}y`;
   }
 
+  // 유저별 게시판 필터링
+  useEffect(() => {
+    setFilteredBoard(
+      board.filter((item) => {
+        return item.user_name.toLowerCase().trim().replace("-", "") === pageName.toLowerCase().trim().replace("-", "");
+      })
+    );
+  }, [board, crudModal]);
+
+  // 좋아요 기능 // 수정중
+  const sessionStorageFn = (key, obj) => {
+    if (sessionStorage[key]) {
+      sessionStorage.removeItem(key);
+    } else {
+      sessionStorage.setItem(key, obj);
+    }
+    setLike(!like);
+  };
+
   const values = {
     data,
     setData,
@@ -178,8 +205,23 @@ const Context = ({ children }) => {
     setFilteredComment,
     selectedComment,
     setSelectedComment,
+    filteredBoard,
+    setFilteredBoard,
     edit,
     setEdit,
+    sessionStorageFn,
+    like,
+    setLike,
+    selectedValue,
+    setSelectedvalue,
+    inputValue,
+    setInputValue,
+    pageName,
+    setPageName,
+    postModal,
+    setPostModal,
+    textareaValue,
+    setTextareaValue,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
