@@ -1,12 +1,17 @@
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 30px 20px 0;
-  .inner {
-    width: 100%;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: minmax(auto, 170px) minmax(auto, 130px) 1fr;
-    gap: 50px;
+.bg{
+  background-color: rgb(117, 117, 117);
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px 0;
+    // background-color: black;
+    .inner {
+      width: 100%;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: minmax(auto, 170px) minmax(auto, 130px) 1fr;
+      gap: 50px;
+    }
   }
 }
+

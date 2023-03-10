@@ -9,7 +9,8 @@
       width: 150px;
       height: 150px;
       img {
-        border: 1px solid #000;
+        background-color: #fff;
+        border: 1px solid #fff;
         width: 100%;
         height: 100%;
         border-radius: 50%;
@@ -22,6 +23,7 @@
     grid-template-rows: repeat(3, 1fr);
     p {
       align-self: center;
+      color: #fff;
     }
   }
 }

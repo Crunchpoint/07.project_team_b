@@ -11,13 +11,15 @@ const User = () => {
   return (
     <>
       <Meta title={router.query.user} name='name' description='description' />
-      <section className={styles.container}>
-        <div className={styles.inner}>
-          <Profile router={router} />
-          <Characters />
-          <Gallery />
-        </div>
-      </section>
+      <div className={styles.bg}>
+        <section className={styles.container}>
+          <div className={styles.inner}>
+            <Profile router={router} />
+            <Characters />
+            <Gallery />
+          </div>
+        </section>
+      </div>
     </>
   );
 };
