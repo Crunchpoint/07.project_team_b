@@ -22,7 +22,6 @@ const Gallery_textArea_modal = () => {
     setEdit(true);
     setCrudModal(false);
     setTimeout(() => {
-      // inputRef.current.defaultValue = selectedValue;
       setInputValue(selectedValue);
       inputRef.current.focus();
       inputRef.current.setSelectionRange(selectedValue.length, selectedValue.length);

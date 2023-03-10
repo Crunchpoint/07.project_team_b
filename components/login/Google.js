@@ -5,12 +5,10 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const Google = () => {
   const { data: session } = useSession();
 
-  const { data: session } = useSession();
-
   if (session) {
     return (
       <button className={styles.google} onClick={() => signOut()}>
-        <img className={styles.google_img} src="../src/img/login/google_logo.png" alt='구글로고'/>
+        <img className={styles.google_img} src='../src/img/login/google_logo.png' alt='구글로고' />
         <div className={styles.google_text}>Google SignOut</div>
       </button>
     );
