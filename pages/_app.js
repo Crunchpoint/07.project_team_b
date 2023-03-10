@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { SessionProvider } from "next-auth/react";
 import { AnimatePresence, motion } from 'framer-motion'
 import Script from 'next/script';
+import "../public/static/fonts/style.scss"
 
 export default function App({ 
   Component,
