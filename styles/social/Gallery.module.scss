@@ -13,18 +13,6 @@
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 300px;
   gap: 30px;
-  > figure {
-    width: 300px;
-    height: 300px;
-    > .gallery_item {
-      max-width: 100%;
-      height: 100%;
-      display: block;
-      margin: auto;
-      object-fit: cover;
-    }
-  }
-
   .modal {
     position: fixed;
     top: 0;
@@ -38,12 +26,12 @@
     z-index: 999;
     .inner {
       position: relative;
-      width: 70%;
+      width: 80%;
       max-width: 1400px;
       max-height: 90%;
       background: #fff;
       border-radius: 5px;
-      aspect-ratio: 1/1;
+      aspect-ratio: 3/2;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
       .content {
         width: 100%;
@@ -72,148 +60,6 @@
           grid-template-rows: 0.5fr 7fr 1.5fr 0.5fr;
           > div:not(:last-child) {
             padding: 15px;
-          }
-          .header {
-            position: relative;
-            display: flex;
-            &::after {
-              @include line {
-                bottom: 0;
-              }
-            }
-            > div:nth-child(1) {
-              width: 50px;
-              height: 50px;
-              border-radius: 50%;
-              border: 1px solid #000;
-              > figure {
-                width: 100%;
-                height: 100%;
-                > img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: contain;
-                }
-              }
-            }
-            > p {
-              align-self: center;
-              padding: 10px;
-              width: calc(100% - 50px);
-            }
-          }
-          .article {
-            overflow: scroll;
-            position: relative;
-
-            > section:nth-child(1) {
-              display: flex;
-              margin-bottom: 30px;
-              > div:nth-child(1) {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                border: 1px solid #000;
-                > figure {
-                  width: 100%;
-                  height: 100%;
-                  > img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                  }
-                }
-              }
-              > p {
-                align-self: center;
-                padding: 10px;
-                width: calc(100% - 50px);
-              }
-            }
-            > ul {
-              li {
-                display: flex;
-                margin-top: 15px;
-                div {
-                  width: 50px;
-                  height: 50px;
-                  border-radius: 50%;
-                  border: 1px solid #000;
-                  figure {
-                    width: 100%;
-                    height: 100%;
-                    img {
-                      width: 100%;
-                      height: 100%;
-                      object-fit: contain;
-                    }
-                  }
-                }
-                p {
-                  align-self: center;
-                  padding: 10px;
-                  width: calc(100% - 50px);
-                }
-              }
-            }
-          }
-          .social {
-            position: relative;
-            &::before {
-              @include line {
-                top: 0;
-              }
-            }
-            &::after {
-              @include line {
-                bottom: 0;
-              }
-            }
-          }
-          .comment {
-            > form {
-              display: flex;
-              height: 100%;
-              > .button {
-                padding: 0 10px;
-                border: none;
-                background: transparent;
-                &__active {
-                  @extend .button;
-                }
-                &__active ~ aside {
-                  display: block;
-                }
-              }
-              > aside {
-                display: none;
-                position: absolute;
-                width: 30% !important;
-                height: 40% !important;
-                left: 45%;
-                bottom: 0;
-                transform: translateX(-50%);
-                // > div:last-child {
-                //   display: none;
-                // }
-              }
-              > input,
-              > button {
-                outline: none;
-              }
-              > input {
-                width: 100%;
-                height: 100%;
-                border: none;
-              }
-              > button[type="submit"] {
-                word-break: keep-all;
-                border: none;
-                background: transparent;
-                padding: 0 10px;
-                color: cornflowerblue;
-              }
-            }
           }
         }
       }

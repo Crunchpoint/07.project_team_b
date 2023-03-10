@@ -1,13 +1,13 @@
-import login from "@/pages/login";
+import styles from "@/styles/social/Gallery_items.module.scss";
 import { useContext, useEffect } from "react";
 import { MyContext } from "../context/Context";
 
-const Gallery_items = ({ item, idx, styles }) => {
-  const { board, showModal, setShowModal, setSelectedImg, selectedContent, setSelectedContent } = useContext(MyContext);
+const Gallery_items = ({ item, modal }) => {
+  const { showModal, setShowModal, setSelectedImg, setSelectedContent } = useContext(MyContext);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (e.target.className === styles.modal && e.target.className !== styles.gallery_item) {
+      if (e.target.className === modal.modal && e.target.className !== styles.gallery_img) {
         setShowModal(false);
       }
     };
@@ -18,39 +18,16 @@ const Gallery_items = ({ item, idx, styles }) => {
     };
   }, [showModal]);
 
-  const testArray = [
-    {
-      img: "../src/img/main/Boeun_png.png",
-    },
-    {
-      img: "../src/img/main/ponyo_bg.jpg",
-    },
-    {
-      img: "../src/img/main/ponyo_png.png",
-    },
-    {
-      img: "../src/img/main/howl_png2.png",
-    },
-    {
-      img: "../src/img/main/hacu_png.png",
-    },
-    {
-      img: "../src/img/main/castle_bg.jpg",
-    },
-    {
-      img: "../src/img/main/castle_bg.jpg",
-    },
-  ];
-
   return (
     <>
       <figure
+        className={styles.gallery_item}
         onClick={() => {
           setShowModal(!showModal);
           setSelectedImg(item.board_img);
-          setSelectedContent(item.content);
+          setSelectedContent(item);
         }}>
-        <img className={styles.gallery_item} src={item.board_img} alt='' />
+        <img className={styles.gallery_img} src={item.board_img} alt='' />
       </figure>
     </>
   );
