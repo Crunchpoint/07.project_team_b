@@ -7,10 +7,8 @@ import "swiper/css/scrollbar";
 import { EffectCoverflow, Pagination, Scrollbar } from "swiper";
 import Logo from "./Logo";
 import { MyContext } from "@/components/context/Context";
-
 import styles from "@/styles/info/CharInfo.module.scss";
 import { useRouter } from "next/router";
-import { MotionConfig } from "framer-motion";
 
 const CharInfo = () => {
 
@@ -44,7 +42,10 @@ const CharInfo = () => {
         <Logo>
         </Logo>
         <div className={styles.wrap_info}>
-          <h1 className={styles.h1}>What is your favorite Character?</h1>
+          <h1 className={styles.h1}>
+            <p className={styles.h1_text1}>Who is your favorite</p>
+            <p className={styles.h1_text2}>Character?</p>
+          </h1>
           {/* onchanged 설정 */}
           <select className={styles.aniSelect} >
               {
@@ -54,40 +55,23 @@ const CharInfo = () => {
               }
           </select>
           <div className={styles.swiper}>
-          <Swiper
-          effect={"coverflow"}
-          grabCursor={true}
-          // centeredSlides={true}
-          slidesPerView={"auto"}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 0,
-            slideShadows: true,
-            slidesPerView: 4,
-            centeredSlides: true,
-          }}
-          scrollbar={{draggable: true}}
-          // pagination={true}
-          modules={[EffectCoverflow, Pagination, Scrollbar]}
-          className={`${styles.body}, ${styles.info_slider}`}>
             {
               _data&&_data.map((obj) => {
-                return <SwiperSlide className={`${styles.swiper_slide}`}>
-                  <div className={`${styles.swiper_slide_detail}`}
-                    onClick={()=> 
-                      sendData(obj)
-                    }>
-                    <img src={`${obj.src}`}></img>
-                    {/* 이미지 src 빈칸이라 임시로 해둔것 */}
-                    {/* <img src="/src/img/info/ponyo/sosuke3.jpg"></img> */}
-                    <p>{`${obj.name_eng}`} / {`${obj.name_jap}`}</p>
+                return (
+                <div className={`${styles.swiper_slide}`}>
+                  <div className={styles.swiper_slide_detail} onClick={()=> sendData(obj)}>
+                    <div className={styles.detail_img}>
+                      <img src={`${obj.src}`}></img>
+                    </div>
+                    <div className={styles.detail_text}>
+                      <p className={styles.text_eng}>{`${obj.name_eng}`}</p>
+                      <p className={styles.text_jap}>{`${obj.name_jap}`}</p>
+                    </div>
                   </div>
-                </SwiperSlide>
+                </div>
+                )
               })
             }
-          </Swiper>
           </div>
         </div>
       </div>

@@ -40,9 +40,10 @@ const CharInfo_detail = () => {
           </div>
           <div className={styles.detail_right}>
             <p>{data.quotes == "" ? <span></span> : `"${data.quotes}"`}</p>
-            <p>
-              성우: {data.voice_eng}({data.voice_jap})
-            </p>
+            <p>종 : {data.species}</p>
+            <p>성별 : {data.gender}</p>
+            <p>나이 : {data.age}</p>
+            <p>성우 : {data.voice_eng}({data.voice_jap})</p>
             <p className={styles.detail_right_path}>
               <Link href={data.url}>페이지 바로가기 ▶️</Link>
             </p>

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 
 .app {
     width: 100vw;
@@ -11,11 +13,12 @@
     display: block;
     width: 100%;
     height: 100%;
-    background-image: url("../../public/src/img/main/main_bg.jpg");
+    background-image: url("../../public/src/img/info/ponyo/char_bg.jpeg");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     position: fixed;
-    filter: blur(5px) brightness(30%);
+    filter: brightness(40%);
     z-index: -1;
   }
 }
@@ -27,11 +30,12 @@
     display: block;
     width: 100%;
     height: 100%;
-    background-image: url("../../public/src/img/main/main_bg.jpg");
+    background-image: url("../../public/src/img/info/ponyo/char_bg.jpeg");
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     position: fixed;
-    filter: blur(5px) brightness(30%);
+    filter: brightness(1);
     z-index: -1;
   }
 }
@@ -72,6 +76,21 @@
             margin-bottom: 3rem;
             line-height: 120%;
         }
+        &:nth-of-type(2){
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+        &:nth-of-type(3){
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+        &:nth-of-type(4){
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+        &:nth-of-type(5){
+          font-size: 1.2rem;
+        }
     }
 }
 .detail_right_path {
@@ -104,7 +123,7 @@
   padding: 0;
 }
 .wrap_back {
-    width: 50px;
+  width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -152,7 +171,7 @@
     color: #fff;
     background-color: transparent;
     // background-image: url("../../public/src/favicon.ico");
-    background-image: url("../../public/src/totoro_color.png");
+    background-image: url("../../public/src/totoro_logo.png");
     background-repeat: no-repeat;
     background-position: center top;
     background-size: contain;
@@ -174,15 +193,36 @@
   width: 100%;
   padding: 0 10rem;
   margin-top: 9rem;
+  &::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgb(0,0,0,1), rgba(0,0,0,0));
+  }
 }
 .h1 {   
   width: 100%;
-  display: flex;
+  letter-spacing: 0.06em;
+  text-align: center;
   justify-content: center;
   margin-bottom: 1rem;
   color: #fff;
-  font-size: 64px;
-  font-family: 'Kalam', cursive;
+  font-size: 3.5rem;
+  text-shadow: 6px 6px 10px rgb(0, 0, 0,0.5);
+  .h1_text1{
+    font-family: 'Ghibli Bold';
+  }
+  .h1_text2{
+    font-family: 'Ghibli Bold';
+    margin-top: 1.5rem;
+  }
+  
   // family setting
 }
 .aniSelect {
@@ -194,7 +234,8 @@
     font-size: 1rem;
     text-transform: uppercase;
     text-align: center;
-    border-bottom: 2px solid #fff;
+    border: 1px solid #fff;
+    transform: translateX(-50%);
     option {
       background: black;
     }
@@ -208,45 +249,85 @@
 .info_slider {
   width: 100%;
   height: 100%;
-//   background-color: antiquewhite;
+  // background-color: antiquewhite;
 }
-.swiper_slide_detail {
-  height: 100%;
-}
+// .swiper_slide_detail {
+//   height: 100%;
+// }
 
 // swiper
 .swiper {
   width: 100%;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-
-  height: 70vh;
-//   background-color: #eee;
+  padding: 2.5rem 0rem 2rem 0rem;
+  // background-color: #eee;
+  display: flex;
 }
 
 .swiper_slide {
   background-position: center;
   background-size: cover;
   width: 300px;
-  height: 500px;
-  background-color: #0005;
-  margin-right: 3rem;
+  height: 450px;
+  margin: 1.5rem;
   /* Center slide text vertically */
-  display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2rem 0 0 0;
+  &:hover{
+    filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
+    scale: 1.1;
+    transition-duration: 0.5s;
+  }
 }
-
-.swiper_slide img {
-  display: block;
-//   width: 100%;
-padding: 20px 0;
+.swiper_slide_detail{
+  position: relative;
+}
+.swiper_slide_detail:hover .detail_img img{
+  filter: brightness(0.4);
+}
+.detail_img{
+  position: relative;
   width: 250px;
   height: 350px;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0,0,0,0), rgba(0,0,0,0.3));
+
 }
 
-.swiper_slide p {
-    text-align: center;
-    margin: 1rem auto;
-    color: #fff;
+.detail_img img{
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(1.1);
+}
+
+.swiper_slide_detail:hover .detail_text{
+  opacity: 1;
+}
+
+.detail_text{
+  padding: 0 0.5em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  opacity: 0;
+  left: 0;
+  top: 0%;
+  .text_eng{
+    margin-bottom: 0.8rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .text_jap{
+    margin-bottom: 0.8rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
