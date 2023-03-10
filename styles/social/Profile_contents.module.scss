@@ -1,0 +1,30 @@
+.contents {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  > div {
+    display: flex;
+    align-items: center;
+    > p {
+      margin-right: 50%;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .button {
+      padding: 5px 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background-color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+  > p {
+    align-self: center;
+  }
+}
