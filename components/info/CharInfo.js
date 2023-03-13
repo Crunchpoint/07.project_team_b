@@ -26,6 +26,8 @@ const CharInfo = () => {
     }, 10)
   }, [])
 
+  console.log(router);
+
   var changeOption = (e) => {
     var name = e.target.value;
     location.replace(`/info/charinfo?ani_name=${name}`);
@@ -58,7 +60,12 @@ const CharInfo = () => {
             <p className={styles.h1_text1}>Who is your favorite</p>
             <p className={styles.h1_text2}>Character?</p>
           </h1>
+
+          {/* onchanged 설정 */}
+          <select className={styles.aniSelect}>
+
           <select id="aniSelect" className={styles.aniSelect} onChange={changeOption}>
+
               {
                 ani_list.map((e) => {
                   if(e == ani_name) {
