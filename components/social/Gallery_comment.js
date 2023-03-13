@@ -14,7 +14,6 @@ const Gallery_comment = () => {
   };
 
   const submitFn = (e) => {
-    // e.preventDefault();
     handleComment(escape(e), "POST", selectedContent.idx);
     setInputValue("");
     setActive(false);
@@ -26,7 +25,11 @@ const Gallery_comment = () => {
 
   return (
     <div className={styles.comment}>
-      <form onSubmit={(e) => submitFn(e.target.comment.value)}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          submitFn(e.target.comment.value);
+        }}>
         <button className={active ? styles.button__active : styles.button} onClick={(e) => handleOpen(e)}>
           &#128512;
         </button>

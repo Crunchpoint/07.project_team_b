@@ -15,7 +15,6 @@ const Profile_post_board = () => {
   };
 
   const submitFn = (e) => {
-    // e.preventDefault();
     handleSubmit(escape(e), "POST", pageName);
     setTextareaValue("");
     setActive(false);
@@ -31,7 +30,12 @@ const Profile_post_board = () => {
         <Gallery_textArea props={pageName} />
       </section>
       <div className={styles.write}>
-        <form id='post-form' onSubmit={(e) => submitFn(e.target.text.value)}>
+        <form
+          id='post-form'
+          onSubmit={(e) => {
+            e.preventDefault();
+            submitFn(e.target.text.value);
+          }}>
           <textarea
             name='text'
             id='text'

@@ -3,7 +3,7 @@ import { MyContext } from "../context/Context";
 import styles from "@/styles/social/Gallery_textArea.module.scss";
 
 const Gallery_textArea = ({ props, props2, props3 }) => {
-  const { boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
+  const { user, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
 
   return (
     <>

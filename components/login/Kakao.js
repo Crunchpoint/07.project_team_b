@@ -1,11 +1,14 @@
-import React from 'react'
-import NextAuth from 'next-auth/next'
-import styles from "@/styles/login/Login.module.scss"
-import { signIn, signOut, useSession } from 'next-auth/react'
-import login from '@/pages/login'
-import { Router } from 'next/router'
+import React, { useEffect } from "react";
+import NextAuth from "next-auth/next";
+import styles from "@/styles/login/Login.module.scss";
+import { signIn, signOut, useSession } from "next-auth/react";
+import login from "@/pages/login";
+import { Router } from "next/router";
+import { MyContext } from "@/components/context/Context";
+import { useContext } from "react";
 
 const Kakao = () => {
+  const { handleUser } = useContext(MyContext);
 
   // const kakaoInit = () => {
   //   if(!window.Kakao.isInitialized()) {
@@ -44,7 +47,10 @@ const Kakao = () => {
   //   )
 
   const { data: session } = useSession();
-  console.log("kakao" , session);
+
+  useEffect(() => {
+    session && handleUser("POST", session?.user.email, session?.user.name, session?.user.image);
+  }, [session]);
 
   if (session) {
     return (
@@ -52,7 +58,7 @@ const Kakao = () => {
         {/* {session.user?.name}님 반갑습니다 <br />
         <button onClick={() => signOut()}>로그아웃</button> */}
         <button className={styles.kakao} onClick={() => signOut()}>
-          <img className={styles.kakao_img} src="../src/img/login/kakao_logo.png" alt='카카오로고'/>
+          <img className={styles.kakao_img} src='../src/img/login/kakao_logo.png' alt='카카오로고' />
           <div className={styles.kakao_text}>Kakao SignOut</div>
         </button>
       </>
@@ -63,11 +69,11 @@ const Kakao = () => {
       {/* 로그인되지 않았습니다 <br />
       <button onClick={() => signIn("kakao")}>로그인</button> */}
       <button className={styles.kakao} onClick={() => signIn("kakao")}>
-          <img className={styles.kakao_img} src="../src/img/login/kakao_logo.png" alt='카카오로고'/>
-          <div className={styles.kakao_text}>카카오로 쉬운시작</div>
+        <img className={styles.kakao_img} src='../src/img/login/kakao_logo.png' alt='카카오로고' />
+        <div className={styles.kakao_text}>카카오로 쉬운시작</div>
       </button>
     </>
   );
-}
+};
 
-export default Kakao
+export default Kakao;

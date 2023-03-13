@@ -6,10 +6,12 @@ const dataUrl = "../src/json/animeName.json";
 const dataUrl1 = "../src/json/charDetail.json";
 const apiEndpoint = "/api/board";
 const apiEndpoint2 = "/api/comment";
+const apiEndpoint3 = "/api/user";
 
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
+  const [userDb, setUserDb] = useState([]);
   const [board, setBoard] = useState([]);
   const [comment, setComment] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -50,10 +52,53 @@ const Context = ({ children }) => {
     axiosData();
   }, []);
 
+  // user 데이터 통신
+  const userFn = async (method, email, name, img, user) => {
+    try {
+      let data = { email: email, user_name: name, profile_img: img, is_admin: user };
+      let response;
+
+      switch (method) {
+        case "POST":
+          await axios.post(apiEndpoint3, data);
+          break;
+
+        case "PUT":
+          await axios.put();
+          break;
+
+        case "DELETE":
+          await axios.delete();
+          break;
+
+        default:
+          break;
+      }
+
+      response = await axios.get(apiEndpoint3);
+      setUserDb(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // console.log(userDb);
+  useEffect(() => {
+    userFn();
+  }, []);
+
+  // user 서밋 함수
+  const handleUser = (method, user_email, user_name, user_img) => {
+    const email = user_email;
+    const name = user_name;
+    const img = user_img;
+    const user = 0;
+    userFn(method, email, name, img, user);
+  };
+
   // board 데이터 통신
   const boardFn = async (method, user, content, img, name) => {
     try {
-      event.preventDefault();
       let data = { user_id: user, content: content, board_img: img, user_name: name };
       let response;
 
@@ -62,9 +107,9 @@ const Context = ({ children }) => {
           await axios.post(apiEndpoint, data);
           break;
 
-        case "PUT":
-          await axios.put();
-          break;
+        // case "PUT":
+        //   await axios.put();
+        //   break;
 
         case "DELETE":
           await axios.delete(apiEndpoint, { data: user });
@@ -99,7 +144,6 @@ const Context = ({ children }) => {
   // comment 데이터 통신
   const commentFn = async (method, user, board, comment, comment_idx) => {
     try {
-      event.preventDefault();
       let data = { board_idx: board, user_id: user, _comment: comment, comment_idx: comment_idx };
       let response;
 
@@ -233,6 +277,7 @@ const Context = ({ children }) => {
     setSelectedBoard,
     writeTime,
     setWriteTime,
+    handleUser,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
