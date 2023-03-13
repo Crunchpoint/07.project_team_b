@@ -25,12 +25,12 @@ const Profile_contents = () => {
       <div className={styles.contents}>
         <div>
           <p>@{pageName}</p>
-          <button className={styles.button} onClick={(e) => setPostModal(!postModal)}>
-            Create New Post
-          </button>
+          <p>{filteredBoard.length} posts</p>
         </div>
-        <p>{filteredBoard.length} posts</p>
-        <p>컨텐츠 캐릭터 설명...?</p>
+        <button className={styles.button} onClick={(e) => setPostModal(!postModal)}>
+            Create New Post
+        </button>
+        {/* <p>컨텐츠 캐릭터 설명...?</p> */}
       </div>
       {postModal && <Profile_post />}
     </>

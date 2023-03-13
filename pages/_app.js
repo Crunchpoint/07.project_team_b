@@ -22,10 +22,12 @@ export default function App({ Component, pageProps: { session, ...pageProps }, r
               }}
               variants={{
                 initialState: {
-                  opacity: 0.2,
+                  opacity: 0,
+                  // scale: 0.5
                 },
                 animateState: {
                   opacity: 1,
+                  // scale: 1
                 },
                 exitState: {},
               }}>
