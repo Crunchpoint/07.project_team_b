@@ -23,7 +23,7 @@ const CharInfo = () => {
       // location.reload();
     }, 10)
   }, [])
-
+  console.log(router);
   function sendData(obj) {
     router.push({
       pathname: '/info/charinfo_detail',
@@ -47,7 +47,7 @@ const CharInfo = () => {
             <p className={styles.h1_text2}>Character?</p>
           </h1>
           {/* onchanged 설정 */}
-          <select className={styles.aniSelect} >
+          <select className={styles.aniSelect}>
               {
                 ani_list.map((e) => {
                   return <option value={e} key={e}>{e}</option>
