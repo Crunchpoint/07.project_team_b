@@ -17,10 +17,12 @@ const CharInfo = () => {
   const ani_name = router.query.ani_name;
   const _data = data2[`${ani_name}`];
   const ani_list = Object.keys(data2);
+  
   // 로딩 지연
   useEffect(()=> {
     setTimeout(()=> {
       // location.reload();
+      
     }, 10)
   }, [])
 
@@ -39,6 +41,11 @@ const CharInfo = () => {
       },
       asPath: '/info/charinfo_detail'
     })
+  }
+
+  var changeOption = (e) => {
+    var name = e.target.value;
+    location.replace(`/info/charinfo?ani_name=${name}`);
   }
 
   return (

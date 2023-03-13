@@ -2,19 +2,62 @@
 .top{
     position: fixed;
     scale: 0.3;
-    bottom: -5%;
-    right: -3%;
+    bottom: -13%;
+    right: 0%;
     background-color: transparent;
     border: none;
+    z-index: 99;
+    // &:hover {
+    //     display: none;
+    // }
 }
 
+.warp_menu_top {
+    position: fixed;
+    bottom: 20%;
+    right: 1.5%;
+}
+.warp_menu_top .top:hover + .display {
+    display: block;
+}
+
+.display {
+    background-color: #fff;
+    width: 100px;
+    height: auto;
+    position: fixed;
+    display: none;
+    // opacity: 0;
+    text-align: center;
+    border-radius: 10px;
+    right: 1.5%;
+    bottom: 17%;
+    &:hover {
+        display: block;
+    }
+    li {
+        padding: 5px 0;
+        &:hover {
+            background-color: #ccc;
+            &:first-child {
+                border-radius: 10px 10px 0 0;
+            }
+            &:last-child {
+                border-radius: 0 0 10px 10px;
+            }
+        }
+        &:first-child {
+            border-bottom: 1px solid #ccc;
+        }
+    }
+}
 
 @media screen and (max-width:750px){
     .top{
         position: fixed;
         scale: 0.3;
-        bottom: -5%;
-        right: -8%;
+        bottom: -22%;
+        right: -3%;
         background-color: transparent;
         border: none;
     }
@@ -23,9 +66,9 @@
 @media screen and (max-width:400px){
     .top{
         position: fixed;
-        scale: 0.2;
-        bottom: -10%;
-        right: -22%;
+        scale: 0.25;
+        bottom: -25%;
+        right: -7%;
         background-color: transparent;
         border: none;
     }

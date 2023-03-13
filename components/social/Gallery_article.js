@@ -17,7 +17,7 @@ const Gallery_article = () => {
   return (
     <div className={styles.article}>
       <section>
-        <Gallery_textArea props={selectedContent.content} props2={timeForToday(writeTime)} />
+        <Gallery_textArea props={unescape(selectedContent.content)} props2={timeForToday(writeTime)} />
       </section>
       <ul>
         {filteredComment?.map((item, index) => {
