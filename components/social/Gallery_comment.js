@@ -1,16 +1,12 @@
 import { useContext, useRef, useState } from "react";
 import { MyContext } from "../context/Context";
 import styles from "@/styles/social/Gallery_comment.module.scss";
-// import EmojiPicker from "emoji-picker-react";
-const Gallery_comment = () => {
-  const { handleComment, selectedContent, inputRef } = useContext(MyContext);
-  const [active, setActive] = useState(false);
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
-  // const [chosenEmoji, setChosenEmoji] = useState(null);
-  // const onEmojiClick = (event, emojiObject) => {
-  //   console.log("emojiObject", emojiObject);
-  //   setChosenEmoji(emojiObject);
-  // };
+const Gallery_comment = () => {
+  const { handleComment, selectedContent, inputRef, inputValue, setInputValue } = useContext(MyContext);
+  const [active, setActive] = useState(false);
 
   const handleOpen = (e) => {
     e.preventDefault();
@@ -18,23 +14,34 @@ const Gallery_comment = () => {
   };
 
   const submitFn = (e) => {
-    // e.preventDefault();
+    handleComment(escape(e), "POST", selectedContent.idx);
+    setInputValue("");
+    setActive(false);
+  };
 
-    handleComment(e, "POST", selectedContent.idx);
-    inputRef.current.value = "";
+  const handleEmoji = (e) => {
+    setInputValue(inputValue + e.native);
   };
 
   return (
     <div className={styles.comment}>
-      <form onSubmit={(e) => submitFn(e.target.comment.value)}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          submitFn(e.target.comment.value);
+        }}>
         <button className={active ? styles.button__active : styles.button} onClick={(e) => handleOpen(e)}>
           &#128512;
         </button>
-        {/* <EmojiPicker onEmojiClick={onEmojiClick} /> */}
+        <Picker data={data} onEmojiSelect={(e) => handleEmoji(e)} />
         <input
           ref={inputRef}
           name='comment'
           type='text'
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+          }}
           placeholder='Add a comment...'
           onKeyDown={(e) => {
             e.key === "Enter" && submitFn(e.target.value);

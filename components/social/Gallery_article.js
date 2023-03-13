@@ -1,10 +1,10 @@
 import Gallery_textArea from "./Gallery_textArea";
 import styles from "@/styles/social/Gallery_article.module.scss";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { MyContext } from "../context/Context";
 
 const Gallery_article = () => {
-  const { selectedContent, comment, timeForToday, filteredComment, setFilteredComment } = useContext(MyContext);
+  const { selectedContent, comment, timeForToday, filteredComment, setFilteredComment, writeTime } = useContext(MyContext);
 
   useEffect(() => {
     setFilteredComment(
@@ -23,7 +23,7 @@ const Gallery_article = () => {
         {filteredComment?.map((item, index) => {
           return (
             <li key={index}>
-              <Gallery_textArea props={item._comment} props2={timeForToday(item.w_time)} props3={item.comment_idx} />
+              <Gallery_textArea props={unescape(item._comment)} props2={timeForToday(item.w_time)} props3={item.comment_idx} />
             </li>
           );
         })}

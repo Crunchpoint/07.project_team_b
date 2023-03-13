@@ -3,7 +3,7 @@ import CustomCursor from "./cursor/CustomCursor";
 
 const Layout = ({ children }) => {
   return (
-    <div className={styles.main}>
+    <div>
       <CustomCursor />
       {children}
     </div>

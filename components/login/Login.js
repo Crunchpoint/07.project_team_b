@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from "@/styles/login/Login.module.scss"
 import Google from './Google';
-import { signIn } from "next-auth/react";
 import Kakao from './Kakao';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -29,6 +28,7 @@ const Login = () => {
                     <Kakao/>
                     <Google/>
                 </div>
+
             </div>
         </div>
     )

@@ -3,12 +3,13 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../context/Context";
 
 const Gallery_items = ({ item, modal }) => {
-  const { showModal, setShowModal, setSelectedImg, setSelectedContent } = useContext(MyContext);
+  const { setInputValue, showModal, setShowModal, setSelectedImg, setSelectedContent, setSelectedBoard, setWriteTime } = useContext(MyContext);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (e.target.className === modal.modal && e.target.className !== styles.gallery_img) {
         setShowModal(false);
+        setInputValue("");
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -18,15 +19,17 @@ const Gallery_items = ({ item, modal }) => {
     };
   }, [showModal]);
 
+  const onClickFn = () => {
+    setShowModal(!showModal);
+    setSelectedImg(item.board_img);
+    setSelectedContent(item);
+    setSelectedBoard(item.idx);
+    setWriteTime(item.time);
+  };
+
   return (
     <>
-      <figure
-        className={styles.gallery_item}
-        onClick={() => {
-          setShowModal(!showModal);
-          setSelectedImg(item.board_img);
-          setSelectedContent(item);
-        }}>
+      <figure className={styles.gallery_item} onClick={() => onClickFn()}>
         <img className={styles.gallery_img} src={item.board_img} alt='' />
       </figure>
     </>

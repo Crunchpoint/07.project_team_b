@@ -23,7 +23,7 @@
     width: 30vw;
     background: #fff;
     border-radius: 15px;
-    aspect-ratio: 21/9;
+    aspect-ratio: 21/6;
     overflow: hidden;
     .content {
       width: 100%;
@@ -43,16 +43,6 @@
         }
       }
       > p:nth-child(1) {
-        align-self: center;
-        font-size: 1rem;
-        font-weight: 600;
-        &::after {
-          @include line {
-            bottom: 0;
-          }
-        }
-      }
-      > p:nth-child(2) {
         font-size: 1rem;
         font-weight: 600;
         color: #f00;

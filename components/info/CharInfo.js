@@ -26,6 +26,11 @@ const CharInfo = () => {
     }, 10)
   }, [])
 
+  var changeOption = (e) => {
+    var name = e.target.value;
+    location.replace(`/info/charinfo?ani_name=${name}`);
+  }
+  
   function sendData(obj) {
     router.push({
       pathname: '/info/charinfo_detail',

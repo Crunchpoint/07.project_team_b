@@ -4,23 +4,36 @@ import React, { useState, createContext, useEffect, useRef } from "react";
 
 const dataUrl = "../src/json/animeName.json";
 const dataUrl1 = "../src/json/charDetail.json";
+const apiEndpoint = "/api/board";
+const apiEndpoint2 = "/api/comment";
+const apiEndpoint3 = "/api/user";
 
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
+  const [userDb, setUserDb] = useState([]);
   const [board, setBoard] = useState([]);
   const [comment, setComment] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [crudModal, setCrudModal] = useState(false);
+  const [boardCrud, setBoardCrud] = useState(false);
   const [selectedImg, setSelectedImg] = useState(null);
   const [selectedContent, setSelectedContent] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [filteredBoard, setFilteredBoard] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [writeTime, setWriteTime] = useState(null);
   const [filteredComment, setFilteredComment] = useState([]);
   const [selectedComment, setSelectedComment] = useState(null);
+  const [postModal, setPostModal] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [textareaValue, setTextareaValue] = useState("");
+  const [selectedValue, setSelectedvalue] = useState("");
+  const [pageName, setPageName] = useState("");
+  const [like, setLike] = useState(false);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef();
-  const apiEndpoint = "/api/board";
-  const apiEndpoint2 = "/api/comment";
+
   // axios 데이터
   useEffect(() => {
     async function axiosData() {
@@ -39,16 +52,15 @@ const Context = ({ children }) => {
     axiosData();
   }, []);
 
-  // board 데이터 통신
-  const boardFn = async (method, user, img, content) => {
+  // user 데이터 통신
+  const userFn = async (method, email, name, img, user) => {
     try {
-      event.preventDefault();
-      let data = { user_id: user, board_img: img, content: content };
+      let data = { email: email, user_name: name, profile_img: img, is_admin: user };
       let response;
 
       switch (method) {
         case "POST":
-          await axios.post();
+          await axios.post(apiEndpoint3, data);
           break;
 
         case "PUT":
@@ -57,6 +69,52 @@ const Context = ({ children }) => {
 
         case "DELETE":
           await axios.delete();
+          break;
+
+        default:
+          break;
+      }
+
+      response = await axios.get(apiEndpoint3);
+      setUserDb(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // console.log(userDb);
+  useEffect(() => {
+    userFn();
+  }, []);
+
+  // user 서밋 함수
+  const handleUser = (method, user_email, user_name, user_img) => {
+    const email = user_email;
+    const name = user_name;
+    const img = user_img;
+    const user = 0;
+    userFn(method, email, name, img, user);
+  };
+
+  // board 데이터 통신
+  const boardFn = async (method, user, content, img, name) => {
+    try {
+      let data = { user_id: user, content: content, board_img: img, user_name: name };
+      let response;
+
+      switch (method) {
+        case "POST":
+          await axios.post(apiEndpoint, data);
+          break;
+
+        // case "PUT":
+        //   await axios.put();
+        //   break;
+
+        case "DELETE":
+          await axios.delete(apiEndpoint, { data: user });
+          setShowModal(false);
+          setBoardCrud(false);
           break;
 
         default:
@@ -75,23 +133,22 @@ const Context = ({ children }) => {
   }, []);
 
   // board 서밋 함수
-  const handleSubmit = (e, method) => {
+  const handleSubmit = (e, method, user_name) => {
     const user = 1;
     const img = "dd";
-    const content = e.target.board.value;
-    boardFn(method, user, img, content);
+    const name = user_name;
+    const content = e;
+    boardFn(method, user, content, img, name);
   };
 
   // comment 데이터 통신
   const commentFn = async (method, user, board, comment, comment_idx) => {
     try {
-      event.preventDefault();
       let data = { board_idx: board, user_id: user, _comment: comment, comment_idx: comment_idx };
       let response;
 
       switch (method) {
         case "POST":
-          console.log("Ddd");
           await axios.post(apiEndpoint2, data);
           break;
 
@@ -151,6 +208,25 @@ const Context = ({ children }) => {
     return `${Math.floor(betweenTimeDay / 365)}y`;
   }
 
+  // 유저별 게시판 필터링
+  useEffect(() => {
+    setFilteredBoard(
+      board.filter((item) => {
+        return item.user_name.toLowerCase().trim().replace("-", "") === pageName.toLowerCase().trim().replace("-", "");
+      })
+    );
+  }, [board, crudModal]);
+
+  // 좋아요 기능 // 수정중
+  const sessionStorageFn = (key, obj) => {
+    if (sessionStorage[key]) {
+      sessionStorage.removeItem(key);
+    } else {
+      sessionStorage.setItem(key, obj);
+    }
+    setLike(!like);
+  };
+
   const values = {
     data,
     setData,
@@ -178,8 +254,30 @@ const Context = ({ children }) => {
     setFilteredComment,
     selectedComment,
     setSelectedComment,
+    filteredBoard,
+    setFilteredBoard,
     edit,
     setEdit,
+    sessionStorageFn,
+    like,
+    setLike,
+    selectedValue,
+    setSelectedvalue,
+    inputValue,
+    setInputValue,
+    pageName,
+    setPageName,
+    postModal,
+    setPostModal,
+    textareaValue,
+    setTextareaValue,
+    boardCrud,
+    setBoardCrud,
+    selectedBoard,
+    setSelectedBoard,
+    writeTime,
+    setWriteTime,
+    handleUser,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;

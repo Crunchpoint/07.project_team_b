@@ -5,8 +5,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const Google = () => {
   const { data: session } = useSession();
 
-  const { data: session } = useSession();
-
   if (session) {
     return (
       <button className={styles.google} onClick={() => signOut()}>

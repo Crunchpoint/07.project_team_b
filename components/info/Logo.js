@@ -8,7 +8,7 @@ const logo = () => {
         <button onClick={()=> {
         // window.location.href = '/'
         window.location.href = '/main/ghibli'
-        }}>Ghibli</button>
+        }}></button>
     </div>
   )
 }

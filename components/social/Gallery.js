@@ -1,6 +1,4 @@
 import styles from "@/styles/social/Gallery.module.scss";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
 import Gallery_textArea_modal from "./Gallery_textArea_modal";
@@ -10,19 +8,10 @@ import Gallery_article from "./Gallery_article";
 import Gallery_items from "./Gallery_items";
 import Gallery_social from "./Gallery_social";
 import Gallery_comment_edit from "./Gallery_comment_edit";
+import Board_crud_modal from "./Board_crud_modal";
 
 const Gallery = () => {
-  const { board, showModal, selectedImg, crudModal, edit } = useContext(MyContext);
-  const [filteredBoard, setFilteredBoard] = useState([]);
-  const router = useRouter();
-
-  useEffect(() => {
-    setFilteredBoard(
-      board.filter((item) => {
-        return item.user_name.toLowerCase().trim().replace("-", "") === router.query.user.toLowerCase().trim().replace("-", "");
-      })
-    );
-  }, [board, crudModal]);
+  const { boardCrud, showModal, selectedImg, crudModal, edit, filteredBoard } = useContext(MyContext);
 
   return (
     <>
@@ -48,6 +37,7 @@ const Gallery = () => {
           </div>
         )}
         {crudModal && <Gallery_textArea_modal />}
+        {boardCrud && <Board_crud_modal />}
       </div>
     </>
   );
