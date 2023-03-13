@@ -17,8 +17,8 @@ const handler = async (req, res) => {
 
   const insertData = async () => {
     try {
-      const { board_idx, user_id, _comment } = body;
-      let data = await executeQuery(`insert into CommentTable (board_idx, user_id, _comment) values ("${board_idx}", "${user_id}", "${_comment}")`);
+      const { board_idx, user_name, _comment } = body;
+      let data = await executeQuery(`insert into CommentTable (board_idx, user_name, _comment) values ("${board_idx}", "${user_name}", "${_comment}")`);
       res.json(data);
     } catch (err) {
       res.send(err);

@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 
 const User = () => {
   const { setPageName } = useContext(MyContext);

@@ -8,9 +8,10 @@
     width: 100%;
     height: 100%;
     > img {
+      border-radius: 50%;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
 }
@@ -22,10 +23,11 @@
   > div:first-child {
     display: flex;
     > p {
+      align-self: center;
       padding: 0 5px 0 10px;
     }
-    > p:last-child {
-      display: none;
+    > p:nth-child(2) {
+      word-break: break-all;
     }
   }
   > div:last-child {

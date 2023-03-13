@@ -43,9 +43,9 @@ const Gallery_comment = () => {
             setInputValue(e.target.value);
           }}
           placeholder='Add a comment...'
-          onKeyDown={(e) => {
-            e.key === "Enter" && submitFn(e.target.value);
-          }}
+          // onKeyDown={(e) => {
+          //   e.key === "Enter" && submitFn(e.target.value);
+          // }}
           required
         />
         <button type='submit'>Post</button>

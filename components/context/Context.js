@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState, createContext, useEffect, useRef } from "react";
 
@@ -11,8 +12,10 @@ const apiEndpoint3 = "/api/user";
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
   const [userDb, setUserDb] = useState([]);
   const [board, setBoard] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
   const [comment, setComment] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [crudModal, setCrudModal] = useState(false);
@@ -30,9 +33,15 @@ const Context = ({ children }) => {
   const [textareaValue, setTextareaValue] = useState("");
   const [selectedValue, setSelectedvalue] = useState("");
   const [pageName, setPageName] = useState("");
+  const [userImg, setUserImg] = useState();
   const [like, setLike] = useState(false);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef();
+  const user = useSession();
+
+  useEffect(() => {
+    setCurrentUser(userDb.filter((item) => item.email === user.data?.user.email));
+  }, [userDb]);
 
   // axios 데이터
   useEffect(() => {
@@ -41,8 +50,10 @@ const Context = ({ children }) => {
         .all([axios.get(dataUrl), axios.get(dataUrl1)])
         .then(
           axios.spread((res1, res2) => {
+            const combinedData = [...res2.data.cat, ...res2.data.howl, ...res2.data.laputa, ...res2.data.ponyo, ...res2.data.spirit, ...res2.data.totoro];
             setData(res1.data.data);
             setData2(res2.data);
+            setData3(combinedData);
           })
         )
         .catch((error) => {
@@ -134,17 +145,16 @@ const Context = ({ children }) => {
 
   // board 서밋 함수
   const handleSubmit = (e, method, user_name) => {
-    const user = 1;
+    const user = currentUser[0]?.user_name;
     const img = "dd";
     const name = user_name;
     const content = e;
     boardFn(method, user, content, img, name);
   };
-
   // comment 데이터 통신
   const commentFn = async (method, user, board, comment, comment_idx) => {
     try {
-      let data = { board_idx: board, user_id: user, _comment: comment, comment_idx: comment_idx };
+      let data = { board_idx: board, user_name: user, _comment: comment, comment_idx: comment_idx };
       let response;
 
       switch (method) {
@@ -178,7 +188,7 @@ const Context = ({ children }) => {
 
   // comment 서밋 함수
   const handleComment = (e, method, idx, comment_idx) => {
-    const user = 1;
+    const user = currentUser[0]?.user_name;
     const board = idx;
     const comment = e;
     commentFn(method, user, board, comment, comment_idx);
@@ -232,8 +242,12 @@ const Context = ({ children }) => {
     setData,
     data2,
     setData2,
+    data3,
+    userDb,
     board,
     comment,
+    userImg,
+    setUserImg,
     loadingProgress,
     setLoadingProgress,
     handleSubmit,
