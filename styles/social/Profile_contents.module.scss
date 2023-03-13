@@ -1,0 +1,40 @@
+.contents {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  > div {
+    display: flex;
+    align-items: center;
+    > p:nth-child(1) {
+      margin-right: 4rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    p:nth-child(2) {
+      margin-right: 0%;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #fff;
+    }
+  }
+  button {
+    // padding: 5px 10px;
+    width: 14rem;
+    height: 3rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: rgb(71, 71, 71);
+      color: #fff;
+    }
+  }
+  // > p {
+  //   align-self: center;
+  //   color: #fff;
+  // }
+}

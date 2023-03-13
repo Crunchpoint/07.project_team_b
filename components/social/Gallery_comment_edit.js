@@ -4,8 +4,8 @@ import styles from "@/styles/social/Gallery_comment.module.scss";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 
-const Gallery_comment = () => {
-  const { handleComment, selectedContent, inputRef, inputValue, setInputValue } = useContext(MyContext);
+const Gallery_comment_edit = () => {
+  const { handleComment, selectedContent, inputRef, setEdit, selectedComment, inputValue, setInputValue } = useContext(MyContext);
   const [active, setActive] = useState(false);
 
   const handleOpen = (e) => {
@@ -15,8 +15,9 @@ const Gallery_comment = () => {
 
   const submitFn = (e) => {
     // e.preventDefault();
-    handleComment(escape(e), "POST", selectedContent.idx);
+    handleComment(escape(e), "PUT", selectedContent.idx, selectedComment);
     setInputValue("");
+    setEdit(false);
     setActive(false);
   };
 
@@ -39,15 +40,18 @@ const Gallery_comment = () => {
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
-          placeholder='Add a comment...'
+          placeholder='Edit a comment...'
           onKeyDown={(e) => {
             e.key === "Enter" && submitFn(e.target.value);
           }}
           required
         />
-        <button type='submit'>Post</button>
+        <button type='submit'>Edit</button>
+        <button type='button' onClick={() => setEdit(false)}>
+          Cancel
+        </button>
       </form>
     </div>
   );
 };
-export default Gallery_comment;
+export default Gallery_comment_edit;

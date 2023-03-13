@@ -1,25 +1,23 @@
 import styles from "@/styles/social/Profile.module.scss";
 import { useContext } from "react";
 import { MyContext } from "@/components/context/Context";
+import Profile_contents from "./Profile_contents";
 
-const Profile = ({ router }) => {
-  const { handleSubmit } = useContext(MyContext);
+const Profile = () => {
+  const { postModal } = useContext(MyContext);
+
   return (
     <div className={styles.header}>
       <div>
         <figure>
-          <img src='' alt='' />
+          <img src='../src/img/main/hacu_png.png' alt='' />
         </figure>
       </div>
-      <div>
-        <p>{router.query.user}</p>
-        <p>128123 posts</p>
-        <p>details</p>
-        <form onSubmit={(e) => handleSubmit(e, "POST")}>
-          <input name='board' type='text' required />
-          <button type='submit'>임시글쓰기버튼</button>
-        </form>
-      </div>
+      <Profile_contents />
+      {/* <form onSubmit={(e) => handleSubmit(e, "POST")}> */}
+      {/* <input name='board' type='text' required /> */}
+      {/* <button type='submit'>임시글쓰기버튼</button> */}
+      {/* </form> */}
     </div>
   );
 };
