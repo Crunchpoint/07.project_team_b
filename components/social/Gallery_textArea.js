@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/Context";
 import styles from "@/styles/social/Gallery_textArea.module.scss";
+import { useSession } from "next-auth/react";
 
 const Gallery_textArea = ({ props, props2, props3, props4 }) => {
-  const { userImg, setUserImg, userDb, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
+  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
+  const [userImg, setUserImg] = useState();
 
   useEffect(() => {
-    console.log("실행");
     let profile_img = userDb.filter((item) => {
       return item.user_name == props4;
     });
     setUserImg(profile_img[0]?.profile_img);
-  }, []);
+  }, [userDb]);
 
   return (
     <>
@@ -24,6 +25,16 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
         <div>
           <p>{props4}</p>
           <p>{props}</p>
+          <p
+            onClick={(e) => {
+              setBoardCrud(!boardCrud);
+            }}>
+            <svg aria-label='Comment Options' color='rgb(142, 142, 142)' fill='rgb(142, 142, 142)' height='24' role='img' viewBox='0 0 24 24' width='24'>
+              <circle cx='12' cy='12' r='1.5'></circle>
+              <circle cx='6' cy='12' r='1.5'></circle>
+              <circle cx='18' cy='12' r='1.5'></circle>
+            </svg>
+          </p>
         </div>
         <div>
           <p>{props2}</p>

@@ -14,7 +14,7 @@ const Gallery_article = () => {
       })
     );
   }, [comment]);
-  console.log(selectedContent);
+
   return (
     <div className={styles.article}>
       <section>

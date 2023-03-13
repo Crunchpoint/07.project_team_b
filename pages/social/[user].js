@@ -10,11 +10,19 @@ import { useContext } from "react";
 import Link from "next/link";
 
 const User = () => {
-  const { setPageName } = useContext(MyContext);
+  const { setPageName, data3, setSelSocialImg } = useContext(MyContext);
   const router = useRouter();
 
   useEffect(() => {
     setPageName(router.query.user);
+  }, [router]);
+
+  useEffect(() => {
+    setSelSocialImg(
+      data3?.filter((item) => {
+        return item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase());
+      })
+    );
   }, [router]);
 
   return (

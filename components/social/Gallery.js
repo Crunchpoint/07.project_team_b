@@ -1,6 +1,6 @@
 import styles from "@/styles/social/Gallery.module.scss";
 import { MyContext } from "@/components/context/Context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Gallery_textArea_modal from "./Gallery_textArea_modal";
 import Gallery_comment from "./Gallery_comment";
 import Gallery_header from "./Gallery_header";

@@ -29,6 +29,9 @@
     > p:nth-child(2) {
       word-break: break-all;
     }
+    > p:last-child {
+      display: none;
+    }
   }
   > div:last-child {
     padding: 0px 10px 0;

@@ -28,19 +28,20 @@ const Context = ({ children }) => {
   const [writeTime, setWriteTime] = useState(null);
   const [filteredComment, setFilteredComment] = useState([]);
   const [selectedComment, setSelectedComment] = useState(null);
+  const [selSocialImg, setSelSocialImg] = useState([]);
   const [postModal, setPostModal] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [textareaValue, setTextareaValue] = useState("");
   const [selectedValue, setSelectedvalue] = useState("");
   const [pageName, setPageName] = useState("");
-  const [userImg, setUserImg] = useState();
+
   const [like, setLike] = useState(false);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef();
   const user = useSession();
 
   useEffect(() => {
-    setCurrentUser(userDb.filter((item) => item.email === user.data?.user.email));
+    setCurrentUser(userDb?.filter((item) => item.email === user.data?.user.email));
   }, [userDb]);
 
   // axios 데이터
@@ -116,6 +117,7 @@ const Context = ({ children }) => {
       switch (method) {
         case "POST":
           await axios.post(apiEndpoint, data);
+          setPostModal(false);
           break;
 
         // case "PUT":
@@ -145,7 +147,7 @@ const Context = ({ children }) => {
 
   // board 서밋 함수
   const handleSubmit = (e, method, user_name) => {
-    const user = currentUser[0]?.user_name;
+    const user = 1;
     const img = "dd";
     const name = user_name;
     const content = e;
@@ -246,8 +248,6 @@ const Context = ({ children }) => {
     userDb,
     board,
     comment,
-    userImg,
-    setUserImg,
     loadingProgress,
     setLoadingProgress,
     handleSubmit,
@@ -292,6 +292,8 @@ const Context = ({ children }) => {
     writeTime,
     setWriteTime,
     handleUser,
+    selSocialImg,
+    setSelSocialImg,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;

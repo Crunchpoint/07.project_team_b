@@ -87,12 +87,12 @@
         border: none;
         background: transparent;
         padding-bottom: 15px;
-        &__active {
-          @extend .button;
-        }
         &__active ~ div {
+          @extend .button;
           display: flex;
         }
+        // &__active ~ div {
+        // }
       }
       > div {
         display: none;

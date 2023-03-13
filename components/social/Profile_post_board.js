@@ -19,7 +19,6 @@ const Profile_post_board = () => {
     setTextareaValue("");
     setActive(false);
   };
-
   const handleEmoji = (e) => {
     setTextareaValue(textareaValue + e.native);
   };
