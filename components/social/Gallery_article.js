@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../context/Context";
 
 const Gallery_article = () => {
-  const { selectedContent, comment, timeForToday, filteredComment, setFilteredComment } = useContext(MyContext);
+  const { selectedContent, comment, timeForToday, filteredComment, setFilteredComment, writeTime } = useContext(MyContext);
 
   useEffect(() => {
     setFilteredComment(
@@ -17,7 +17,7 @@ const Gallery_article = () => {
   return (
     <div className={styles.article}>
       <section>
-        <Gallery_textArea props={selectedContent.content} />
+        <Gallery_textArea props={unescape(selectedContent.content)} props2={timeForToday(writeTime)} />
       </section>
       <ul>
         {filteredComment?.map((item, index) => {

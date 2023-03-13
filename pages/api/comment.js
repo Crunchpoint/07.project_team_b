@@ -18,7 +18,7 @@ const handler = async (req, res) => {
   const insertData = async () => {
     try {
       const { board_idx, user_id, _comment } = body;
-      let data = await executeQuery(`insert into CommentTable (board_idx, user_id, _comment) values (${board_idx}, ${user_id}, "${_comment}")`);
+      let data = await executeQuery(`insert into CommentTable (board_idx, user_id, _comment) values ("${board_idx}", "${user_id}", "${_comment}")`);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -37,7 +37,6 @@ const handler = async (req, res) => {
 
   const deleteData = async () => {
     try {
-      console.log(body);
       let data = await executeQuery(`delete from CommentTable where comment_idx = ?`, [body]);
       res.json(data);
     } catch (err) {

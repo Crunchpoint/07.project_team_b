@@ -1,6 +1,6 @@
 import styles from "@/styles/social/Profile_post_board.module.scss";
 import Gallery_textArea from "./Gallery_textArea";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
@@ -15,7 +15,6 @@ const Profile_post_board = () => {
   };
 
   const submitFn = (e) => {
-    // e.preventDefault();
     handleSubmit(escape(e), "POST", pageName);
     setTextareaValue("");
     setActive(false);
@@ -31,11 +30,16 @@ const Profile_post_board = () => {
         <Gallery_textArea props={pageName} />
       </section>
       <div className={styles.write}>
-        <form id='post-form' onSubmit={(e) => submitFn(e.target.text.value)}>
+        <form
+          id='post-form'
+          onSubmit={(e) => {
+            e.preventDefault();
+            submitFn(e.target.text.value);
+          }}>
           <textarea
             name='text'
             id='text'
-            placeholder='write a post'
+            placeholder='Write a post'
             value={textareaValue}
             autoFocus
             required

@@ -8,9 +8,10 @@ import Gallery_article from "./Gallery_article";
 import Gallery_items from "./Gallery_items";
 import Gallery_social from "./Gallery_social";
 import Gallery_comment_edit from "./Gallery_comment_edit";
+import Board_crud_modal from "./Board_crud_modal";
 
 const Gallery = () => {
-  const { showModal, selectedImg, crudModal, edit, filteredBoard } = useContext(MyContext);
+  const { boardCrud, showModal, selectedImg, crudModal, edit, filteredBoard } = useContext(MyContext);
 
   return (
     <>
@@ -36,6 +37,7 @@ const Gallery = () => {
           </div>
         )}
         {crudModal && <Gallery_textArea_modal />}
+        {boardCrud && <Board_crud_modal />}
       </div>
     </>
   );

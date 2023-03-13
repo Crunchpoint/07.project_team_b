@@ -14,10 +14,6 @@ const Profile = () => {
         </figure>
       </div>
       <Profile_contents />
-      {/* <form onSubmit={(e) => handleSubmit(e, "POST")}> */}
-      {/* <input name='board' type='text' required /> */}
-      {/* <button type='submit'>임시글쓰기버튼</button> */}
-      {/* </form> */}
     </div>
   );
 };

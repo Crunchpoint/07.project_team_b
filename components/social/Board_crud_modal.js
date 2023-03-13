@@ -1,14 +1,14 @@
-import styles from "@/styles/social/Gallery_textArea_modal.module.scss";
+import styles from "@/styles/social/Board_crud_modal.module.scss";
 import { useContext, useEffect } from "react";
 import { MyContext } from "../context/Context";
 
-const Gallery_textArea_modal = () => {
-  const { crudModal, setCrudModal, commentFn, selectedComment, setEdit, inputRef, selectedValue, setInputValue } = useContext(MyContext);
+const Board_crud_modal = () => {
+  const { boardCrud, setBoardCrud, boardFn, selectedBoard } = useContext(MyContext);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (e.target.className === styles.cancel || e.target.className === styles.modal) {
-        setCrudModal(false);
+        setBoardCrud(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -16,33 +16,22 @@ const Gallery_textArea_modal = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [crudModal]);
-
-  const editOnClickFn = () => {
-    setEdit(true);
-    setCrudModal(false);
-    setTimeout(() => {
-      setInputValue(selectedValue);
-      inputRef.current.focus();
-      inputRef.current.setSelectionRange(selectedValue.length, selectedValue.length);
-    }, 50);
-  };
+  }, [boardCrud]);
 
   return (
     <div className={styles.modal}>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <p onClick={(e) => editOnClickFn()}>Edit</p>
           <p
             onClick={(e) => {
-              commentFn("DELETE", selectedComment);
+              boardFn("DELETE", selectedBoard);
             }}>
             Delete
           </p>
           <p
             className={styles.cancel}
             onClick={(e) => {
-              setCrudModal(!crudModal);
+              setBoardCrud(!boardCrud);
             }}>
             Cancel
           </p>
@@ -51,4 +40,4 @@ const Gallery_textArea_modal = () => {
     </div>
   );
 };
-export default Gallery_textArea_modal;
+export default Board_crud_modal;

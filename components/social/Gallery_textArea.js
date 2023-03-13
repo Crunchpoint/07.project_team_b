@@ -3,7 +3,7 @@ import { MyContext } from "../context/Context";
 import styles from "@/styles/social/Gallery_textArea.module.scss";
 
 const Gallery_textArea = ({ props, props2, props3 }) => {
-  const { crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
+  const { user, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
 
   return (
     <>
@@ -16,6 +16,16 @@ const Gallery_textArea = ({ props, props2, props3 }) => {
         <div>
           <p>admin</p>
           <p>{props}</p>
+          <p
+            onClick={(e) => {
+              setBoardCrud(!boardCrud);
+            }}>
+            <svg aria-label='Comment Options' color='rgb(142, 142, 142)' fill='rgb(142, 142, 142)' height='24' role='img' viewBox='0 0 24 24' width='24'>
+              <circle cx='12' cy='12' r='1.5'></circle>
+              <circle cx='6' cy='12' r='1.5'></circle>
+              <circle cx='18' cy='12' r='1.5'></circle>
+            </svg>
+          </p>
         </div>
         <div>
           <p>{props2}</p>
@@ -26,7 +36,7 @@ const Gallery_textArea = ({ props, props2, props3 }) => {
               setSelectedvalue(props);
               setSelectedComment(props3);
             }}>
-            <svg aria-label='Comment Options' className='_ab6-' color='rgb(142, 142, 142)' fill='rgb(142, 142, 142)' height='24' role='img' viewBox='0 0 24 24' width='24'>
+            <svg aria-label='Comment Options' color='rgb(142, 142, 142)' fill='rgb(142, 142, 142)' height='24' role='img' viewBox='0 0 24 24' width='24'>
               <circle cx='12' cy='12' r='1.5'></circle>
               <circle cx='6' cy='12' r='1.5'></circle>
               <circle cx='18' cy='12' r='1.5'></circle>
