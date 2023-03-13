@@ -62,20 +62,21 @@ const CharInfo = () => {
           </h1>
 
           {/* onchanged 설정 */}
-          <select className={styles.aniSelect}>
+          <div>
 
-          <select id="aniSelect" className={styles.aniSelect} onChange={changeOption}>
+            <select id="aniSelect" className={styles.aniSelect} onChange={changeOption}>
 
-              {
-                ani_list.map((e) => {
-                  if(e == ani_name) {
-                    return <option selected value={e} key={e}>{e}</option>
-                  } else {
-                    return <option value={e} key={e}>{e}</option>
-                  }
-                })
-              }
-          </select>
+                {
+                  ani_list.map((e) => {
+                    if(e == ani_name) {
+                      return <option selected value={e} key={e}>{e}</option>
+                    } else {
+                      return <option value={e} key={e}>{e}</option>
+                    }
+                  })
+                }
+            </select>
+          <div>
           <div className={styles.swiper}>
             {
               _data&&_data.map((obj) => {
