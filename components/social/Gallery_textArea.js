@@ -8,11 +8,11 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
   const [userImg, setUserImg] = useState();
 
   useEffect(() => {
-    let profile_img = userDb.filter((item) => {
+    let profile_img = userDb?.filter((item) => {
       return item.user_name == props4;
     });
     setUserImg(profile_img[0]?.profile_img);
-  }, [userDb]);
+  }, [userDb, props4]);
 
   return (
     <>

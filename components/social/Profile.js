@@ -4,7 +4,7 @@ import { MyContext } from "@/components/context/Context";
 import Profile_contents from "./Profile_contents";
 
 const Profile = () => {
-  const { postModal, selSocialImg } = useContext(MyContext);
+  const { selSocialImg } = useContext(MyContext);
 
   return (
     <div className={styles.header}>
