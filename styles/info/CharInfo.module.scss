@@ -253,11 +253,11 @@
     option {
       background: black;
     }
-    &::after {
-        content: "▼";
-        display: block;
-        color: #fff;
-    }
+    // &::after {
+    //     content: "▼";
+    //     display: block;
+    //     color: #fff;
+    // }
 }
 
 .info_slider {
