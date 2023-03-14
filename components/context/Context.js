@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState, createContext, useEffect, useRef } from "react";
 
@@ -11,8 +12,10 @@ const apiEndpoint3 = "/api/user";
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
   const [userDb, setUserDb] = useState([]);
   const [board, setBoard] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
   const [comment, setComment] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [crudModal, setCrudModal] = useState(false);
@@ -25,6 +28,7 @@ const Context = ({ children }) => {
   const [writeTime, setWriteTime] = useState(null);
   const [filteredComment, setFilteredComment] = useState([]);
   const [selectedComment, setSelectedComment] = useState(null);
+  const [selSocialImg, setSelSocialImg] = useState([]);
   const [postModal, setPostModal] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [textareaValue, setTextareaValue] = useState("");
@@ -33,6 +37,11 @@ const Context = ({ children }) => {
   const [like, setLike] = useState(false);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef();
+  const user = useSession();
+
+  useEffect(() => {
+    setCurrentUser(userDb?.filter((item) => item.email === user.data?.user.email));
+  }, [userDb, user.data?.user.email]);
 
   // axios 데이터
   useEffect(() => {
@@ -41,8 +50,10 @@ const Context = ({ children }) => {
         .all([axios.get(dataUrl), axios.get(dataUrl1)])
         .then(
           axios.spread((res1, res2) => {
+            const combinedData = [...res2.data.cat, ...res2.data.howl, ...res2.data.laputa, ...res2.data.ponyo, ...res2.data.spirit, ...res2.data.totoro];
             setData(res1.data.data);
             setData2(res2.data);
+            setData3(combinedData);
           })
         )
         .catch((error) => {
@@ -105,6 +116,7 @@ const Context = ({ children }) => {
       switch (method) {
         case "POST":
           await axios.post(apiEndpoint, data);
+          setPostModal(false);
           break;
 
         // case "PUT":
@@ -140,11 +152,10 @@ const Context = ({ children }) => {
     const content = e;
     boardFn(method, user, content, img, name);
   };
-
   // comment 데이터 통신
   const commentFn = async (method, user, board, comment, comment_idx) => {
     try {
-      let data = { board_idx: board, user_id: user, _comment: comment, comment_idx: comment_idx };
+      let data = { board_idx: board, user_name: user, _comment: comment, comment_idx: comment_idx };
       let response;
 
       switch (method) {
@@ -178,7 +189,7 @@ const Context = ({ children }) => {
 
   // comment 서밋 함수
   const handleComment = (e, method, idx, comment_idx) => {
-    const user = 1;
+    const user = currentUser[0]?.user_name;
     const board = idx;
     const comment = e;
     commentFn(method, user, board, comment, comment_idx);
@@ -207,7 +218,6 @@ const Context = ({ children }) => {
 
     return `${Math.floor(betweenTimeDay / 365)}y`;
   }
-
   // 유저별 게시판 필터링
   useEffect(() => {
     setFilteredBoard(
@@ -232,6 +242,9 @@ const Context = ({ children }) => {
     setData,
     data2,
     setData2,
+    data3,
+    userDb,
+    currentUser,
     board,
     comment,
     loadingProgress,
@@ -278,6 +291,8 @@ const Context = ({ children }) => {
     writeTime,
     setWriteTime,
     handleUser,
+    selSocialImg,
+    setSelSocialImg,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;

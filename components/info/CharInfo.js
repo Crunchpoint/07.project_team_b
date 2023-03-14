@@ -77,6 +77,7 @@ const CharInfo = () => {
                 }
             </select>
           </div>
+          <div>
           <div className={styles.swiper}>
             {
               _data&&_data.map((obj) => {

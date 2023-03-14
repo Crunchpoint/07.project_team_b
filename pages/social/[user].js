@@ -8,15 +8,30 @@ import { useEffect } from "react";
 import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 
 const User = () => {
-  const { setPageName } = useContext(MyContext);
+  const { setPageName, data3, setSelSocialImg, userDb } = useContext(MyContext);
   const router = useRouter();
 
   useEffect(() => {
     setPageName(router.query.user);
   }, [router]);
+
+  useEffect(() => {
+    let filteredData = [];
+    let temp = userDb.filter((item) => item.user_name.toLowerCase() === router.query.user);
+    if (temp.length > 0) {
+      filteredData = userDb?.filter((item) => {
+        return item.user_name.toLowerCase().includes(router.query.user);
+      });
+      setSelSocialImg(filteredData[0]?.profile_img);
+    } else {
+      filteredData = data3?.filter((item) => {
+        return item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase());
+      });
+      setSelSocialImg(filteredData[0]?.src);
+    }
+  }, [router, data3, userDb]);
 
   return (
     <>

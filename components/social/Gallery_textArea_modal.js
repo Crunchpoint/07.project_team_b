@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../context/Context";
 
 const Gallery_textArea_modal = () => {
-  const { crudModal, setCrudModal, commentFn, selectedComment, setEdit, inputRef, selectedValue, setInputValue } = useContext(MyContext);
+  const { setUserImg, crudModal, setCrudModal, commentFn, selectedComment, setEdit, inputRef, selectedValue, setInputValue } = useContext(MyContext);
 
   useEffect(() => {
     const handleClickOutside = (e) => {

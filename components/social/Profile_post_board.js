@@ -1,5 +1,6 @@
 import styles from "@/styles/social/Profile_post_board.module.scss";
 import Gallery_textArea from "./Gallery_textArea";
+import Gallery_textArea_header from "./Gallery_textArea_header";
 import { useContext, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import data from "@emoji-mart/data";
@@ -19,7 +20,6 @@ const Profile_post_board = () => {
     setTextareaValue("");
     setActive(false);
   };
-
   const handleEmoji = (e) => {
     setTextareaValue(textareaValue + e.native);
   };
@@ -27,7 +27,7 @@ const Profile_post_board = () => {
   return (
     <div className={styles.board}>
       <section>
-        <Gallery_textArea props={pageName} />
+        <Gallery_textArea_header props={pageName} />
       </section>
       <div className={styles.write}>
         <form

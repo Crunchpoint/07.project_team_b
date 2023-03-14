@@ -1,20 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/Context";
 import styles from "@/styles/social/Gallery_textArea.module.scss";
+import { useSession } from "next-auth/react";
 
-const Gallery_textArea = ({ props, props2, props3 }) => {
-  const { user, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
+const Gallery_textArea = ({ props, props2, props3, props4 }) => {
+  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
+  const [userImg, setUserImg] = useState();
+
+  useEffect(() => {
+    let profile_img = userDb?.filter((item) => {
+      return item.user_name == props4;
+    });
+    setUserImg(profile_img[0]?.profile_img);
+  }, [userDb, props4]);
 
   return (
     <>
       <div className={styles.profile_img}>
         <figure>
-          <img src='../src/img/main/Boeun_png.png' alt='' />
+          <img src={userImg} alt='' />
         </figure>
       </div>
       <div className={styles.contents}>
         <div>
-          <p>admin</p>
+          <p>{props4}</p>
           <p>{props}</p>
           <p
             onClick={(e) => {

@@ -8,9 +8,9 @@ import "../public/static/fonts/style.scss";
 
 export default function App({ Component, pageProps: { session, ...pageProps }, router }) {
   return (
-    <Context>
-      <Layout>
-        <SessionProvider session={session}>
+    <SessionProvider session={session}>
+      <Context>
+        <Layout>
           <AnimatePresence mode='wait'>
             <motion.div
               key={router.route}
@@ -35,8 +35,8 @@ export default function App({ Component, pageProps: { session, ...pageProps }, r
               <script defer src='https://developers.kakao.com/sdk/js/kakao.js'></script>
             </motion.div>
           </AnimatePresence>
-        </SessionProvider>
-      </Layout>
-    </Context>
+        </Layout>
+      </Context>
+    </SessionProvider>
   );
 }
