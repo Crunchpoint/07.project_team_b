@@ -225,7 +225,7 @@ const Context = ({ children }) => {
         return item.user_name.toLowerCase().trim().replace("-", "") === pageName.toLowerCase().trim().replace("-", "");
       })
     );
-  }, [board, crudModal]);
+  }, [board, crudModal, pageName]);
 
   // 좋아요 기능 // 수정중
   const sessionStorageFn = (key, obj) => {

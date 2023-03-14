@@ -16,7 +16,7 @@ const User = () => {
   useEffect(() => {
     setPageName(router.query.user);
   }, [router]);
-
+  console.log("실행중");
   useEffect(() => {
     let filteredData = [];
     let temp = userDb.filter((item) => item.user_name.toLowerCase() === router.query.user);
@@ -44,7 +44,6 @@ const User = () => {
           <Gallery />
         </div>
       </section>
-
       <div className={styles.bbutton}>
         <div className={styles.button}>
           <Link href='/main/ghibli'>

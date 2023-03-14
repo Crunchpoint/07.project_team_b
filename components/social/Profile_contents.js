@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { MyContext } from "@/components/context/Context";
 import styles from "@/styles/social/Profile_contents.module.scss";
 import Profile_post from "./Profile_post";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -24,8 +23,6 @@ const Profile_contents = () => {
     };
   }, [postModal]);
 
-  // console.log(currentUser[0].user_name);
-
   return (
     <>
       <div className={styles.contents}>
@@ -39,7 +36,9 @@ const Profile_contents = () => {
           </button>
         ) : (
           <button className={styles.button}>
-            <Link href={`/social/${currentUser[0]?.user_name.toLowerCase()}`}>My Profile</Link>
+            <Link href={"/social/[user]"} as={`/social/${currentUser[0]?.user_name.toLowerCase()}`}>
+              My Profile
+            </Link>
           </button>
         )}
       </div>

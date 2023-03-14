@@ -1,32 +1,31 @@
 import styles from "@/styles/main/Ghibli_visual.module.scss";
 import Link from "next/link";
-import {SectionsContainer, Section} from 'react-fullpage';
+import { SectionsContainer, Section } from "react-fullpage";
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import TopButton from "./TopButton";
-import Boeun from './Boeun'
-import Castle from './Castle'
-import Howl from './Howl'
-import Ponyo from './Ponyo'
-import Spirited from './Spirited'
-import Totoro from './Totoro'
+import Boeun from "./Boeun";
+import Castle from "./Castle";
+import Howl from "./Howl";
+import Ponyo from "./Ponyo";
+import Spirited from "./Spirited";
+import Totoro from "./Totoro";
 import All from "./All";
 import { useRouter } from "next/router";
-
 
 const Ghibli_visual = () => {
   const { data } = useContext(MyContext);
   const [title, setTitle] = useState("GHIBLI");
   const router = useRouter();
-  
+
   const textEffect = () => {};
 
-  useEffect(()=>{
-    router.push("/main/ghibli")
-    },[])
+  useEffect(() => {
+    router.push("/main/ghibli");
+  }, []);
 
   let options = {
-    anchors: ['sectionOne', 'sectionTwo', 'sectionThree', 'sectionFour', 'sectionFive', 'sectionSix', 'sectionSeven'],
+    anchors: ["sectionOne", "sectionTwo", "sectionThree", "sectionFour", "sectionFive", "sectionSix", "sectionSeven"],
   };
 
   return (
@@ -72,16 +71,26 @@ const Ghibli_visual = () => {
             </section>
           </Section>
 
-          
-          <Section><Castle/></Section>
-          <Section><Spirited/></Section>
-          <Section><Howl/></Section>
-          <Section><Ponyo/></Section>
-          <Section><Totoro/></Section>
-          <Section><Boeun/></Section>
-          
+          <Section>
+            <Castle />
+          </Section>
+          <Section>
+            <Spirited />
+          </Section>
+          <Section>
+            <Howl />
+          </Section>
+          <Section>
+            <Ponyo />
+          </Section>
+          <Section>
+            <Totoro />
+          </Section>
+          <Section>
+            <Boeun />
+          </Section>
         </SectionsContainer>
-        <TopButton/>
+        <TopButton />
       </>
     )
   );
