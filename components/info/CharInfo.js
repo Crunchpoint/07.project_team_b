@@ -26,7 +26,7 @@ const CharInfo = () => {
     }, 10)
   }, [])
 
-  console.log(router);
+  // console.log(router);
 
   var changeOption = (e) => {
     var name = e.target.value;

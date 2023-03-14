@@ -37,7 +37,7 @@ const Ghibli_visual = () => {
             <section className={styles.container}>
               <div className={styles.inner}>
                 <div>
-                  <h1 data-title={title}>{title}</h1>
+                  <h1>{title}</h1>
                 </div>
                 <svg id='filters' style={{ position: "absolute", zIndex: "-1" }}>
                   <defs>
