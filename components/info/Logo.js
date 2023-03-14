@@ -9,7 +9,7 @@ const logo = () => {
 
   const router = useRouter();
   const {data} = useSession();
-  console.log("aaa", router);
+  // console.log("aaa", router);
   // function sendData(obj) {
   //   router.push({
   //     pathname: '/info/charinfo_detail',
@@ -25,7 +25,7 @@ const logo = () => {
     Swal.fire({
       title: '자세히 알고싶은 캐릭터를 클릭해주세요😄',
       width: 600,
-      padding: '3em',
+      padding: '2em',
       color: '#716add',
       background: '#fff url(/images/trees.png)',
       backdrop: `
@@ -35,7 +35,23 @@ const logo = () => {
         no-repeat
       `
     })
-    };
+  };
+
+  const handleButtonClick2 = () => { 
+    Swal.fire({
+      title: '로그인이 필요해요',
+      width: 600,
+      padding: '2em',
+      color: '#716add',
+      background: '#fff url(/images/trees.png)',
+      backdrop: `
+        rgba(0,0,0,0.4)
+        url("/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    })
+  };
 
   return (
     <div className={styles.wrap_logo}>
@@ -44,9 +60,16 @@ const logo = () => {
         // window.location.href = '/'
         window.location.href = '/main/ghibli'
         }}></button>
+
+    {
+      data?.user ? (
         <Link href={`/social/${data?.user.name}`}>
           <button className={styles.btn3}>SNS 바로가기</button>
-        </Link>
+        </Link>) : (
+        <Link href='/login/login'>
+          <button onClick={handleButtonClick2} className={styles.btn3}>SNS 바로가기</button>
+        </Link>)
+    }
     </div>
   )
 }

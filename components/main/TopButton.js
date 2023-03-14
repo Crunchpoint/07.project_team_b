@@ -3,6 +3,7 @@ import styles from "@/styles/main/TopButton.module.scss"
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
+import Swal from 'sweetalert2'
 
 const TopButton = () => {
   const router = useRouter()
@@ -15,6 +16,22 @@ const TopButton = () => {
     })
   }
   const {data, status} = useSession();
+
+  const handleButtonClick2 = () => { 
+    Swal.fire({
+      title: '로그인이 필요해요',
+      width: 600,
+      padding: '2em',
+      color: '#716add',
+      background: '#fff url(/images/trees.png)',
+      backdrop: `
+        rgba(0,0,0,0.4)
+        url("/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    })
+  }
   
   return (
     <>
@@ -39,7 +56,7 @@ const TopButton = () => {
           data?.user ? (
             <li><Link href={`/social/${data?.user.name}`}>Social Page</Link></li>
           ) : (
-            <li onClick={()=>alert('로그인이 필요합니다.')}><Link href='/login/login'>Social Page</Link></li>
+            <li onClick={handleButtonClick2}><Link href='/login/login'>Social Page</Link></li>
           )
         }
       </ul>
