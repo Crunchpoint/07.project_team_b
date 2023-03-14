@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/Context";
 import styles from "@/styles/social/Gallery_textArea_header.module.scss";
-import { useRouter } from "next/router";
 
 const Gallery_textArea = ({ props, props2, props3 }) => {
   const { boardCrud, setBoardCrud, selSocialImg } = useContext(MyContext);
@@ -10,7 +9,7 @@ const Gallery_textArea = ({ props, props2, props3 }) => {
     <>
       <div className={styles.profile_img}>
         <figure>
-          <img src={selSocialImg[0]?.src} alt='' />
+          <img src={selSocialImg} alt='' />
         </figure>
       </div>
       <div className={styles.contents}>

@@ -10,7 +10,7 @@ const Profile = () => {
     <div className={styles.header}>
       <div>
         <figure>
-          <img src={selSocialImg[0]?.src} alt='' />
+          <img src={selSocialImg} alt='' />
         </figure>
       </div>
       <Profile_contents />

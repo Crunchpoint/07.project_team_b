@@ -34,7 +34,6 @@ const Context = ({ children }) => {
   const [textareaValue, setTextareaValue] = useState("");
   const [selectedValue, setSelectedvalue] = useState("");
   const [pageName, setPageName] = useState("");
-
   const [like, setLike] = useState(false);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef();
@@ -42,7 +41,7 @@ const Context = ({ children }) => {
 
   useEffect(() => {
     setCurrentUser(userDb?.filter((item) => item.email === user.data?.user.email));
-  }, [userDb]);
+  }, [userDb, user.data?.user.email]);
 
   // axios 데이터
   useEffect(() => {
@@ -219,7 +218,6 @@ const Context = ({ children }) => {
 
     return `${Math.floor(betweenTimeDay / 365)}y`;
   }
-
   // 유저별 게시판 필터링
   useEffect(() => {
     setFilteredBoard(
@@ -246,6 +244,7 @@ const Context = ({ children }) => {
     setData2,
     data3,
     userDb,
+    currentUser,
     board,
     comment,
     loadingProgress,

@@ -10,7 +10,7 @@ import { useContext } from "react";
 import Link from "next/link";
 
 const User = () => {
-  const { setPageName, data3, setSelSocialImg } = useContext(MyContext);
+  const { setPageName, data3, setSelSocialImg, userDb } = useContext(MyContext);
   const router = useRouter();
 
   useEffect(() => {
@@ -18,12 +18,20 @@ const User = () => {
   }, [router]);
 
   useEffect(() => {
-    setSelSocialImg(
-      data3?.filter((item) => {
+    let filteredData = [];
+    let temp = userDb.filter((item) => item.user_name.toLowerCase() === router.query.user);
+    if (temp.length > 0) {
+      filteredData = userDb?.filter((item) => {
+        return item.user_name.toLowerCase().includes(router.query.user);
+      });
+      setSelSocialImg(filteredData[0]?.profile_img);
+    } else {
+      filteredData = data3?.filter((item) => {
         return item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase());
-      })
-    );
-  }, [router]);
+      });
+      setSelSocialImg(filteredData[0]?.src);
+    }
+  }, [router, data3, userDb]);
 
   return (
     <>

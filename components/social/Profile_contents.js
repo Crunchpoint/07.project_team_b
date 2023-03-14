@@ -2,9 +2,13 @@ import React, { useContext, useEffect } from "react";
 import { MyContext } from "@/components/context/Context";
 import styles from "@/styles/social/Profile_contents.module.scss";
 import Profile_post from "./Profile_post";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Profile_contents = () => {
-  const { pageName, filteredBoard, postModal, setPostModal, setTextareaValue } = useContext(MyContext);
+  const { pageName, filteredBoard, postModal, setPostModal, setTextareaValue, currentUser } = useContext(MyContext);
+  const router = useRouter();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -20,6 +24,8 @@ const Profile_contents = () => {
     };
   }, [postModal]);
 
+  // console.log(currentUser[0].user_name);
+
   return (
     <>
       <div className={styles.contents}>
@@ -27,10 +33,15 @@ const Profile_contents = () => {
           <p>@{pageName}</p>
           <p>{filteredBoard.length} posts</p>
         </div>
-        <button className={styles.button} onClick={(e) => setPostModal(!postModal)}>
+        {currentUser[0]?.user_name.toLowerCase() === router.query.user?.toLowerCase() ? (
+          <button className={styles.button} onClick={(e) => setPostModal(!postModal)}>
             Create New Post
-        </button>
-        {/* <p>컨텐츠 캐릭터 설명...?</p> */}
+          </button>
+        ) : (
+          <button className={styles.button}>
+            <Link href={`/social/${currentUser[0]?.user_name.toLowerCase()}`}>My Profile</Link>
+          </button>
+        )}
       </div>
       {postModal && <Profile_post />}
     </>
