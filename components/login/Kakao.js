@@ -8,7 +8,7 @@ import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
 
 const Kakao = () => {
-  const { handleUser } = useContext(MyContext);
+  const { handleUser, userDb } = useContext(MyContext);
 
   // const kakaoInit = () => {
   //   if(!window.Kakao.isInitialized()) {
@@ -49,8 +49,13 @@ const Kakao = () => {
   const { data: session } = useSession();
 
   useEffect(() => {
-    session && handleUser("POST", session?.user.email, session?.user.name, session?.user.image);
-  }, [session]);
+    let userCheck = userDb?.filter((item) => item.email === session?.user.email);
+    if (userCheck.length > 0 === true) {
+      console.log("이미 가입된 유저입니다.");
+    } else {
+      session && handleUser("POST", session.user.email, session.user.name, session.user.image);
+    }
+  }, [session, userDb]);
 
   if (session) {
     return (

@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const Gallery_textArea = ({ props, props2, props3, props4 }) => {
-  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, selectedComment, setSelectedComment, sessionStorageFn, setSelectedvalue, currentUser } = useContext(MyContext);
+  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue, currentUser } = useContext(MyContext);
   const [userImg, setUserImg] = useState();
   const router = useRouter();
 

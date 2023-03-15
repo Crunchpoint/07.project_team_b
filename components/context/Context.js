@@ -93,7 +93,6 @@ const Context = ({ children }) => {
     }
   };
 
-  // console.log(userDb);
   useEffect(() => {
     userFn();
   }, []);

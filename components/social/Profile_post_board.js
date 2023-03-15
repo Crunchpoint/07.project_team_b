@@ -20,6 +20,7 @@ const Profile_post_board = ({ props }) => {
     setTextareaValue("");
     setActive(false);
   };
+
   const handleEmoji = (e) => {
     setTextareaValue(textareaValue + e.native);
   };
@@ -54,6 +55,11 @@ const Profile_post_board = ({ props }) => {
           </button>
           <Picker data={data} onEmojiSelect={(e) => handleEmoji(e)} />
           <p>{textareaValue.length} / 2,000</p>
+        </div>
+        <div>
+          <figure>
+            <img src='https://media4.giphy.com/media/3ohze3Vg3vzX7c86NG/giphy.gif?cid=ecf05e4794mxl23oxdnomoqsu1dlrsln21cfz7ct3lj1raxa&rid=giphy.gif&ct=g' alt='haku_gif' />
+          </figure>
         </div>
       </div>
     </div>

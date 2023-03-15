@@ -64,7 +64,7 @@ const CharInfo = () => {
               {ani_list.map((e) => {
                 if (e == ani_name) {
                   return (
-                    <option selected value={e} key={e}>
+                    <option defaultValue value={e} key={e}>
                       {e}
                     </option>
                   );
@@ -81,9 +81,9 @@ const CharInfo = () => {
           <div>
             <div className={styles.swiper}>
               {_data &&
-                _data.map((obj) => {
+                _data.map((obj, key) => {
                   return (
-                    <div className={`${styles.swiper_slide}`}>
+                    <div key={key} className={`${styles.swiper_slide}`}>
                       <div className={styles.swiper_slide_detail} onClick={() => sendData(obj)}>
                         <div className={styles.detail_img}>
                           <img src={`${obj.src}`}></img>

@@ -29,7 +29,7 @@ const Gallery = () => {
                 <div className={styles.board}>
                   <Gallery_header />
                   <Gallery_article />
-                  <Gallery_social />
+                  {/* <Gallery_social /> */}
                   {edit ? <Gallery_comment_edit /> : <Gallery_comment />}
                 </div>
               </div>

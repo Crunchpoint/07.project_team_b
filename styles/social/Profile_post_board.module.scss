@@ -14,6 +14,7 @@
   flex-basis: 40%;
   display: grid;
   grid-template-rows: 0.1fr 0.9fr;
+  overflow: hidden;
   > section {
     padding: 15px;
     display: flex;
@@ -41,7 +42,7 @@
     > div {
       position: relative;
       display: flex;
-      &:after {
+      &:nth-child(2)::after {
         @include line {
           bottom: 0;
         }
@@ -72,6 +73,14 @@
         position: relative;
         color: rgb(140, 140, 140);
         font-size: 0.8rem;
+      }
+    }
+    > div:last-child {
+      figure {
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
   }
