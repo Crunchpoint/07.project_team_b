@@ -36,9 +36,9 @@
         font-family: "Bowlby One SC", cursive;
         font-weight: 100;
         color: rgba(255, 255, 255, 1);
-        &[data-title] {
-          filter: blur(10px);
-        }
+        // &[data-title] {
+        //   filter: blur(10px);
+        // }
       }
     }
     nav {

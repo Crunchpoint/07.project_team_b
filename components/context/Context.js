@@ -145,9 +145,9 @@ const Context = ({ children }) => {
   }, []);
 
   // board 서밋 함수
-  const handleSubmit = (e, method, user_name) => {
+  const handleSubmit = (e, method, user_name, image_url) => {
     const user = 1;
-    const img = "dd";
+    const img = image_url;
     const name = user_name;
     const content = e;
     boardFn(method, user, content, img, name);
@@ -221,8 +221,8 @@ const Context = ({ children }) => {
   // 유저별 게시판 필터링
   useEffect(() => {
     setFilteredBoard(
-      board.filter((item) => {
-        return item.user_name.toLowerCase().trim().replace("-", "") === pageName.toLowerCase().trim().replace("-", "");
+      board?.filter((item) => {
+        return item.user_name?.toLowerCase().trim().replace("-", "") === pageName?.toLowerCase().trim().replace("-", "");
       })
     );
   }, [board, crudModal, pageName]);

@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.11.1",
+    "@cloudinary/url-gen": "^1.9.2",
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
     "@fullpage/react-fullpage": "^0.1.34",
     "@next/font": "13.1.6",
     "axios": "^1.3.3",
     "basic-ftp": "^5.0.2",
+    "cloudinary": "^1.35.0",
+    "cloudinary-react": "^1.8.1",
     "emoji-mart": "^5.5.2",
     "emoji-picker-react": "^4.4.7",
     "eslint": "8.34.0",
@@ -35,6 +39,7 @@
     "react-fullpage": "^0.1.19",
     "react-google-login": "^5.2.2",
     "sass": "^1.58.3",
+    "styled-components": "^5.3.9",
     "sweetalert2": "^11.7.3",
     "swiper": "^9.1.0"
   }

@@ -16,7 +16,7 @@ const User = () => {
   useEffect(() => {
     setPageName(router.query.user);
   }, [router]);
-  console.log("실행중");
+
   useEffect(() => {
     let filteredData = [];
     let temp = userDb.filter((item) => item.user_name.toLowerCase() === router.query.user);

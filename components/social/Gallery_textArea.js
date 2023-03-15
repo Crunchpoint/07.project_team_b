@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/Context";
 import styles from "@/styles/social/Gallery_textArea.module.scss";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Gallery_textArea = ({ props, props2, props3, props4 }) => {
-  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue } = useContext(MyContext);
+  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, selectedComment, setSelectedComment, sessionStorageFn, setSelectedvalue, currentUser } = useContext(MyContext);
   const [userImg, setUserImg] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     let profile_img = userDb?.filter((item) => {
@@ -39,18 +41,22 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
         <div>
           <p>{props2}</p>
           <p>1 like</p>
-          <p
-            onClick={(e) => {
-              setCrudModal(!crudModal);
-              setSelectedvalue(props);
-              setSelectedComment(props3);
-            }}>
-            <svg aria-label='Comment Options' color='rgb(142, 142, 142)' fill='rgb(142, 142, 142)' height='24' role='img' viewBox='0 0 24 24' width='24'>
-              <circle cx='12' cy='12' r='1.5'></circle>
-              <circle cx='6' cy='12' r='1.5'></circle>
-              <circle cx='18' cy='12' r='1.5'></circle>
-            </svg>
-          </p>
+          {currentUser[0]?.user_name.toLowerCase() === props4?.toLowerCase() || currentUser[0].is_admin === 1 ? (
+            <p
+              onClick={(e) => {
+                setCrudModal(!crudModal);
+                setSelectedvalue(props);
+                setSelectedComment(props3);
+              }}>
+              <svg aria-label='Comment Options' color='rgb(142, 142, 142)' fill='rgb(142, 142, 142)' height='24' role='img' viewBox='0 0 24 24' width='24'>
+                <circle cx='12' cy='12' r='1.5'></circle>
+                <circle cx='6' cy='12' r='1.5'></circle>
+                <circle cx='18' cy='12' r='1.5'></circle>
+              </svg>
+            </p>
+          ) : (
+            <p style={{ height: "24px" }} />
+          )}
         </div>
       </div>
       <svg className={styles.svg} onClick={() => sessionStorageFn(props3, props)} width='15' height='15' viewBox='0 0 44 41.95' version='1.1'>

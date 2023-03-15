@@ -6,7 +6,7 @@ import { MyContext } from "@/components/context/Context";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 
-const Profile_post_board = () => {
+const Profile_post_board = ({ props }) => {
   const { pageName, textareaValue, setTextareaValue, handleSubmit } = useContext(MyContext);
   const [active, setActive] = useState(false);
 
@@ -16,7 +16,7 @@ const Profile_post_board = () => {
   };
 
   const submitFn = (e) => {
-    handleSubmit(escape(e), "POST", pageName);
+    handleSubmit(escape(e), "POST", pageName, props);
     setTextareaValue("");
     setActive(false);
   };
