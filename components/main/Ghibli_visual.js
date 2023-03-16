@@ -28,6 +28,7 @@ const Ghibli_visual = () => {
     anchors: ["sectionOne", "sectionTwo", "sectionThree", "sectionFour", "sectionFive", "sectionSix", "sectionSeven"],
   };
 
+  console.log(options.anchors);
   return (
     data.length > 0 && (
       <>
@@ -57,11 +58,11 @@ const Ghibli_visual = () => {
                     {data?.map((item, key) => {
                       return (
                         <li key={key}>
-                          <Link href=''>
+                          <a href={`#${options.anchors[key + 1]}`}>
                             <figure>
                               <img src={item.src} alt='#' onMouseEnter={() => setTitle(item.name)} onMouseLeave={() => setTitle("GHIBLI")} />
                             </figure>
-                          </Link>
+                          </a>
                         </li>
                       );
                     })}
@@ -69,10 +70,6 @@ const Ghibli_visual = () => {
                 </nav>
               </div>
             </section>
-          </Section>
-
-          <Section>
-            <Castle />
           </Section>
           <Section>
             <Spirited />
@@ -82,6 +79,9 @@ const Ghibli_visual = () => {
           </Section>
           <Section>
             <Ponyo />
+          </Section>
+          <Section>
+            <Castle />
           </Section>
           <Section>
             <Totoro />

@@ -50,7 +50,8 @@
   right: 0;
   bottom: 0;
   transform: translate(-110%, -60%);
-  &:hover {
+  &__active {
+    @extend .display;
     display: block;
   }
   li {
