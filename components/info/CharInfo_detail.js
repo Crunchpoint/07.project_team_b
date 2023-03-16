@@ -8,27 +8,27 @@ import Link from "next/link";
 const CharInfo_detail = () => {
   const router = useRouter();
   const name = router.query.name;
-  const str_data = router.query.data;
+  const strData = router.query.data;
   const [charName, setCharName] = useState("");
-  let data = "";
-  if (!str_data || !router.query.data) {
-    return;
-  } else {
-    data = JSON.parse(str_data);
-  }
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (data.name_eng.includes("/")) {
+    if (strData && router.query.data) {
+      setData(JSON.parse(strData));
+    }
+  }, [strData, router.query.data]);
+
+  useEffect(() => {
+    if (data && data.name_eng.includes("/")) {
       setCharName(data.name_eng.split("/")[1]);
-    } else {
+    } else if (data) {
       setCharName(data.name_eng);
     }
   }, [data]);
 
-  // 로딩 지연
-  useEffect(() => {
-    setTimeout(() => {}, 1000);
-  });
+  if (!data) {
+    return null;
+  }
 
   return (
     <>
@@ -37,7 +37,8 @@ const CharInfo_detail = () => {
           <button
             onClick={() => {
               window.history.back();
-            }}></button>
+            }}
+          ></button>
         </div>
         <Logo className={styles.logo_float}></Logo>
         <div className={`${styles.wrap_app} ${styles.wrap_app_detail}`}>
@@ -49,7 +50,7 @@ const CharInfo_detail = () => {
             </p>
           </div>
           <div className={styles.detail_right}>
-            <p>{data.quotes == "" ? <span></span> : `"${data.quotes}"`}</p>
+            <p>{data.quotes ? `"${data.quotes}"` : null}</p>
             <p>종 : {data.species}</p>
             <p>성별 : {data.gender}</p>
             <p>나이 : {data.age}</p>
