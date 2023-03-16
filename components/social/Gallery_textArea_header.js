@@ -16,7 +16,7 @@ const Gallery_textArea = ({ props, props2, props3 }) => {
         <div>
           <p>{props}</p>
           <p>{props3}</p>
-          {currentUser[0]?.user_name.toLowerCase() === props?.toLowerCase() || currentUser[0].is_admin === 1 ? (
+          {currentUser[0]?.user_name.toLowerCase() === props?.toLowerCase() || currentUser[0]?.is_admin === 1 ? (
             <p
               onClick={(e) => {
                 setBoardCrud(!boardCrud);

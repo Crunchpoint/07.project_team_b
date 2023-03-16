@@ -5,10 +5,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 const CharInfo_detail = () => {
+  const [data, setData] = useState(null);
+  const [charName, setCharName] = useState("");
   const router = useRouter();
   const strData = router.query.data;
-  const [charName, setCharName] = useState("");
-  const [data, setData] = useState(null);
 
   useEffect(() => {
     if (strData && router.query.data) {
