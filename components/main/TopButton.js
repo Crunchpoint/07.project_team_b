@@ -40,29 +40,27 @@ const TopButton = () => {
         <img src='../src/img/main/ponyo_png2.png'/>
       </button>
     </div> */}
-      <div className={styles.warp_menu_top}>
-        <a href='#sectionOne' className={styles.top}>
-          <img src='../src/img/main/top_btn.png' />
-        </a>
-        <ul className={styles.display}>
-          {data?.user ? (
-            <li onClick={() => signOut()}>Logout</li>
+    <div className={styles.warp_menu_top}>
+      <a href='#sectionOne' className={styles.top}>
+        <img src='../src/img/main/top_btn.png'/>
+      </a>
+      <ul className={styles.display}>
+        {
+          data?.user ? (
+            <li onClick={()=>signOut()}>Logout</li>
+            ) : (
+              <li><Link href='/login/login'>Login</Link></li>
+              )
+            }
+        {
+          data?.user ? (
+            <li><Link href={`/social/${data?.user.name.toLowerCase()}`}>SNS Page</Link></li>
           ) : (
-            <li>
-              <Link href='/login/login'>Login</Link>
-            </li>
-          )}
-          {data?.user ? (
-            <li>
-              <Link href={`/social/${data?.user.name.toLowerCase()}`}>Social Page</Link>
-            </li>
-          ) : (
-            <li onClick={handleButtonClick2}>
-              <Link href='/login/login'>Social Page</Link>
-            </li>
-          )}
-        </ul>
-      </div>
+            <li onClick={handleButtonClick2}><Link href='/login/login'>SNS Page</Link></li>
+          )
+        }
+      </ul>
+    </div>
     </>
   );
 };
