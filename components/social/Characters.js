@@ -51,10 +51,10 @@ const Characters = () => {
               src={data3[ranNum[key]].src}
               alt={data3[ranNum[key]].name_eng.replace(" ", "")}
               onClick={() => {
-                var name = data3[ranNum[key]].name_eng;
+                var name = data3[ranNum[key]].name_eng.trim();
                 if (name.includes("/")) {
                   var temp = name.split("/");
-                  name = temp[1];
+                  name = temp[1].trim();
                 }
                 // router.push(`/social/${name}`);
                 location.replace(`/social/${name}`);
