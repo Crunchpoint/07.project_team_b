@@ -53,7 +53,7 @@ const CharInfo = () => {
             <p className={styles.h1_text2}>Character?</p>
           </h1>
           <div>
-            <select id='aniSelect' className={styles.aniSelect} onChange={changeOption}>
+            <select id='aniSelect' className={styles.aniSelect} value={ani_name} onChange={changeOption}>
               {ani_list.map((e, key) => {
                 return (
                   <option value={e} key={key}>
