@@ -2,9 +2,6 @@ import styles from "@/styles/social/Characters.module.scss";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/Context";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { MyContext } from "../context/Context";
 
 const Characters = () => {
   const { data3 } = useContext(MyContext);

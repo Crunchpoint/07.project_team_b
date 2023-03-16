@@ -206,13 +206,13 @@ const Context = ({ children }) => {
           break;
 
         case "DELETE":
-          await axios.delete(apiEndpoint4, { data: comment_idx });
+          // await axios.delete(apiEndpoint4 ? (idx = 111 & user) : user);
+          await axios.delete(apiEndpoint4, { params: { comment_idx: comment_idx, user_name: user } });
           break;
 
         default:
           break;
       }
-
       response = await axios.get(apiEndpoint4);
       setLike(response.data);
     } catch (error) {
@@ -228,9 +228,8 @@ const Context = ({ children }) => {
 
   const handleLike = (e, method, idx, user_) => {
     const likeCheck = like.filter((item) => item.comment_idx === idx && item.user_name === user_);
-    console.log(likeCheck);
     if (likeCheck.length > 0) {
-      likeFn("DELETE", idx);
+      likeFn("DELETE", idx, user_);
     } else {
       const comment_idx = idx;
       const user = user_;

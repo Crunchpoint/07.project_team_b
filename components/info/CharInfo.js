@@ -28,7 +28,7 @@ const CharInfo = () => {
 
   var changeOption = (e) => {
     var name = e.target.value;
-    location.replace(`/info/charinfo?ani_name=${name}`);
+    router.push(`/info/charinfo?ani_name=${name}`);
   };
 
   function sendData(obj) {
@@ -43,11 +43,6 @@ const CharInfo = () => {
     });
   }
 
-  var changeOption = (e) => {
-    var name = e.target.value;
-    location.replace(`/info/charinfo?ani_name=${name}`);
-  };
-
   return (
     <div className={styles.app_info}>
       <div className={styles.wrap_app}>
@@ -57,24 +52,14 @@ const CharInfo = () => {
             <p className={styles.h1_text1}>Who is your favorite</p>
             <p className={styles.h1_text2}>Character?</p>
           </h1>
-
-          {/* onchanged 설정 */}
           <div>
             <select id='aniSelect' className={styles.aniSelect} onChange={changeOption}>
-              {ani_list.map((e) => {
-                if (e == ani_name) {
-                  return (
-                    <option selected defaultValue value={e} key={e}>
-                      {e}
-                    </option>
-                  );
-                } else {
-                  return (
-                    <option value={e} key={e}>
-                      {e}
-                    </option>
-                  );
-                }
+              {ani_list.map((e, key) => {
+                return (
+                  <option value={e} key={key}>
+                    {e}
+                  </option>
+                );
               })}
             </select>
           </div>

@@ -1,9 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
+import { query } from "express";
 import { executeQuery } from "./db";
 
 const handler = async (req, res) => {
   const { method, body } = req;
+  const query = req.query;
 
   const selectData = async () => {
     try {
@@ -37,7 +39,8 @@ const handler = async (req, res) => {
 
   const deleteData = async () => {
     try {
-      let data = await executeQuery(`delete from Like_ where comment_idx = ?`, [body]);
+      const { comment_idx, user_name } = query;
+      let data = await executeQuery(`delete from Like_ where comment_idx = ? and user_name = ?`, [comment_idx, user_name]);
       res.json(data);
     } catch (err) {
       res.send(err);

@@ -39,10 +39,9 @@ const User = () => {
       <Meta title={router.query.user} name='name' description='description' />
       <div className={styles.bg}></div>
       <section className={styles.container}>
-        <Logo></Logo>
         <div className={styles.inner}>
           <Profile router={router} />
-          <Characters router={router}/>
+          <Characters router={router} />
           <Gallery />
         </div>
       </section>
