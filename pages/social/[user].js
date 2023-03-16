@@ -7,6 +7,7 @@ import styles from "@/styles/social/[user].module.scss";
 import { useEffect } from "react";
 import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
+import Logo from "@/components/info/Logo";
 import Link from "next/link";
 
 const User = () => {
@@ -38,9 +39,10 @@ const User = () => {
       <Meta title={router.query.user} name='name' description='description' />
       <div className={styles.bg}></div>
       <section className={styles.container}>
+        <Logo></Logo>
         <div className={styles.inner}>
           <Profile router={router} />
-          <Characters />
+          <Characters router={router}/>
           <Gallery />
         </div>
       </section>

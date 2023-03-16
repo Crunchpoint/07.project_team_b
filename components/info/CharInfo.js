@@ -64,7 +64,7 @@ const CharInfo = () => {
               {ani_list.map((e) => {
                 if (e == ani_name) {
                   return (
-                    <option defaultValue value={e} key={e}>
+                    <option selected defaultValue value={e} key={e}>
                       {e}
                     </option>
                   );
