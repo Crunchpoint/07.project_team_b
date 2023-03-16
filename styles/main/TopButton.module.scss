@@ -1,91 +1,93 @@
-
-.top{
-    position: fixed;
-    scale: 0.3;
-    bottom: -13%;
-    right: 0%;
-    background-color: transparent;
-    border: none;
-    z-index: 99;
-    animation: updown 1s infinite;
-    animation-timing-function: ease-in-out;
-    // &:hover {
-    //     display: none;
-    // }
+.top {
+  position: fixed;
+  scale: 0.3;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  border: none;
+  z-index: 99;
+  animation: updown 1s infinite;
+  animation-timing-function: ease-in-out;
+  // &:hover {
+  //     display: none;
+  // }
 }
 
 @keyframes updown {
-    0%{
-        bottom: -13%;
-    }
-    50%{
-        bottom: -11.5%;
-    }
-    100%{
-        bottom: -13%;
-    }
+  0% {
+    bottom: -13%;
+  }
+  50% {
+    bottom: -11.5%;
+  }
+  100% {
+    bottom: -13%;
+  }
 }
 
 .warp_menu_top {
-    position: fixed;
-    bottom: 20%;
-    right: 1.5%;
-    display: flex;
+  position: fixed;
+  bottom: 20%;
+  right: 1.5%;
+  position: fixed;
+  bottom: 20%;
+  right: 1.5%;
+  display: flex;
 }
 .warp_menu_top .top:hover + .display {
-    display: block;
+  display: block;
 }
 
 .display {
-    background-color: #fff;
-    width: 100px;
-    height: auto;
-    position: fixed;
-    display: none;
-    opacity: 1;
-    text-align: center;
-    border-radius: 10px;
-    right: 0;
-    bottom: 0;
-    transform: translate(-110%,-60%);
+  background-color: #fff;
+  width: 100px;
+  height: auto;
+  position: fixed;
+  display: none;
+  opacity: 1;
+  text-align: center;
+  border-radius: 10px;
+  right: 0;
+  bottom: 0;
+  transform: translate(-110%, -60%);
+  &:hover {
+    display: block;
+  }
+  li {
+    padding: 5px 0;
     &:hover {
-        display: block;
+      background-color: #ccc;
+      &:first-child {
+        border-radius: 10px 10px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 10px 10px;
+      }
     }
-    li {
-        padding: 5px 0;
-        &:hover {
-            background-color: #ccc;
-            &:first-child {
-                border-radius: 10px 10px 0 0;
-            }
-            &:last-child {
-                border-radius: 0 0 10px 10px;
-            }
-        }
-        &:first-child {
-            border-bottom: 1px solid #ccc;
-        }
+    &:first-child {
+      border-bottom: 1px solid #ccc;
     }
+  }
 }
 
-@media screen and (max-width:750px){
-    .top{
-        position: fixed;
-        scale: 0.3;
-        bottom: -22%;
-        right: -3%;
-        background-color: transparent;
-        border: none;
-    }
+@media screen and (max-width: 750px) {
+  .top {
+    position: fixed;
+    scale: 0.3;
+    bottom: -22%;
+    right: -3%;
+    background-color: transparent;
+    border: none;
+  }
 }
 
-@media screen and (max-width:400px){
-    .top{
-        position: fixed;
-        scale: 0.25;
-        bottom: -25%;
-        right: -7%;
-        background-color: transparent;
-        border: none;
-    }
+@media screen and (max-width: 400px) {
+  .top {
+    position: fixed;
+    scale: 0.25;
+    bottom: -25%;
+    right: -7%;
+    background-color: transparent;
+    border: none;
+  }
 }
