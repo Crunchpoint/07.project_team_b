@@ -310,7 +310,7 @@
         .main_img_01{
             position: absolute;
             right: -5%;
-            top: 5%;
+            top: 15%;
             z-index: -2;
             opacity: 1;
             scale: 0.5;
@@ -371,17 +371,17 @@
             @keyframes img_ani {
                 0%{
                     right: -5%;
-                    top: 20%;
+                    top: 15%;
                     opacity: 1;
                 }
                 50%{
                     right: 35%;
-                    top: 20%;
+                    top: 15%;
                     opacity: 0;
                 }
                 100%{
                     right: -5%;
-                    top: 20%;
+                    top: 15%;
                     opacity: 1;
                 }
             }
