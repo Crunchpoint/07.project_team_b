@@ -54,7 +54,7 @@ const CharInfo_detail = () => {
             <p>성별 : {data.gender}</p>
             <p>나이 : {data.age}</p>
             <p>
-              성우 : {data.voice_eng}({data.voice_jap})
+              성우 : {data.voice_eng} ({data.voice_jap})
             </p>
             <p className={styles.detail_right_path}>
               <Link href={`/social/${charName}`}>캐릭터 페이지 바로가기 ▶️</Link>
