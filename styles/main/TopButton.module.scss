@@ -7,9 +7,23 @@
     background-color: transparent;
     border: none;
     z-index: 99;
+    animation: updown 1s infinite;
+    animation-timing-function: ease-in-out;
     // &:hover {
     //     display: none;
     // }
+}
+
+@keyframes updown {
+    0%{
+        bottom: -13%;
+    }
+    50%{
+        bottom: -11.5%;
+    }
+    100%{
+        bottom: -13%;
+    }
 }
 
 .warp_menu_top {
