@@ -30,7 +30,6 @@ const Gallery_items = ({ item, modal }) => {
     setWriteTime(item.time);
   };
 
-  console.log(user.data);
   const handleButtonClick2 = () => {
     Swal.fire({
       title: "로그인이 필요해요",
