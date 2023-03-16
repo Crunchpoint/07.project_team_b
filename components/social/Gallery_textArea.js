@@ -5,8 +5,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const Gallery_textArea = ({ props, props2, props3, props4 }) => {
-  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, sessionStorageFn, setSelectedvalue, currentUser } = useContext(MyContext);
+  const { userDb, boardCrud, setBoardCrud, crudModal, setCrudModal, setSelectedComment, setSelectedvalue, currentUser, handleLike, like } = useContext(MyContext);
   const [userImg, setUserImg] = useState();
+  const [selectedLike, setSelectedLike] = useState();
   const router = useRouter();
 
   useEffect(() => {
@@ -16,6 +17,19 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
     setUserImg(profile_img[0]?.profile_img);
   }, [userDb, props4]);
 
+  // console.log(userDb);
+  // console.log(props4);
+  // console.log(userImg);
+
+  console.log(like);
+  // console.log(props3);
+  useEffect(() => {
+    let likeCount = like?.filter((item) => {
+      return item.comment_idx == props3;
+    });
+    setSelectedLike(likeCount[0]?.comment_idx);
+  }, [like]);
+  // console.log(selectedLike);
   return (
     <>
       <div className={styles.profile_img}>
@@ -40,7 +54,7 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
         </div>
         <div>
           <p>{props2}</p>
-          <p>1 like</p>
+          <p>{selectedLike}</p>
           {currentUser[0]?.user_name.toLowerCase() === props4?.toLowerCase() || currentUser[0].is_admin === 1 ? (
             <p
               onClick={(e) => {
@@ -59,11 +73,11 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
           )}
         </div>
       </div>
-      <svg className={styles.svg} onClick={() => sessionStorageFn(props3, props)} width='15' height='15' viewBox='0 0 44 41.95' version='1.1'>
+      <svg className={styles.svg} onClick={(e) => handleLike(e, "POST", props3, props4)} width='15' height='15' viewBox='0 0 44 41.95' version='1.1'>
         <defs />
         <g id='Untitled'>
           <path
-            className={sessionStorage[props3] === props ? styles.like__active : styles.like}
+            // className={sessionStorage[props3] === props ? styles.like__active : styles.like}
             d='M22 39.3L19.95 37.45C16.4167 34.2167 13.5 31.425 11.2 29.075C8.9 26.725 7.06667 24.625 5.7 22.775C4.33333 20.925 3.375 19.25 2.825 17.75C2.275 16.25 2 14.7333 2 13.2C2 10.2 3.00833 7.69167 5.025 5.675C7.04167 3.65833 9.53333 2.65 12.5 2.65C14.4 2.65 16.1583 3.1 17.775 4C19.3917 4.9 20.8 6.2 22 7.9C23.4 6.1 24.8833 4.775 26.45 3.925C28.0167 3.075 29.7 2.65 31.5 2.65C34.4667 2.65 36.9583 3.65833 38.975 5.675C40.9917 7.69167 42 10.2 42 13.2C42 14.7333 41.725 16.25 41.175 17.75C40.625 19.25 39.6667 20.925 38.3 22.775C36.9333 24.625 35.1 26.725 32.8 29.075C30.5 31.425 27.5833 34.2167 24.05 37.45L22 39.3Z'
             // fill="#ffffff"
             stroke='#000000'

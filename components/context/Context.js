@@ -8,6 +8,7 @@ const dataUrl1 = "../src/json/charDetail.json";
 const apiEndpoint = "/api/board";
 const apiEndpoint2 = "/api/comment";
 const apiEndpoint3 = "/api/user";
+const apiEndpoint4 = "/api/like";
 
 const Context = ({ children }) => {
   const [data, setData] = useState([]);
@@ -34,7 +35,7 @@ const Context = ({ children }) => {
   const [textareaValue, setTextareaValue] = useState("");
   const [selectedValue, setSelectedvalue] = useState("");
   const [pageName, setPageName] = useState("");
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState([]);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef();
   const user = useSession();
@@ -92,11 +93,9 @@ const Context = ({ children }) => {
       console.error(error);
     }
   };
-
   useEffect(() => {
     userFn();
   }, []);
-
   // user 서밋 함수
   const handleUser = (method, user_email, user_name, user_img) => {
     const email = user_email;
@@ -138,11 +137,9 @@ const Context = ({ children }) => {
       console.error(error);
     }
   };
-
   useEffect(() => {
     boardFn();
   }, []);
-
   // board 서밋 함수
   const handleSubmit = (e, method, user_name, image_url) => {
     const user = 1;
@@ -151,6 +148,7 @@ const Context = ({ children }) => {
     const content = e;
     boardFn(method, user, content, img, name);
   };
+
   // comment 데이터 통신
   const commentFn = async (method, user, board, comment, comment_idx) => {
     try {
@@ -181,17 +179,64 @@ const Context = ({ children }) => {
       console.error(error);
     }
   };
-
   useEffect(() => {
     commentFn();
   }, []);
-
   // comment 서밋 함수
   const handleComment = (e, method, idx, comment_idx) => {
     const user = currentUser[0]?.user_name;
     const board = idx;
     const comment = e;
     commentFn(method, user, board, comment, comment_idx);
+  };
+
+  // like 데이터 통신
+  const likeFn = async (method, comment_idx, user, is_like) => {
+    try {
+      let data = { comment_idx: comment_idx, user_name: user, is_like: is_like };
+      let response;
+
+      switch (method) {
+        case "POST":
+          await axios.post(apiEndpoint4, data);
+          break;
+
+        case "PUT":
+          await axios.put();
+          break;
+
+        case "DELETE":
+          await axios.delete(apiEndpoint4, { data: comment_idx });
+          break;
+
+        default:
+          break;
+      }
+
+      response = await axios.get(apiEndpoint4);
+      setLike(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // console.log(like);
+  useEffect(() => {
+    likeFn();
+  }, []);
+  // like 서밋 함수
+
+  const handleLike = (e, method, idx, user_) => {
+    const likeCheck = like.filter((item) => item.comment_idx === idx && item.user_name === user_);
+    console.log(likeCheck);
+    if (likeCheck.length > 0) {
+      likeFn("DELETE", idx);
+    } else {
+      const comment_idx = idx;
+      const user = user_;
+      const is_like = 1;
+      likeFn(method, comment_idx, user, is_like);
+    }
   };
 
   // 시간 계산 함수
@@ -292,6 +337,7 @@ const Context = ({ children }) => {
     handleUser,
     selSocialImg,
     setSelSocialImg,
+    handleLike,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;

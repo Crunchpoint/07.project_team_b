@@ -9,7 +9,7 @@ const Gallery_article = () => {
 
   useEffect(() => {
     setFilteredComment(
-      comment.filter((item) => {
+      comment?.filter((item) => {
         return item.board_idx === selectedContent.idx;
       })
     );
@@ -22,6 +22,7 @@ const Gallery_article = () => {
       </section>
       <ul>
         {filteredComment?.map((item, index) => {
+          // console.log(item);
           return (
             <li key={index}>
               <Gallery_textArea props={unescape(item._comment)} props2={timeForToday(item.w_time)} props3={item.comment_idx} props4={item.user_name} />
