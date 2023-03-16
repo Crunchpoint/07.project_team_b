@@ -30,6 +30,7 @@
     position: fixed;
     bottom: 20%;
     right: 1.5%;
+    display: flex;
 }
 .warp_menu_top .top:hover + .display {
     display: block;
@@ -41,11 +42,12 @@
     height: auto;
     position: fixed;
     display: none;
-    // opacity: 0;
+    opacity: 1;
     text-align: center;
     border-radius: 10px;
-    right: 1.5%;
-    bottom: 17%;
+    right: 0;
+    bottom: 0;
+    transform: translate(-110%,-60%);
     &:hover {
         display: block;
     }

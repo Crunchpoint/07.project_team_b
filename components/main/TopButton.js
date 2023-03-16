@@ -23,10 +23,9 @@ const TopButton = () => {
       width: 600,
       padding: "2em",
       color: "#716add",
-      background: "#fff url(/images/trees.png)",
+      background: "#fff",
       backdrop: `
         rgba(0,0,0,0.4)
-        url("/images/nyan-cat.gif")
         left top
         no-repeat
       `,
