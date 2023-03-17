@@ -9,12 +9,12 @@ const Login = () => {
   const { data, status } = useSession();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   // console.log(`History Stack: ${window.history.length}`);
-  //   if (data?.user) {
-  //     router.back();
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    // console.log(`History Stack: ${window.history.length}`);
+    if (data?.user) {
+      router.push("/main/ghibli");
+    }
+  }, [data]);
 
   return (
     <div className={styles.login}>
