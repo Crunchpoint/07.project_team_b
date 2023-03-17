@@ -7,7 +7,6 @@ import styles from "@/styles/social/[user].module.scss";
 import { useEffect } from "react";
 import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
-import Logo from "@/components/info/Logo";
 import Link from "next/link";
 
 const User = () => {
@@ -17,12 +16,13 @@ const User = () => {
   useEffect(() => {
     setPageName(router.query.user);
   }, [router]);
+
   useEffect(() => {
     let filteredData = [];
     let temp = userDb.filter((item) => item.user_name.toLowerCase() === router.query.user);
     if (temp.length > 0) {
       filteredData = userDb?.filter((item) => {
-        return item.user_name.toLowerCase().includes(router.query.user);
+        return item.user_name.toLowerCase() === router.query.user;
       });
       setSelSocialImg(filteredData[0]?.profile_img);
     } else {
