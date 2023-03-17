@@ -14,7 +14,7 @@
   flex-basis: 40%;
   display: grid;
   grid-template-rows: 0.1fr 0.9fr;
-  overflow: hidden;
+  // overflow: hidden;
   > section {
     padding: 15px;
     display: flex;
@@ -48,7 +48,6 @@
         }
       }
       > .button {
-        font-size: 1rem;
         padding: 0 10px;
         border: none;
         background: transparent;
