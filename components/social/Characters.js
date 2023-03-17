@@ -56,8 +56,8 @@ const Characters = () => {
                   var temp = name.split("/");
                   name = temp[1].trim();
                 }
-                // router.push(`/social/${name}`);
-                location.replace(`/social/${name}`);
+                router.push(`/social/${name}`);
+                // location.replace(`/social/${name}`);
               }}
             />
             <p>{data3[ranNum[key]].name_eng}</p>
