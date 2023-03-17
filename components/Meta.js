@@ -11,6 +11,7 @@ const Meta = ({ title, name, description }) => {
       <meta name={name} content={description} />
       <link rel='icon' href='/src/favicon.ico' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
+      <link href='https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap' rel='stylesheet' />
       <style>
         {`
           body {
