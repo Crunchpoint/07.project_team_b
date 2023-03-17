@@ -4,7 +4,7 @@ import Ghibli_visual from "@/components/main/Ghibli_visual";
 const ghibli = () => {
   return (
     <>
-      <Meta title='title' name='name' description='description' />
+      <Meta title='GHIBLI' name='name' description='description' />
       <Ghibli_visual />
     </>
   );
