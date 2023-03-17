@@ -53,12 +53,12 @@
         border: none;
         background: transparent;
         padding-bottom: 15px;
-        &__active ~ div {
+        &__active {
           @extend .button;
+        }
+        &__active ~ div {
           display: flex;
         }
-        // &__active ~ div {
-        // }
       }
       > div {
         display: none;
