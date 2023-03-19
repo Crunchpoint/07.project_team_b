@@ -27,7 +27,6 @@ const Profile_post_board = ({ props }) => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      console.log(e.target.className);
       if (e.target.className !== styles.button__active) {
         setActive(false);
       }
