@@ -141,8 +141,9 @@ const Context = ({ children }) => {
     boardFn();
   }, []);
   // board 서밋 함수
+  console.log(currentUser);
   const handleSubmit = (e, method, user_name, image_url) => {
-    const user = 1;
+    // const user = ;
     const img = image_url;
     const name = user_name;
     const content = e;
