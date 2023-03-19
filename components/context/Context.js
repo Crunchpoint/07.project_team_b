@@ -143,7 +143,7 @@ const Context = ({ children }) => {
   // board 서밋 함수
   console.log(currentUser);
   const handleSubmit = (e, method, user_name, image_url) => {
-    // const user = ;
+    const user = currentUser[0].num;
     const img = image_url;
     const name = user_name;
     const content = e;
