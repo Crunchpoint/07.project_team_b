@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { executeQuery } from "./db";
+import { checkApiAccess } from "./middleware";
 
 const handler = async (req, res) => {
   const { method, body } = req;
@@ -59,4 +60,4 @@ const handler = async (req, res) => {
   }
 };
 
-export default handler;
+export default checkApiAccess(handler);

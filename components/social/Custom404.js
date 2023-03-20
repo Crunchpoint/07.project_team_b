@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-const Custom404 = () => {
+const Custom404 = ({ data }) => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/main/ghibli");
+    setTimeout(() => {
+      data === undefined && router.push("/main/ghibli");
+    }, 2500);
   }, []);
 
-  return null;
+  // return null;
 };
 export default Custom404;

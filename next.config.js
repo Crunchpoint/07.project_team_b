@@ -4,8 +4,8 @@ const nextConfig = {
   // async redirects() {
   //   return [
   //     {
-  //       source: "/social/:user",
-  //       destination: "/",
+  //       source: "/api/:slug*",
+  //       destination: "/main/ghibli",
   //       permanent: false,
   //     },
   //   ];

@@ -1,9 +1,8 @@
-import { useRouter } from 'next/router'
-import React from 'react'
+import { useRouter } from "next/router";
+import React from "react";
 
 const Upload = () => {
   const router = useRouter();
-  console.log(router);
   return (
     <>
       <div>
@@ -13,7 +12,7 @@ const Upload = () => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Upload
+export default Upload;

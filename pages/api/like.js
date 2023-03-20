@@ -2,6 +2,7 @@
 
 import { query } from "express";
 import { executeQuery } from "./db";
+import { checkApiAccess } from "./middleware";
 
 const handler = async (req, res) => {
   const { method, body } = req;
@@ -19,7 +20,6 @@ const handler = async (req, res) => {
   const insertData = async () => {
     try {
       const { comment_idx, user_name, is_like } = body;
-      console.log(body);
       let data = await executeQuery(`insert into Like_ (comment_idx, user_name, is_like) values ("${comment_idx}", "${user_name}", "${is_like}")`);
       res.json(data);
     } catch (err) {
@@ -63,4 +63,4 @@ const handler = async (req, res) => {
   }
 };
 
-export default handler;
+export default checkApiAccess(handler);

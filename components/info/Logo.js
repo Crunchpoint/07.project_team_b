@@ -24,13 +24,15 @@ const Logo = () => {
     });
   };
 
+  console.log("sessionData.data", sessionData.data);
+
   return (
     <div className={styles.wrap_logo}>
       <button className={styles.btn1} onClick={() => handleButtonClick("자세히 알고싶은 캐릭터를 클릭해주세요😄")}>
         캐릭터 알아보기
       </button>
       <button className={styles.btn2} onClick={() => router.push("/main/ghibli")}></button>
-      {sessionData?.user ? (
+      {sessionData?.data ? (
         <Link href={`/social/${sessionData.user?.name?.toLowerCase()}`}>
           <button className={styles.btn3}>SNS 바로가기</button>
         </Link>

@@ -13,6 +13,7 @@ import Custom404 from "@/components/social/Custom404";
 const User = () => {
   const { setPageName, data3, setSelSocialImg, userDb } = useContext(MyContext);
   const [combinedData, setCombinedData] = useState([]);
+  const [userExists, setUserExists] = useState();
   const router = useRouter();
 
   useEffect(() => {
@@ -38,44 +39,73 @@ const User = () => {
       });
       setSelSocialImg(filteredData[0]?.src);
     }
+
+    const userExists = combinedData?.filter((item) => item.user_name?.toLowerCase() === router.query.user || item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase())).length > 0;
+
+    setUserExists(userExists);
   }, [router, data3, userDb]);
 
-  const userExists = combinedData?.filter((item) => item.user_name?.toLowerCase() === router.query.user || item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase())).length > 0;
-
-  // server side props
-  // 기본 데이터를 unde, null
-  // promise 설정
-
   return (
-    <>
-      <Meta title={router.query.user} name='name' description='description' />
-      <div className={styles.bg}></div>
-      <section className={styles.container}>
-        <div className={styles.inner}>
-          <Profile router={router} />
-          <Characters router={router} />
-          <Gallery />
+    userExists && (
+      <>
+        <Meta title={router.query.user} name='name' description='description' />
+        <div className={styles.bg} />
+        <section className={styles.container}>
+          <div className={styles.inner}>
+            <Profile router={router} />
+            <Characters router={router} />
+            <Gallery />
+          </div>
+        </section>
+        <div className={styles.bbutton}>
+          <div className={styles.button}>
+            <Link href='/main/ghibli'>
+              <button className={styles.home} />
+            </Link>
+          </div>
+          <div
+            className={styles.button2}
+            onClick={() => {
+              window.history.back();
+            }}>
+            <button className={styles.back} />
+          </div>
         </div>
-      </section>
-      <div className={styles.bbutton}>
-        <div className={styles.button}>
-          <Link href='/main/ghibli'>
-            <button className={styles.home}></button>
-          </Link>
-        </div>
-        <div
-          className={styles.button2}
-          onClick={() => {
-            window.history.back();
-          }}>
-          <button className={styles.back}></button>
-        </div>
-      </div>
-    </>
+      </>
+    )
   );
-  // : (
-  //   <Custom404 />
-  // );
 };
+
+// const abc = async () => {
+//   await axios
+//     .all([axios.get("http://localhost:3000/api/user"), axios.get("../src/json/charDetail.json")])
+//     .then(
+//       axios.spread((res1, res2) => {
+//         const responseOne = res1;
+//         const responseTwo = res2;
+//         // use/access the results
+//         console.log(responseOne);
+//         console.log(responseTwo);
+//       })
+//     )
+//     .catch((errors) => {
+//       // react on errors.
+//     });
+// };
+// abc();
+
+// export const getStaticPaths = async () => {
+//   const res = await axios.all(["http://localhost:3000/api/user", "@/public/src/json/charDetail.json"]);
+//   const data = await res.json();
+//   const paths = data.map((item) => {
+//     return {
+//       params: { user: item.user_name },
+//     };
+//   });
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
 export default User;
