@@ -18,27 +18,27 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
     setUserImg(profile_img[0]?.profile_img);
   }, [userDb, props4]);
 
-  // useEffect(() => {
-  //   let likeCount = like?.filter((item) => {
-  //     return item.comment_idx === props3;
-  //   });
-  //   setCount(likeCount.length);
-  // }, [like, props3]);
-
-  // useEffect(() => {
-  //   let isLike = like?.filter((item) => {
-  //     return item.comment_idx === props3 && item.user_name === currentUser[0].user_name;
-  //   });
-  //   setIsLike(isLike.length > 0 ? true : false);
-  // }, [like, props3, currentUser]);
+  useEffect(() => {
+    let likeCount = like?.filter((item) => {
+      return item.comment_idx === props3;
+    });
+    setCount(likeCount.length);
+  }, [like, props3]);
 
   useEffect(() => {
-    const likeCount = like?.filter((item) => item.comment_idx === props3).length;
-    setCount(likeCount);
-
-    const isLike = like?.some((item) => item.comment_idx === props3 && item.user_name === currentUser[0].user_name);
-    setIsLike(isLike);
+    let isLike = like?.filter((item) => {
+      return item.comment_idx === props3 && item.user_name === currentUser[0].user_name;
+    });
+    setIsLike(isLike.length > 0 ? true : false);
   }, [like, props3, currentUser]);
+
+  // useEffect(() => {
+  //   const likeCount = like?.filter((item) => item.comment_idx === props3).length;
+  //   setCount(likeCount);
+
+  //   const isLike = like?.some((item) => item.comment_idx === props3 && item.user_name === currentUser[0].user_name);
+  //   setIsLike(isLike);
+  // }, [like, props3, currentUser]);
 
   return (
     <>
