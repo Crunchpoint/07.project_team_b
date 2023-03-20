@@ -23,6 +23,7 @@ const Logo = () => {
       `,
     });
   };
+  console.log(sessionData.data?.user);
 
   return (
     <div className={styles.wrap_logo}>
