@@ -112,6 +112,24 @@
         font-weight: 600;
     }
 }
+.detail_right_path2 {
+  // height: 80%;
+  // overflow-y: scroll;
+  width: auto;
+  overflow-y: auto;
+  padding: 5px 0;
+  margin-top: 3rem;
+  margin-left: 1rem;
+  border: 1px solid #fff;
+  padding: 0.7rem;
+  float: right;
+  font-size: 12px;
+  font-weight: 400;
+  &:hover {
+      background-color: #fff3;
+      font-weight: 600;
+  }
+}
 
 .body {
   z-index: 99;
@@ -411,4 +429,107 @@
       margin-top: 1rem;
     }
   }
+  .swiper {
+    flex-direction: column;
+    padding: 2.5rem 1rem 2rem 1.7rem;
+  }
+  .detail_img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // width: 13.5vw;
+    // height: 19vw;
+    -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, transparent);
+    // margin: 0 1.5rem;
+  }
+  
+  .detail_img img{
+    // width: 100%;
+    // height: 100%;
+    width: 100%;
+    height: 110vw;
+    object-fit: cover;
+    display: block;
+    filter: brightness(1.1);
+  }
+  .wrap_app_detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+    // margin: 5rem;
+    position: relative;
+    top: 30%;
+    color: #fff;
+    justify-content: center;
+}
+.detail_left {
+  text-align: center;
+  p {
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+  }
+}
+.detail_right {
+  width: 100%;
+  margin: 1rem 2rem;
+  p {
+      &:first-child {
+          font-size: 1.5rem;
+          font-style: italic;
+          margin-bottom: 2rem;
+          line-height: 120%;
+      }
+      &:nth-of-type(2){
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      &:nth-of-type(3){
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      &:nth-of-type(4){
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      &:nth-of-type(5){
+        font-size: 1rem;
+      }
+  }
+}
+.detail_right_path {
+  // height: 80%;
+  // overflow-y: scroll;
+  text-align: center;
+  width: 20rem;
+  overflow-y: auto;
+  margin: 2rem 0 1rem 0;
+  border: 1px solid #fff;
+  padding: 0.7rem;
+  float: left;
+  font-size: 12px;
+  font-weight: 400;
+  &:hover {
+      background-color: #fff3;
+      font-weight: 600;
+  }
+}
+.detail_right_path2 {
+  // height: 80%;
+  // overflow-y: scroll;
+  text-align: center;
+  width: 20rem;
+  overflow-y: auto;
+  margin: 0 0 4rem 0;
+  border: 1px solid #fff;
+  padding: 0.7rem;
+  float: left;
+  font-size: 12px;
+  font-weight: 400;
+  &:hover {
+      background-color: #fff3;
+      font-weight: 600;
+  }
+}
 }

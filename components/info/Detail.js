@@ -54,7 +54,7 @@ const Detail = () => {
               <p className={styles.detail_right_path}>
                 <Link href={`/social/${charName}`}>캐릭터 페이지 바로가기 ▶️</Link>
               </p>
-              <p className={styles.detail_right_path}>
+              <p className={styles.detail_right_path2}>
                 <Link href={data.url}>캐릭터 설명 더보기 ▶️</Link>
               </p>
             </div>

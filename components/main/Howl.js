@@ -27,20 +27,22 @@ const Howl = () => {
         href={{
           pathname: "/info/charinfo",
           query: {
-            ani_name: "howl",
-          },
-        }}>
-        <button className={styles.button}>SEE MORE</button>
-      </Link>
-      <div className={styles.main_img}>
-        <img className={styles.main_img_01} src='../src/img/main/howl_png.png' alt='하울의움직이는성' />
-        <img className={styles.main_img_02} src='../src/img/main/howl_png2.png' alt='하울의움직이는성' />
-        <img className={styles.main_img_03} src='../src/img/main/howl_cloud_bg.png' alt='하울의움직이는성' />
-      </div>
-      <div className={styles.text}>
-        <div className={styles.main_text}>Howl&apos;s</div>
-        <div className={styles.main_text2}>Moving Castle</div>
-      </div>
+            ani_name: "howl"
+          }
+       }}  >
+          <button className={styles.button}>
+            SEE MORE
+          </button>
+        </Link>
+        <div className={styles.main_img}>   
+            <img className={styles.main_img_01} src="../src/img/main/howl_png.png" alt='하울의움직이는성'/>
+            <img className={styles.main_img_02} src="../src/img/main/howl_png2.png" alt='하울의움직이는성'/>
+            <img className={styles.main_img_03} src="../src/img/main/howl_cloud_bg.png" alt='하울의움직이는성'/>
+        </div>
+        <div className={styles.text}>
+            <div className={styles.main_text}>Howl&apos;s</div>
+            <div className={styles.main_text2}>Moving Castle</div>
+        </div>
     </div>
   );
 };
