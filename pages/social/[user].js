@@ -46,33 +46,31 @@ const User = () => {
   }, [router, data3, userDb]);
 
   return (
-    userExists && (
-      <>
-        <Meta title={router.query.user} name='name' description='description' />
-        <div className={styles.bg} />
-        <section className={styles.container}>
-          <div className={styles.inner}>
-            <Profile router={router} />
-            <Characters router={router} />
-            <Gallery />
-          </div>
-        </section>
-        <div className={styles.bbutton}>
-          <div className={styles.button}>
-            <Link href='/main/ghibli'>
-              <button className={styles.home} />
-            </Link>
-          </div>
-          <div
-            className={styles.button2}
-            onClick={() => {
-              window.history.back();
-            }}>
-            <button className={styles.back} />
-          </div>
+    <>
+      <Meta title={router.query.user} name='name' description='description' />
+      <div className={styles.bg} />
+      <section className={styles.container}>
+        <div className={styles.inner}>
+          <Profile router={router} />
+          <Characters router={router} />
+          <Gallery />
         </div>
-      </>
-    )
+      </section>
+      <div className={styles.bbutton}>
+        <div className={styles.button}>
+          <Link href='/main/ghibli'>
+            <button className={styles.home} />
+          </Link>
+        </div>
+        <div
+          className={styles.button2}
+          onClick={() => {
+            window.history.back();
+          }}>
+          <button className={styles.back} />
+        </div>
+      </div>
+    </>
   );
 };
 
