@@ -61,4 +61,5 @@ const handler = async (req, res) => {
   }
 };
 
-export default checkApiAccess(handler);
+// export default checkApiAccess(handler);
+export default handler;
