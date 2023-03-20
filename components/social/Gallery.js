@@ -9,6 +9,7 @@ import Gallery_items from "./Gallery_items";
 import Gallery_social from "./Gallery_social";
 import Gallery_comment_edit from "./Gallery_comment_edit";
 import Board_crud_modal from "./Board_crud_modal";
+import { useSession } from "next-auth/react";
 
 const Gallery = () => {
   const { boardCrud, showModal, selectedImg, crudModal, edit, filteredBoard } = useContext(MyContext);

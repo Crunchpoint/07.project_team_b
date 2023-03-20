@@ -12,7 +12,7 @@ const Login = () => {
   useEffect(() => {
     // console.log(`History Stack: ${window.history.length}`);
     if (data?.user) {
-      router.back();
+      router.push("/main/ghibli");
     }
   }, [data]);
 

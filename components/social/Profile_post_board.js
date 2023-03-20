@@ -1,7 +1,7 @@
 import styles from "@/styles/social/Profile_post_board.module.scss";
 import Gallery_textArea from "./Gallery_textArea";
 import Gallery_textArea_header from "./Gallery_textArea_header";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
@@ -24,6 +24,19 @@ const Profile_post_board = ({ props }) => {
   const handleEmoji = (e) => {
     setTextareaValue(textareaValue + e.native);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (e.target.className !== styles.button__active) {
+        setActive(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [active]);
 
   return (
     <div className={styles.board}>

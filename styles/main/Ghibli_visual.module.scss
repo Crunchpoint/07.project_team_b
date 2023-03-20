@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap");
-
 @mixin mainCateBtn($url) {
   width: 40px;
   height: 40px;
@@ -182,16 +180,15 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                
               }
             }
             @keyframes position {
-              0%{
+              0% {
                 transform: translateY(51%);
                 left: -169%;
                 opacity: 1;
               }
-              100%{
+              100% {
                 transform: translateY(0%);
                 left: 0%;
                 opacity: 0;

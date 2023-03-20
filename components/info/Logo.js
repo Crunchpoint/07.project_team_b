@@ -4,10 +4,11 @@ import styles from "@/styles/info/CharInfo.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const Logo = () => {
   const router = useRouter();
-  const { data: sessionData } = useSession();
+  const sessionData = useSession();
 
   const handleButtonClick = (title) => {
     Swal.fire({
@@ -29,16 +30,15 @@ const Logo = () => {
         캐릭터 알아보기
       </button>
       <button className={styles.btn2} onClick={() => router.push("/main/ghibli")}></button>
-
       {sessionData?.user ? (
         <Link href={`/social/${sessionData.user?.name?.toLowerCase()}`}>
           <button className={styles.btn3}>SNS 바로가기</button>
         </Link>
       ) : (
         <Link href='/login/login'>
-        <button className={styles.btn3} onClick={() => handleButtonClick("로그인이 필요해요")}>
-          SNS 바로가기
-        </button>
+          <button className={styles.btn3} onClick={() => handleButtonClick("로그인이 필요해요")}>
+            SNS 바로가기
+          </button>
         </Link>
       )}
     </div>

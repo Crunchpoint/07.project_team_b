@@ -65,7 +65,7 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
         <div>
           <p>{props2}</p>
           <p>{count} Like</p>
-          {currentUser[0]?.user_name.toLowerCase() === props4?.toLowerCase() || currentUser[0].is_admin === 1 ? (
+          {currentUser[0]?.user_name.toLowerCase() === props4?.toLowerCase() || currentUser[0]?.is_admin === 1 ? (
             <p
               onClick={(e) => {
                 setCrudModal(!crudModal);

@@ -4,16 +4,21 @@ import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/Context";
 
 const Characters = () => {
-  const { data3 } = useContext(MyContext);
+  const { userDb, data3 } = useContext(MyContext);
   const router = useRouter();
-  // var random = [];
   const [ranNum, setRanNum] = useState([]);
-  var len = data3.length;
+  const [combinedData, setCombinedData] = useState([]);
+  let len = combinedData.length;
+
+  useEffect(() => {
+    let combinedData = [...data3, ...userDb];
+    setCombinedData(combinedData);
+  }, [data3, userDb]);
 
   function randomNum() {
     const randomNum = [];
     const usedIndex = new Set();
-    while (randomNum.length < 6 && data3.length > 0) {
+    while (randomNum.length < 6 && combinedData?.length > 0) {
       let randomIndex = Math.floor(Math.random() * len);
       if (!usedIndex.has(randomIndex)) {
         randomNum.push(randomIndex);
@@ -23,24 +28,9 @@ const Characters = () => {
     setRanNum(randomNum);
   }
 
-  // function getRandChar() {
-  //   var num = [];
-  //   for(var i=0; i<5; i++) {
-  //     let temp = Math.floor(Math.random() * (len));
-  //     num.push(temp)
-  //     // console.log('random', random)
-  //     // if(random.indexOf(num) === -1) {
-  //     // } else {
-  //       // i--
-  //     // }
-  //   }
-  //   setRandom(num);
-  // }
   useEffect(() => {
-    // getRandChar()
     randomNum();
-    // console.log(random)
-  }, [data3]);
+  }, [data3, userDb, combinedData]);
 
   return (
     <div className={styles.characters}>
@@ -48,19 +38,18 @@ const Characters = () => {
         return (
           <figure key={key}>
             <img
-              src={data3[ranNum[key]].src}
-              alt={data3[ranNum[key]].name_eng.replace(" ", "")}
+              src={combinedData[ranNum[key]].src || combinedData[ranNum[key]].profile_img}
+              alt={combinedData[ranNum[key]].name_eng?.replace(" ", "") || combinedData[ranNum[key]].user_name}
               onClick={() => {
-                var name = data3[ranNum[key]].name_eng.trim();
-                if (name.includes("/")) {
-                  var temp = name.split("/");
+                let name = combinedData[ranNum[key]].user_name?.toLowerCase() || combinedData[ranNum[key]].name_eng?.trim();
+                if (name?.includes("/")) {
+                  let temp = name.split("/");
                   name = temp[1].trim();
                 }
-                // router.push(`/social/${name}`);
-                location.replace(`/social/${name}`);
+                router.push(`/social/${name}`);
               }}
             />
-            <p>{data3[ranNum[key]].name_eng}</p>
+            <p>{combinedData[ranNum[key]].name_eng || combinedData[ranNum[key]].user_name}</p>
           </figure>
         );
       })}

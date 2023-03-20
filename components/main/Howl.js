@@ -1,31 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react'
-import styles from "@/styles/main/Howl.module.scss"
-import Link from 'next/link';
+import React, { useEffect, useRef, useState } from "react";
+import styles from "@/styles/main/Howl.module.scss";
+import Link from "next/link";
 
 const Howl = () => {
+  const observerRef = useRef([]);
+  const [active, setActive] = useState(false);
 
-    const observerRef = useRef([]);
-    const [active,setActive] = useState(false);
-
-    useEffect(()=>{
-
-        let observer = new IntersectionObserver(
-        ([e]) => {
-            if (e.isIntersecting) {
-            setActive(true)
-            }
-        },
-        { threshold: 0.5 }
-        );
-
-        if(observerRef.current){
-        observer.observe(observerRef.current)
+  useEffect(() => {
+    let observer = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setActive(true);
         }
-    },[observerRef,active])
+      },
+      { threshold: 0.5 }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+  }, [observerRef, active]);
 
   return (
-    <div className={`${styles.main_bg} ${active?styles.active:null}`} ref={observerRef}>
-        <Link href={{
+    <div className={`${styles.main_bg} ${active ? styles.active : null}`} ref={observerRef}>
+      <Link
+        href={{
           pathname: "/info/charinfo",
           query: {
             ani_name: "howl"
@@ -45,7 +44,7 @@ const Howl = () => {
             <div className={styles.main_text2}>Moving Castle</div>
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default Howl
+export default Howl;

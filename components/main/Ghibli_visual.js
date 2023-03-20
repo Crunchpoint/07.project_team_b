@@ -28,7 +28,6 @@ const Ghibli_visual = () => {
     anchors: ["sectionOne", "sectionTwo", "sectionThree", "sectionFour", "sectionFive", "sectionSix", "sectionSeven"],
   };
 
-  console.log(options.anchors);
   return (
     data.length > 0 && (
       <>
