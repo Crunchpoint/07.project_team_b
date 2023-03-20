@@ -41,7 +41,7 @@ const Howl = () => {
             <img className={styles.main_img_03} src="../src/img/main/howl_cloud_bg.png" alt='하울의움직이는성'/>
         </div>
         <div className={styles.text}>
-            <div className={styles.main_text}>Howl's</div>
+            <div className={styles.main_text}>Howl&apos;s</div>
             <div className={styles.main_text2}>Moving Castle</div>
         </div>
     </div>

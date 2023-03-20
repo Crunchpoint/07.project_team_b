@@ -10,7 +10,7 @@ import { MyContext } from "@/components/context/Context";
 import styles from "@/styles/info/CharInfo.module.scss";
 import { useRouter } from "next/router";
 
-const CharInfo = () => {
+const Info = () => {
   const router = useRouter();
   const { data2 } = useContext(MyContext);
   const ani_name = router.query.ani_name;
@@ -89,4 +89,4 @@ const CharInfo = () => {
   );
 };
 
-export default CharInfo;
+export default Info;
