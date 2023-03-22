@@ -88,6 +88,7 @@ const Context = ({ children }) => {
       }
 
       response = await axios.get(apiEndpoint3);
+
       setUserDb(response.data);
     } catch (error) {
       console.error(error);
@@ -132,6 +133,7 @@ const Context = ({ children }) => {
       }
 
       response = await axios.get(apiEndpoint);
+
       setBoard(response.data);
     } catch (error) {
       console.error(error);
@@ -214,6 +216,7 @@ const Context = ({ children }) => {
           break;
       }
       response = await axios.get(apiEndpoint4);
+
       setLike(response.data);
     } catch (error) {
       console.error(error);

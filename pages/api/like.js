@@ -39,7 +39,9 @@ const handler = async (req, res) => {
 
   const deleteData = async () => {
     try {
+      // const { comment_idx, user_name } = query;
       const { comment_idx, user_name } = query;
+      console.log(body);
       let data = await executeQuery(`delete from Like_ where comment_idx = ? and user_name = ?`, [comment_idx, user_name]);
       res.json(data);
     } catch (err) {
