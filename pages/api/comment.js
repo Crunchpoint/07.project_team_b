@@ -18,8 +18,8 @@ const handler = async (req, res) => {
 
   const insertData = async () => {
     try {
-      const { board_idx, user_name, _comment } = body;
-      let data = await executeQuery(`insert into CommentTable (board_idx, user_name, _comment) values ("${board_idx}", "${user_name}", "${_comment}")`);
+      const { board_idx, user_name, comments } = body;
+      let data = await executeQuery(`insert into CommentTable (board_idx, user_name, comments) values ("${board_idx}", "${user_name}", "${comments}")`);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -28,8 +28,8 @@ const handler = async (req, res) => {
 
   const updateData = async () => {
     try {
-      const { _comment, comment_idx } = body;
-      let data = await executeQuery(`UPDATE glibli.CommentTable SET _comment = "${_comment}" WHERE comment_idx = ${comment_idx}`);
+      const { comments, comment_idx } = body;
+      let data = await executeQuery(`UPDATE glibli.CommentTable SET comments = "${comments}" WHERE comment_idx = ${comment_idx}`);
       res.json(data);
     } catch (err) {
       res.send(err);

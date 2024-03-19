@@ -229,17 +229,17 @@ const Context = ({ children }) => {
   }, []);
   // like 서밋 함수
 
-  const handleLike = (e, method, idx, user_) => {
-    const likeCheck = like.filter((item) => item.comment_idx === idx && item.user_name === user_);
-    if (likeCheck.length > 0) {
-      likeFn("DELETE", idx, user_);
-    } else {
-      const comment_idx = idx;
-      const user = user_;
-      const is_like = 1;
-      likeFn(method, comment_idx, user, is_like);
-    }
-  };
+  // const handleLike = (e, method, idx, user_) => {
+  //   const likeCheck = like.filter((item) => item.comment_idx === idx && item.user_name === user_);
+  //   if (likeCheck.length > 0) {
+  //     likeFn("DELETE", idx, user_);
+  //   } else {
+  //     const comment_idx = idx;
+  //     const user = user_;
+  //     const is_like = 1;
+  //     likeFn(method, comment_idx, user, is_like);
+  //   }
+  // };
 
   // 시간 계산 함수
   function timeForToday(value) {
@@ -339,7 +339,7 @@ const Context = ({ children }) => {
     handleUser,
     selSocialImg,
     setSelSocialImg,
-    handleLike,
+    // handleLike,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;
