@@ -2,9 +2,12 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState, createContext, useEffect, useRef } from "react";
+import dataUrl from "../../public/src/json/animeName.json";
+import dataUrl1 from "../../public/src/json/charDetail.json";
 
-const dataUrl = "../src/json/animeName.json";
-const dataUrl1 = "../src/json/charDetail.json";
+// const dataUrl = "../src/json/animeName.json";
+// const dataUrl1 = "../src/json/charDetail.json";
+
 const apiEndpoint = "/api/board";
 const apiEndpoint2 = "/api/comment";
 const apiEndpoint3 = "/api/user";
@@ -46,22 +49,22 @@ const Context = ({ children }) => {
 
   // axios 데이터
   useEffect(() => {
-    async function axiosData() {
-      await axios
-        .all([axios.get(dataUrl), axios.get(dataUrl1)])
-        .then(
-          axios.spread((res1, res2) => {
-            const combinedData = [...res2.data.cat, ...res2.data.howl, ...res2.data.laputa, ...res2.data.ponyo, ...res2.data.spirit, ...res2.data.totoro];
-            setData(res1.data.data);
-            setData2(res2.data);
-            setData3(combinedData);
-          })
-        )
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    axiosData();
+    // async function axiosData() {
+    //   await axios
+    //     .all([axios.get(dataUrl), axios.get(dataUrl1)])
+    //     .then(
+    //       axios.spread((res1, res2) => {
+    const combinedData = [...dataUrl1.cat, ...dataUrl1.howl, ...dataUrl1.laputa, ...dataUrl1.ponyo, ...dataUrl1.spirit, ...dataUrl1.totoro];
+    setData(dataUrl.data);
+    setData2(dataUrl1);
+    setData3(combinedData);
+    //       })
+    //     )
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // }
+    // axiosData();
   }, []);
 
   // user 데이터 통신
