@@ -9,7 +9,7 @@ const handler = async (req, res) => {
 
   const selectData = async () => {
     try {
-      let data = await executeQuery("select * from CommentTable order by comment_idx DESC", []);
+      let data = await executeQuery("select * from commenttable order by comment_idx DESC", []);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -19,7 +19,7 @@ const handler = async (req, res) => {
   const insertData = async () => {
     try {
       const { board_idx, user_name, comments } = body;
-      let data = await executeQuery(`insert into CommentTable (board_idx, user_name, comments) values ("${board_idx}", "${user_name}", "${comments}")`);
+      let data = await executeQuery(`insert into commenttable (board_idx, user_name, comments) values ("${board_idx}", "${user_name}", "${comments}")`);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -29,7 +29,7 @@ const handler = async (req, res) => {
   const updateData = async () => {
     try {
       const { comments, comment_idx } = body;
-      let data = await executeQuery(`UPDATE glibli.CommentTable SET comments = "${comments}" WHERE comment_idx = ${comment_idx}`);
+      let data = await executeQuery(`UPDATE glibli.commenttable SET comments = "${comments}" WHERE comment_idx = ${comment_idx}`);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -38,7 +38,7 @@ const handler = async (req, res) => {
 
   const deleteData = async () => {
     try {
-      let data = await executeQuery(`delete from CommentTable where comment_idx = ?`, [body]);
+      let data = await executeQuery(`delete from commenttable where comment_idx = ?`, [body]);
       res.json(data);
     } catch (err) {
       res.send(err);

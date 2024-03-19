@@ -8,7 +8,7 @@ const handler = async (req, res) => {
 
   const selectData = async () => {
     try {
-      let data = await executeQuery("select * from Board order by idx DESC", []);
+      let data = await executeQuery("select * from board order by idx DESC", []);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -18,7 +18,7 @@ const handler = async (req, res) => {
   const insertData = async () => {
     try {
       const { user_id, content, board_img, user_name } = body;
-      let data = await executeQuery(`insert into Board (user_id, content, board_img, user_name) values ("${user_id}", "${content}", "${board_img}", "${user_name}")`);
+      let data = await executeQuery(`insert into board (user_id, content, board_img, user_name) values ("${user_id}", "${content}", "${board_img}", "${user_name}")`);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -28,7 +28,7 @@ const handler = async (req, res) => {
   const updateData = async () => {
     try {
       const { title, name, contents, time, no } = body;
-      let data = await executeQuery(`update Board set title = ?, name = ?, contents = ?, time = ? where no = ?`, [title, name, contents, time, no]);
+      let data = await executeQuery(`update board set title = ?, name = ?, contents = ?, time = ? where no = ?`, [title, name, contents, time, no]);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -37,7 +37,7 @@ const handler = async (req, res) => {
 
   const deleteData = async () => {
     try {
-      let data = await executeQuery(`delete from Board where idx = ?`, [body]);
+      let data = await executeQuery(`delete from board where idx = ?`, [body]);
       res.json(data);
     } catch (err) {
       res.send(err);

@@ -193,40 +193,40 @@ const Context = ({ children }) => {
   };
 
   // like 데이터 통신
-  const likeFn = async (method, comment_idx, user, is_like) => {
-    try {
-      let data = { comment_idx: comment_idx, user_name: user, is_like: is_like };
-      let response;
+  // const likeFn = async (method, comment_idx, user, is_like) => {
+  //   try {
+  //     let data = { comment_idx: comment_idx, user_name: user, is_like: is_like };
+  //     let response;
 
-      switch (method) {
-        case "POST":
-          await axios.post(apiEndpoint4, data);
-          break;
+  //     switch (method) {
+  //       case "POST":
+  //         await axios.post(apiEndpoint4, data);
+  //         break;
 
-        case "PUT":
-          await axios.put();
-          break;
+  //       case "PUT":
+  //         await axios.put();
+  //         break;
 
-        case "DELETE":
-          // await axios.delete(apiEndpoint4 ? (idx = 111 & user) : user);
-          await axios.delete(apiEndpoint4, { params: { comment_idx: comment_idx, user_name: user } });
-          break;
+  //       case "DELETE":
+  //         // await axios.delete(apiEndpoint4 ? (idx = 111 & user) : user);
+  //         await axios.delete(apiEndpoint4, { params: { comment_idx: comment_idx, user_name: user } });
+  //         break;
 
-        default:
-          break;
-      }
-      response = await axios.get(apiEndpoint4);
+  //       default:
+  //         break;
+  //     }
+  //     response = await axios.get(apiEndpoint4);
 
-      setLike(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //     setLike(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   // console.log(like);
-  useEffect(() => {
-    likeFn();
-  }, []);
+  // useEffect(() => {
+  //   likeFn();
+  // }, []);
   // like 서밋 함수
 
   // const handleLike = (e, method, idx, user_) => {
