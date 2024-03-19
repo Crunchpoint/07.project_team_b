@@ -6,12 +6,12 @@ import KakaoProvider from "next-auth/providers/kakao";
 export default NextAuth({
   providers: [
     GoogleProvider({
-      clientId: "956270552699-2h0j7rct6r38a4dihmve4nbnrodahan6.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
     }),
     KakaoProvider({
-      clientId: "d68ec7723f2872468a17b4be83e2d2ee",
-      clientSecret: "fYrVqHxe29ED6oPJeArB38gvcn4MD4iB",
+      clientId: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET,
     }),
   ],
   // callbacks: {
