@@ -27,10 +27,9 @@ const oracledb = require("oracledb");
 async function initialize() {
   try {
     const pool = await oracledb.createPool({
-      user: "ADMIN",
-      password: "Etwlgns47823",
-      connectString:
-        "(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=gc9715b6815211e_d0yybjmjcnoxwilw_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))",
+      user: process.env.NEXT_PUBLIC_ORACLE_USER,
+      password: process.env.NEXT_PUBLIC_ORACLE_PASSWORD,
+      connectString: process.env.NEXT_PUBLIC_ORACLE_CONNECTSTRING,
     });
     console.log("Connection Pool created!");
     return pool;
