@@ -27,23 +27,27 @@ const User = () => {
 
   useEffect(() => {
     let filteredData = [];
-    let temp = userDb?.filter((item) => item.user_name.toLowerCase() === router.query.user);
+    let temp = Array.isArray(userDb) ? userDb?.filter((item) => item.user_name.toLowerCase() === router.query.user) : [];
     if (temp.length > 0) {
       filteredData = userDb?.filter((item) => {
         return item.user_name.toLowerCase() === router.query.user;
       });
       setSelSocialImg(filteredData[0]?.profile_img);
     } else {
-      filteredData = data3?.filter((item) => {
-        return item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase());
-      });
+      filteredData = Array.isArray(data3)
+        ? data3?.filter((item) => {
+            return item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase());
+          })
+        : [];
       setSelSocialImg(filteredData[0]?.src);
     }
 
-    const userExists = combinedData?.filter((item) => item.user_name?.toLowerCase() === router.query.user || item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase())).length > 0;
+    const userExists = Array.isArray(combinedData)
+      ? combinedData?.filter((item) => item.user_name?.toLowerCase() === router.query.user || item.name_eng?.toLowerCase().includes(router.query.user?.toLowerCase())).length > 0
+      : false;
 
     setUserExists(userExists);
-  }, [router, data3, userDb]);
+  }, [router, data3, userDb, combinedData]);
 
   return (
     <>
