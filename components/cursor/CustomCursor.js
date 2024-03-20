@@ -19,7 +19,7 @@ const CustomCursor = () => {
     <div
       className={styles.cursor}
       style={{
-        transform: `translate3d(calc(${position.x}px + (-25px)), calc(${position.y}px + (-25px)), 0)`,
+        transform: `translate3d(calc(${position.x}px + (15px)), calc(${position.y}px + (-30px)), 0)`,
       }}>
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 67.93 58.23' width='50' height='50'>
         <g id='レイヤー_2' data-name='レイヤー 2'>
