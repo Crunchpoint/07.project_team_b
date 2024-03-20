@@ -44,7 +44,9 @@ const Context = ({ children }) => {
   const user = useSession();
 
   useEffect(() => {
-    setCurrentUser(userDb?.filter((item) => item.email === user.data?.user.email));
+    if (userDb) {
+      setCurrentUser(userDb.filter((item) => item.email === user.data?.user.email));
+    }
   }, [userDb, user.data?.user.email]);
 
   // axios 데이터
@@ -72,6 +74,7 @@ const Context = ({ children }) => {
     try {
       let data = { email: email, user_name: name, profile_img: img, is_admin: user };
       let response;
+      console.log(data);
 
       switch (method) {
         case "POST":
@@ -89,7 +92,6 @@ const Context = ({ children }) => {
         default:
           break;
       }
-
       response = await axios.get(apiEndpoint3);
 
       setUserDb(response.data);
@@ -97,6 +99,7 @@ const Context = ({ children }) => {
       console.error(error);
     }
   };
+  // 유저 정보 들어옴
   useEffect(() => {
     userFn();
   }, []);
@@ -106,6 +109,7 @@ const Context = ({ children }) => {
     const name = user_name;
     const img = user_img;
     const user = 0;
+    console.log(user_email, user_name, user_img);
     userFn(method, email, name, img, user);
   };
 
@@ -196,53 +200,53 @@ const Context = ({ children }) => {
   };
 
   // like 데이터 통신
-  // const likeFn = async (method, comment_idx, user, is_like) => {
-  //   try {
-  //     let data = { comment_idx: comment_idx, user_name: user, is_like: is_like };
-  //     let response;
+  const likeFn = async (method, comment_idx, user, is_like) => {
+    try {
+      let data = { comment_idx: comment_idx, user_name: user, is_like: is_like };
+      let response;
 
-  //     switch (method) {
-  //       case "POST":
-  //         await axios.post(apiEndpoint4, data);
-  //         break;
+      switch (method) {
+        case "POST":
+          await axios.post(apiEndpoint4, data);
+          break;
 
-  //       case "PUT":
-  //         await axios.put();
-  //         break;
+        case "PUT":
+          await axios.put();
+          break;
 
-  //       case "DELETE":
-  //         // await axios.delete(apiEndpoint4 ? (idx = 111 & user) : user);
-  //         await axios.delete(apiEndpoint4, { params: { comment_idx: comment_idx, user_name: user } });
-  //         break;
+        case "DELETE":
+          // await axios.delete(apiEndpoint4 ? (idx = 111 & user) : user);
+          await axios.delete(apiEndpoint4, { params: { comment_idx: comment_idx, user_name: user } });
+          break;
 
-  //       default:
-  //         break;
-  //     }
-  //     response = await axios.get(apiEndpoint4);
+        default:
+          break;
+      }
+      response = await axios.get(apiEndpoint4);
 
-  //     setLike(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      setLike(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // console.log(like);
-  // useEffect(() => {
-  //   likeFn();
-  // }, []);
+  // console.log(user.data?.user);
+  useEffect(() => {
+    likeFn();
+  }, []);
   // like 서밋 함수
 
-  // const handleLike = (e, method, idx, user_) => {
-  //   const likeCheck = like.filter((item) => item.comment_idx === idx && item.user_name === user_);
-  //   if (likeCheck.length > 0) {
-  //     likeFn("DELETE", idx, user_);
-  //   } else {
-  //     const comment_idx = idx;
-  //     const user = user_;
-  //     const is_like = 1;
-  //     likeFn(method, comment_idx, user, is_like);
-  //   }
-  // };
+  const handleLike = (e, method, idx, user_) => {
+    const likeCheck = like.filter((item) => item.comment_idx === idx && item.user_name === user_);
+    if (likeCheck.length > 0) {
+      likeFn("DELETE", idx, user_);
+    } else {
+      const comment_idx = idx;
+      const user = user_;
+      const is_like = 1;
+      likeFn(method, comment_idx, user, is_like);
+    }
+  };
 
   // 시간 계산 함수
   function timeForToday(value) {
@@ -269,11 +273,13 @@ const Context = ({ children }) => {
   }
   // 유저별 게시판 필터링
   useEffect(() => {
-    setFilteredBoard(
-      board?.filter((item) => {
-        return item.user_name?.toLowerCase().trim().replace("-", "") === pageName?.toLowerCase().trim().replace("-", "");
-      })
-    );
+    if (board) {
+      setFilteredBoard(
+        board.filter((item) => {
+          return item.user_name?.toLowerCase().trim().replace("-", "") === pageName?.toLowerCase().trim().replace("-", "");
+        })
+      );
+    }
   }, [board, crudModal, pageName]);
 
   // 좋아요 기능 // 수정중

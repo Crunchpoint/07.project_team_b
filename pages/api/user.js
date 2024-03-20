@@ -8,7 +8,7 @@ const handler = async (req, res) => {
 
   const selectData = async () => {
     try {
-      let data = await executeQuery("select * from userinfo order by num DESC", []);
+      let data = await executeQuery("select * from userinfo order by id DESC", []);
       res.json(data);
     } catch (err) {
       res.send(err);

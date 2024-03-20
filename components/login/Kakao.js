@@ -47,13 +47,14 @@ const Kakao = () => {
   //   )
 
   const { data: session } = useSession();
-
   useEffect(() => {
-    let userCheck = userDb?.filter((item) => item.email === session?.user.email);
-    if (userCheck.length > 0 === true) {
-      console.log("이미 가입된 유저입니다.");
-    } else {
-      session && handleUser("POST", session.user.email, session.user.name, session.user.image);
+    if (userDb) {
+      let userCheck = userDb.filter((item) => item.email === session?.user.email);
+      if (userCheck.length > 0 === true) {
+        console.log("이미 가입된 유저입니다.");
+      } else {
+        session && handleUser("POST", session.user.email, session.user.name, session.user.image);
+      }
     }
   }, [session, userDb]);
 

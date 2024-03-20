@@ -21,3 +21,7 @@
 -- CREATE TABLE like_ (
 --     like_id NUMBER PRIMARY KEY, board_id NUMBER, user_id NUMBER, user_name VARCHAR2(100) NOT NULL, is_like NUMBER(1) DEFAULT 0, FOREIGN KEY (board_id) REFERENCES board(board_id), FOREIGN KEY (user_id) REFERENCES userinfo(user_id)
 -- );
+
+SELECT *
+FROM userinfo
+ORDER BY user_name DESC

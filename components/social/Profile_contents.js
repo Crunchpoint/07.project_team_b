@@ -11,7 +11,7 @@ const Profile_contents = () => {
   const { pageName, filteredBoard, postModal, setPostModal, setTextareaValue, currentUser } = useContext(MyContext);
   const router = useRouter();
   const { data } = useSession();
-
+  // console.log(currentUser);
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (e.target.className !== styles.button && e.target.classList.value.includes("modal")) {

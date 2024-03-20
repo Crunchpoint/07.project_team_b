@@ -27,7 +27,7 @@ const User = () => {
 
   useEffect(() => {
     let filteredData = [];
-    let temp = userDb.filter((item) => item.user_name.toLowerCase() === router.query.user);
+    let temp = userDb?.filter((item) => item.user_name.toLowerCase() === router.query.user);
     if (temp.length > 0) {
       filteredData = userDb?.filter((item) => {
         return item.user_name.toLowerCase() === router.query.user;
