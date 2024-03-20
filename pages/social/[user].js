@@ -8,7 +8,6 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { MyContext } from "@/components/context/Context";
 import { useContext } from "react";
 import Link from "next/link";
-import Custom404 from "@/components/social/Custom404";
 
 const User = () => {
   const { setPageName, data3, setSelSocialImg, userDb } = useContext(MyContext);
