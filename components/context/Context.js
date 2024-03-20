@@ -74,7 +74,6 @@ const Context = ({ children }) => {
     try {
       let data = { email: email, user_name: name, profile_img: img, is_admin: user };
       let response;
-      console.log(data);
 
       switch (method) {
         case "POST":
@@ -92,6 +91,7 @@ const Context = ({ children }) => {
         default:
           break;
       }
+
       response = await axios.get(apiEndpoint3);
 
       setUserDb(response.data);
@@ -99,7 +99,6 @@ const Context = ({ children }) => {
       console.error(error);
     }
   };
-  // 유저 정보 들어옴
   useEffect(() => {
     userFn();
   }, []);
@@ -109,7 +108,6 @@ const Context = ({ children }) => {
     const name = user_name;
     const img = user_img;
     const user = 0;
-    console.log(user_email, user_name, user_img);
     userFn(method, email, name, img, user);
   };
 
@@ -118,7 +116,7 @@ const Context = ({ children }) => {
     try {
       let data = { user_id: user, content: content, board_img: img, user_name: name };
       let response;
-
+      console.log(data);
       switch (method) {
         case "POST":
           await axios.post(apiEndpoint, data);
@@ -149,7 +147,7 @@ const Context = ({ children }) => {
   useEffect(() => {
     boardFn();
   }, []);
-  // board 서밋 함수
+
   const handleSubmit = (e, method, user_name, image_url) => {
     const user = currentUser[0].num;
     const img = image_url;
@@ -230,7 +228,7 @@ const Context = ({ children }) => {
     }
   };
 
-  // console.log(user.data?.user);
+  console.log(like);
   useEffect(() => {
     likeFn();
   }, []);
@@ -348,7 +346,7 @@ const Context = ({ children }) => {
     handleUser,
     selSocialImg,
     setSelSocialImg,
-    // handleLike,
+    handleLike,
   };
 
   return <MyContext.Provider value={values}>{children}</MyContext.Provider>;

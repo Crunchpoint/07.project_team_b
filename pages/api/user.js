@@ -8,7 +8,7 @@ const handler = async (req, res) => {
 
   const selectData = async () => {
     try {
-      let data = await executeQuery("select * from userinfo order by id DESC", []);
+      let data = await executeQuery("select * from userinfo order by num DESC", []);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -26,25 +26,6 @@ const handler = async (req, res) => {
     }
   };
 
-  const updateData = async () => {
-    try {
-      const { title, name, contents, time, no } = body;
-      let data = await executeQuery(`update userinfo set title = ?, name = ?, contents = ?, time = ? where no = ?`, [title, name, contents, time, no]);
-      res.json(data);
-    } catch (err) {
-      res.send(err);
-    }
-  };
-
-  const deleteData = async () => {
-    try {
-      let data = await executeQuery(`delete from userinfo where idx = ?`, [body]);
-      res.json(data);
-    } catch (err) {
-      res.send(err);
-    }
-  };
-
   switch (method) {
     case "GET":
       selectData();
@@ -52,12 +33,12 @@ const handler = async (req, res) => {
     case "POST":
       insertData();
       break;
-    case "PUT":
-      updateData();
-      break;
-    case "DELETE":
-      deleteData();
-      break;
+    // case "PUT":
+    //   updateData();
+    //   break;
+    // case "DELETE":
+    //   deleteData();
+    //   break;
   }
 };
 

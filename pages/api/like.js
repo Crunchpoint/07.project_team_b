@@ -27,16 +27,6 @@ const handler = async (req, res) => {
     }
   };
 
-  const updateData = async () => {
-    try {
-      const { title, name, contents, time, no } = body;
-      let data = await executeQuery(`update Board set title = ?, name = ?, contents = ?, time = ? where no = ?`, [title, name, contents, time, no]);
-      res.json(data);
-    } catch (err) {
-      res.send(err);
-    }
-  };
-
   const deleteData = async () => {
     try {
       // const { comment_idx, user_name } = query;
@@ -56,9 +46,9 @@ const handler = async (req, res) => {
     case "POST":
       insertData();
       break;
-    case "PUT":
-      updateData();
-      break;
+    // case "PUT":
+    //   updateData();
+    //   break;
     case "DELETE":
       deleteData();
       break;

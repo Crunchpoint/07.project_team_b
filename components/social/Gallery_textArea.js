@@ -19,17 +19,29 @@ const Gallery_textArea = ({ props, props2, props3, props4 }) => {
   }, [userDb, props4]);
 
   useEffect(() => {
-    let likeCount = like?.filter((item) => {
-      return item.comment_idx === props3;
-    });
-    setCount(likeCount.length);
+    if (like) {
+      let likeCount = like?.filter((item) => {
+        return item.comment_idx === props3;
+      });
+      setCount(likeCount.length);
+    }
+    // let likeCount = like?.filter((item) => {
+    //   return item.comment_idx === props3;
+    // });
+    // setCount(likeCount.length);
   }, [like, props3]);
 
   useEffect(() => {
-    let isLike = like?.filter((item) => {
-      return item.comment_idx === props3 && item.user_name === currentUser[0].user_name;
-    });
-    setIsLike(isLike.length > 0 ? true : false);
+    if (like) {
+      let isLike = like?.filter((item) => {
+        return item.comment_idx === props3 && item.user_name === currentUser[0].user_name;
+      });
+      setIsLike(isLike.length > 0 ? true : false);
+    }
+    // let isLike = like?.filter((item) => {
+    //   return item.comment_idx === props3 && item.user_name === currentUser[0].user_name;
+    // });
+    // setIsLike(isLike.length > 0 ? true : false);
   }, [like, props3, currentUser]);
 
   // useEffect(() => {

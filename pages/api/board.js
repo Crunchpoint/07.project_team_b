@@ -18,17 +18,8 @@ const handler = async (req, res) => {
   const insertData = async () => {
     try {
       const { user_id, content, board_img, user_name } = body;
+      console.log(body);
       let data = await executeQuery(`insert into board (user_id, content, board_img, user_name) values ("${user_id}", "${content}", "${board_img}", "${user_name}")`);
-      res.json(data);
-    } catch (err) {
-      res.send(err);
-    }
-  };
-
-  const updateData = async () => {
-    try {
-      const { title, name, contents, time, no } = body;
-      let data = await executeQuery(`update board set title = ?, name = ?, contents = ?, time = ? where no = ?`, [title, name, contents, time, no]);
       res.json(data);
     } catch (err) {
       res.send(err);
@@ -51,9 +42,9 @@ const handler = async (req, res) => {
     case "POST":
       insertData();
       break;
-    case "PUT":
-      updateData();
-      break;
+    // case "PUT":
+    //   updateData();
+    //   break;
     case "DELETE":
       deleteData();
       break;
