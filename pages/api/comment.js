@@ -29,8 +29,8 @@ const handler = async (req, res) => {
 
   const updateData = async () => {
     try {
-      const { comments, comment_idx } = body;
-      let data = await executeQuery(`UPDATE commenttable SET comments = "${comments}" WHERE comment_idx = ${comment_idx}`);
+      const { _comment, comment_idx } = body;
+      let data = await executeQuery(`UPDATE commenttable SET comments = "${_comment}" WHERE comment_idx = ${comment_idx}`);
       res.json(data);
     } catch (err) {
       res.send(err);

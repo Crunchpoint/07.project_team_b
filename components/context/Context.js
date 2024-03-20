@@ -116,7 +116,7 @@ const Context = ({ children }) => {
     try {
       let data = { user_id: user, content: content, board_img: img, user_name: name };
       let response;
-      console.log(data);
+
       switch (method) {
         case "POST":
           await axios.post(apiEndpoint, data);
@@ -228,7 +228,6 @@ const Context = ({ children }) => {
     }
   };
 
-  console.log(like);
   useEffect(() => {
     likeFn();
   }, []);
